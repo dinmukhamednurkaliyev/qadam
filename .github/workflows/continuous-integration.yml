@@ -1,0 +1,176 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  detect-changes:
+    name: Detect Changes
+    runs-on: ubuntu-latest
+
+    outputs:
+      frontend: ${{ steps.filter.outputs.frontend }}
+      server: ${{ steps.filter.outputs.server }}
+      configuration: ${{ steps.filter.outputs.configuration }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6.0.3
+        with:
+          fetch-depth: 0
+
+      - name: Detect Changed Files
+        uses: dorny/paths-filter@v4.0.2
+        id: filter
+        with:
+          filters: |
+            frontend:
+              - 'app/**'
+              - 'assets/**'
+              - 'public/**'
+
+            server:
+              - 'server/**'
+
+            configuration:
+              - 'package.json'
+              - 'bun.lock'
+              - 'nuxt.config.ts'
+              - 'tsconfig.json'
+              - 'eslint.config.mjs'
+              - '.prettierrc'
+              - '.prettierrc.*'
+              - '.prettierignore'
+              - '.editorconfig'
+              - '.github/workflows/continuous-integration.yml'
+
+      - name: Log Detected Changes
+        run: |
+          echo -e "\e[34mFrontend changed: ${{ steps.filter.outputs.frontend }}\e[0m"
+          echo -e "\e[34mServer changed: ${{ steps.filter.outputs.server }}\e[0m"
+          echo -e "\e[34mConfiguration changed: ${{ steps.filter.outputs.configuration }}\e[0m"
+
+  label-pull-request:
+    name: Label Pull Request
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Label Pull Request
+        uses: actions/labeler@v6.1.0
+        with:
+          configuration-path: .github/labeler.yml
+          sync-labels: true
+
+  run-quality-checks:
+    name: Run Quality Checks
+    needs:
+      - detect-changes
+
+    if: >-
+      ${{
+        needs.detect-changes.outputs.frontend == 'true' ||
+        needs.detect-changes.outputs.server == 'true' ||
+        needs.detect-changes.outputs.configuration == 'true'
+      }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6.0.3
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2.2.0
+        with:
+          cache: true
+
+      - name: Install Dependencies
+        run: |
+          echo -e "\e[36mInstalling dependencies...\e[0m"
+          bun install --frozen-lockfile
+
+      - name: Run Security Audit
+        run: |
+          echo -e "\e[35mRunning security audit...\e[0m"
+
+          bun audit || {
+            echo -e "\e[31mSecurity vulnerabilities found!\e[0m"
+            exit 1
+          }
+
+      - name: Run ESLint
+        run: |
+          echo -e "\e[33mRunning ESLint...\e[0m"
+
+          bun run lint || {
+            echo -e "\e[31mESLint check failed. Run 'bun run lint:fix' locally.\e[0m"
+            exit 1
+          }
+
+      - name: Check Formatting
+        run: |
+          echo -e "\e[33mChecking formatting...\e[0m"
+
+          bun run format:check || {
+            echo -e "\e[31mFormatting check failed. Run 'bun run format' locally.\e[0m"
+            exit 1
+          }
+
+      - name: Validate Types
+        run: |
+          echo -e "\e[33mChecking TypeScript types...\e[0m"
+
+          bun run typecheck || {
+            echo -e "\e[31mType checking failed!\e[0m"
+            exit 1
+          }
+
+      - name: Build Application
+        run: |
+          echo -e "\e[35mBuilding production application...\e[0m"
+
+          bun run build || {
+            echo -e "\e[31mProduction build failed!\e[0m"
+            exit 1
+          }
+        env:
+          NODE_ENV: production
+
+  verify-status:
+    name: Verify Status
+    needs:
+      - run-quality-checks
+
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Report Results
+        run: |
+          if [ "${{ needs.run-quality-checks.result }}" == "success" ]; then
+            echo -e "\e[32mAll quality checks passed.\e[0m"
+          elif [ "${{ needs.run-quality-checks.result }}" == "skipped" ]; then
+            echo -e "\e[34mQuality checks were not required for these changes.\e[0m"
+          else
+            echo -e "\e[31mPipeline failed. Check the previous job logs.\e[0m"
+            exit 1
+          fi

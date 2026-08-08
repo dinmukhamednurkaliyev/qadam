@@ -1,0 +1,146 @@
+area-app:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "app/app.vue"
+          - "app/error.vue"
+          - "app/layouts/**"
+
+area-components:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "app/components/**"
+
+area-pages:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "app/pages/**"
+
+area-composables:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "app/composables/**"
+
+area-stores:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "app/stores/**"
+
+area-plugins:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "app/plugins/**"
+          - "modules/**"
+
+area-middleware:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "app/middleware/**"
+
+area-server:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "server/**"
+
+area-styles:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "assets/**/*.css"
+          - "assets/**/*.scss"
+          - "assets/**/*.sass"
+          - "assets/**/*.less"
+          - "app/assets/**/*.css"
+          - "app/assets/**/*.scss"
+          - "app/assets/**/*.sass"
+          - "app/assets/**/*.less"
+
+area-assets:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "assets/images/**"
+          - "assets/fonts/**"
+          - "app/assets/images/**"
+          - "app/assets/fonts/**"
+          - "public/**"
+
+area-data:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "app/data/**"
+
+area-types:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "app/types/**"
+          - "**/*.d.ts"
+
+area-utils:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "app/utils/**"
+          - "lib/**"
+
+area-tests:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "test/**"
+          - "tests/**"
+          - "**/*.test.ts"
+          - "**/*.spec.ts"
+          - "playwright/**"
+          - "vitest.config.*"
+          - "playwright.config.*"
+
+area-configuration:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "nuxt.config.*"
+          - "app.config.*"
+          - "tsconfig.json"
+          - "eslint.config.*"
+          - "prettier.config.*"
+          - ".prettierrc"
+          - ".prettierrc.*"
+          - ".prettierignore"
+          - "tailwind.config.*"
+          - "postcss.config.*"
+          - ".editorconfig"
+          - ".npmrc"
+
+area-infrastructure:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/**"
+          - "docker/**"
+          - "terraform/**"
+          - "k8s/**"
+          - "Dockerfile"
+          - "Dockerfile.*"
+          - "docker-compose.yml"
+          - "docker-compose.yaml"
+          - "compose.yml"
+          - "compose.yaml"
+          - "netlify.toml"
+          - "vercel.json"
+
+area-dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "package.json"
+          - "bun.lock"
+          - "package-lock.json"
+          - "pnpm-lock.yaml"
+          - "yarn.lock"
+
+area-documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.md"
+          - "docs/**"
+          - "LICENSE"
+          - "LICENSE.*"
+
+area-environment:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".env.example"
+          - ".env.*.example"
