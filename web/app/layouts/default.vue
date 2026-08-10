@@ -4,10 +4,25 @@
       <div class="sidebar__brand">Qadam</div>
 
       <nav class="sidebar__nav">
-        <NuxtLink to="/">Dashboard</NuxtLink>
-        <NuxtLink to="/jobs">Jobs</NuxtLink>
-        <NuxtLink to="/applications">Applications</NuxtLink>
-        <NuxtLink to="/analytics">Analytics</NuxtLink>
+        <NuxtLink to="/">
+          <Icon name="lucide:layout-dashboard" />
+          <span>Dashboard</span>
+        </NuxtLink>
+
+        <NuxtLink to="/jobs">
+          <Icon name="lucide:briefcase-business" />
+          <span>Jobs</span>
+        </NuxtLink>
+
+        <NuxtLink to="/applications">
+          <Icon name="lucide:send" />
+          <span>Applications</span>
+        </NuxtLink>
+
+        <NuxtLink to="/analytics">
+          <Icon name="lucide:chart-no-axes-column-increasing" />
+          <span>Analytics</span>
+        </NuxtLink>
       </nav>
     </aside>
 
@@ -18,6 +33,10 @@
 </template>
 
 <style scoped>
+.app-main {
+  padding: var(--space-8);
+}
+
 .app-shell {
   display: grid;
   grid-template-columns: 16rem 1fr;
@@ -36,8 +55,15 @@
   font-weight: 700;
 }
 
+.sidebar__nav {
+  display: grid;
+  gap: var(--space-2);
+}
+
 .sidebar__nav a {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
   padding: var(--space-3) var(--space-4);
   color: var(--color-text-secondary);
   text-decoration: none;
@@ -63,11 +89,9 @@
   font-weight: 600;
 }
 
-.sidebar__nav {
-  display: grid;
-  gap: var(--space-2);
-}
-мп .app-main {
-  padding: var(--space-8);
+.sidebar__nav svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
 }
 </style>
