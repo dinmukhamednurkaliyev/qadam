@@ -36,12 +36,33 @@
   font-weight: 700;
 }
 
+.sidebar__nav a {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+.sidebar__nav a:hover {
+  color: var(--color-text);
+  background: var(--color-background);
+}
+
+.sidebar__nav a.router-link-exact-active {
+  color: var(--color-text);
+  background: var(--color-background);
+  font-weight: 600;
+}
+
 .sidebar__nav {
   display: grid;
   gap: var(--space-2);
 }
-мп
-.app-main {
+мп .app-main {
   padding: var(--space-8);
 }
 </style>
