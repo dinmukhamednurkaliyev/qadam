@@ -1,7 +1,7 @@
 import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
-  modules: ["@pinia/nuxt", "@nuxt/eslint", "@nuxt/icon"],
+  modules: ["@pinia/nuxt", "@nuxt/eslint", "@nuxt/icon", "motion-v/nuxt"],
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
   compatibilityDate: "2025-07-15",
