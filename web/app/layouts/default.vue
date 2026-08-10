@@ -47,6 +47,11 @@
     color 150ms ease;
 }
 
+.sidebar__nav a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
 .sidebar__nav a:hover {
   color: var(--color-text);
   background: var(--color-background);
