@@ -1,3 +1,3 @@
 <template>
-  <h1>Applications</h1>
+  <PageHeader title="Applications" description="Manage your job applications." />
 </template>

@@ -1,3 +1,3 @@
 <template>
-  <h1>Analytics</h1>
+  <PageHeader title="Analytics" description="Review your job search performance." />
 </template>

@@ -109,7 +109,6 @@
 .app-main-content {
   width: 100%;
   max-width: var(--content-width);
-  margin-inline: auto;
 }
 
 @media (width <= 48rem) {
@@ -135,10 +134,6 @@
 
   .sidebar-nav a {
     flex-shrink: 0;
-  }
-
-  .app-main {
-    padding: var(--space-4);
   }
 }
 </style>

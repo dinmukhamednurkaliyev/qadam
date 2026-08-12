@@ -1,3 +1,3 @@
 <template>
-  <h1>Jobs</h1>
+  <PageHeader title="Jobs" description="Discover and track job opportunities." />
 </template>
