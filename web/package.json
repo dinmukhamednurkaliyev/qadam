@@ -19,12 +19,12 @@
     "check": "bun run lint && bun run stylelint && bun run typecheck && bun run format:check"
   },
   "dependencies": {
-    "@nuxt/icon": "^2.4.1",
-    "@pinia/nuxt": "^1.0.1",
+    "@nuxt/icon": "^2.5.0",
+    "@pinia/nuxt": "^1.0.2",
     "motion-v": "^2.3.0",
     "nuxt": "^4.5.2",
-    "pinia": "^4.0.2",
-    "vue": "^3.5.40",
+    "pinia": "^4.0.3",
+    "vue": "^3.5.41",
     "vue-router": "^5.2.0"
   },
   "devDependencies": {
@@ -37,6 +37,7 @@
     "stylelint": "^17.14.1",
     "stylelint-config-standard": "^40.0.0",
     "typescript": "6.0.3",
-    "vue-tsc": "^3.3.9"
+    "vue-tsc": "^3.3.9",
+    "@types/bun": "latest"
   }
 }
