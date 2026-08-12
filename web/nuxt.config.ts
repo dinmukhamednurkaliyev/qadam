@@ -14,6 +14,13 @@ export default defineNuxtConfig({
           content: "Job search and application tracking platform",
         },
       ],
+      link: [
+        {
+          rel: "icon",
+          type: "image/png",
+          href: "/favicon.png",
+        },
+      ],
     },
   },
   typescript: {

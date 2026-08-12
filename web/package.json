@@ -13,7 +13,9 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "typecheck": "nuxt typecheck",
-    "check": "bun run lint && bun run typecheck && bun run format:check"
+    "stylelint": "stylelint \"app/**/*.{css,vue}\"",
+    "stylelint:fix": "stylelint \"app/**/*.{css,vue}\" --fix",
+    "check": "bun run lint && bun run stylelint && bun run typecheck && bun run format:check"
   },
   "dependencies": {
     "@nuxt/icon": "^2.4.1",
@@ -29,7 +31,10 @@
     "@typescript/typescript6": "^6.0.2",
     "eslint": "^10.8.1",
     "eslint-config-prettier": "^10.1.8",
+    "postcss-html": "^2.0.0",
     "prettier": "^3.9.6",
+    "stylelint": "^17.14.1",
+    "stylelint-config-standard": "^40.0.0",
     "typescript": "6.0.3",
     "vue-tsc": "^3.3.9"
   }
