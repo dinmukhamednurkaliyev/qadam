@@ -10,11 +10,12 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "stylelint": "stylelint \"app/**/*.{css,vue}\"",
+    "stylelint:fix": "stylelint \"app/**/*.{css,vue}\" --fix",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "typecheck": "nuxt typecheck",
-    "stylelint": "stylelint \"app/**/*.{css,vue}\"",
-    "stylelint:fix": "stylelint \"app/**/*.{css,vue}\" --fix",
+    "fix": "bun run lint:fix && bun run stylelint:fix && bun run format",
     "check": "bun run lint && bun run stylelint && bun run typecheck && bun run format:check"
   },
   "dependencies": {
