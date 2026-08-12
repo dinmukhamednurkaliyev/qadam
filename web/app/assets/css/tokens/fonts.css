@@ -1,12 +1,6 @@
 :root {
   --font-family-sans:
-    inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    blinkmacsystemfont,
-    "Segoe UI",
-    sans-serif;
+    inter, ui-sans-serif, system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", sans-serif;
 
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;

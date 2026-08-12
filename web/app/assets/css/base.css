@@ -1,9 +1,7 @@
-/* Global defaults for the application document */
 html {
   font-family: var(--font-family-sans);
 }
 
-/* Base appearance and typography for the application */
 body {
   min-height: 100vh;
   color: var(--color-text);
