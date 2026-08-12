@@ -1,3 +1,13 @@
+<p align="center">
+  <picture>
+    <img
+      src="documentation/images/logo.png"
+      alt="JUTSU.net"
+      width="420"
+    >
+  </picture>
+</p>
+
 ![Bun](https://img.shields.io/badge/Bun-000000?logo=bun&logoColor=white)
 ![Vue](https://img.shields.io/badge/Vue-4FC08D?logo=vue.js&logoColor=white)
 ![Nuxt](https://img.shields.io/badge/Nuxt-00DC82?logo=nuxt&logoColor=white)
