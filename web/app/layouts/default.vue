@@ -1,9 +1,11 @@
 <template>
   <div class="app-shell">
     <aside class="sidebar">
-      <div class="sidebar__brand">Qadam</div>
+      <NuxtLink to="/" class="sidebar-brand">
+        <img src="/logo.png" alt="Qadam" />
+      </NuxtLink>
 
-      <nav class="sidebar__nav">
+      <nav class="sidebar-nav">
         <NuxtLink to="/">
           <Icon name="lucide:layout-dashboard" />
           <span>Dashboard</span>
@@ -27,40 +29,44 @@
     </aside>
 
     <main class="app-main">
-      <slot />
+      <div class="app-main-content">
+        <slot />
+      </div>
     </main>
   </div>
 </template>
 
 <style scoped>
-.app-main {
-  padding: var(--space-8);
-}
-
 .app-shell {
   display: grid;
-  grid-template-columns: 16rem 1fr;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
   min-height: 100vh;
 }
 
 .sidebar {
-  border-right: 1px solid var(--color-border);
-  background: var(--color-surface);
   padding: var(--space-6);
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
 }
 
-.sidebar__brand {
+.sidebar-brand {
+  display: block;
   margin-bottom: var(--space-8);
-  font-size: 1.25rem;
-  font-weight: 700;
+  text-decoration: none;
 }
 
-.sidebar__nav {
+.sidebar-brand img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.sidebar-nav {
   display: grid;
   gap: var(--space-2);
 }
 
-.sidebar__nav a {
+.sidebar-nav a {
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -69,29 +75,70 @@
   text-decoration: none;
   border-radius: var(--radius-sm);
   transition:
-    background-color 150ms ease,
-    color 150ms ease;
+    color var(--duration-normal) var(--ease-standard),
+    background-color var(--duration-normal) var(--ease-standard);
 }
 
-.sidebar__nav a:focus-visible {
-  outline: 2px solid currentColor;
+.sidebar-nav a:focus-visible {
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
-.sidebar__nav a:hover {
+.sidebar-nav a:hover {
   color: var(--color-text);
-  background: var(--color-background);
+  background: var(--color-surface-hover);
 }
 
-.sidebar__nav a.router-link-exact-active {
-  color: var(--color-text);
-  background: var(--color-background);
-  font-weight: 600;
+.sidebar-nav a.router-link-exact-active {
+  color: var(--color-primary);
+  background: var(--color-surface-active);
+  font-weight: var(--font-weight-semibold);
 }
 
-.sidebar__nav svg {
-  width: 1.125rem;
-  height: 1.125rem;
+.sidebar-nav svg {
+  width: var(--font-size-lg);
+  height: var(--font-size-lg);
   flex-shrink: 0;
+}
+
+.app-main {
+  min-width: 0;
+  padding: var(--space-8);
+}
+
+.app-main-content {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-inline: auto;
+}
+
+@media (width <= 48rem) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .sidebar {
+    padding: var(--space-4);
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .sidebar-brand {
+    margin-bottom: var(--space-4);
+  }
+
+  .sidebar-nav {
+    display: flex;
+    overflow-x: auto;
+  }
+
+  .sidebar-nav a {
+    flex-shrink: 0;
+  }
+
+  .app-main {
+    padding: var(--space-4);
+  }
 }
 </style>

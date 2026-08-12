@@ -1,9 +1,4 @@
 :root {
-  --color-background: #f8f9fa;
-  --color-surface: #ffffff;
-  --color-text-secondary: #71717a;
-  --color-border: #e4e4e7;
-
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -14,6 +9,9 @@
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
 
+  --sidebar-width: 16rem;
   --content-width: 80rem;
 }

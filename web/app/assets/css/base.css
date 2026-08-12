@@ -1,10 +1,12 @@
+/* Global defaults for the application document */
 html {
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-family-sans);
 }
 
+/* Base appearance and typography for the application */
 body {
   min-height: 100vh;
   color: var(--color-text);
   background: var(--color-background);
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
 }
