@@ -1,0 +1,30 @@
+/* Use predictable element sizing across the application */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default document spacing */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Keep media elements responsive and prevent inline spacing */
+img,
+picture,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* Make form controls inherit the application typography */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
