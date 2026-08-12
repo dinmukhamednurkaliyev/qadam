@@ -39,23 +39,24 @@ jobs:
         with:
           filters: |
             frontend:
-              - 'app/**'
-              - 'assets/**'
-              - 'public/**'
+              - 'web/app/**'
+              - 'web/assets/**'
+              - 'web/public/**'
 
             server:
-              - 'server/**'
+              - 'web/server/**'
 
             configuration:
-              - 'package.json'
-              - 'bun.lock'
-              - 'nuxt.config.ts'
-              - 'tsconfig.json'
-              - 'eslint.config.mjs'
-              - '.prettierrc'
-              - '.prettierrc.*'
-              - '.prettierignore'
-              - '.editorconfig'
+              - 'web/package.json'
+              - 'web/bun.lock'
+              - 'web/nuxt.config.ts'
+              - 'web/tsconfig.json'
+              - 'web/eslint.config.mjs'
+              - 'web/stylelint.config.mjs'
+              - 'web/.prettierrc'
+              - 'web/.prettierrc.*'
+              - 'web/.prettierignore'
+              - 'web/.editorconfig'
               - '.github/workflows/continuous-integration.yml'
 
       - name: Log Detected Changes
@@ -94,6 +95,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: web
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6.0.3
@@ -123,6 +128,15 @@ jobs:
 
           bun run lint || {
             echo -e "\e[31mESLint check failed. Run 'bun run lint:fix' locally.\e[0m"
+            exit 1
+          }
+
+      - name: Run Stylelint
+        run: |
+          echo -e "\e[33mRunning Stylelint...\e[0m"
+
+          bun run stylelint || {
+            echo -e "\e[31mStylelint check failed. Run 'bun run stylelint:fix' locally.\e[0m"
             exit 1
           }
 

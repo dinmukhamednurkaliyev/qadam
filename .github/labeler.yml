@@ -1,110 +1,109 @@
 area-app:
   - changed-files:
       - any-glob-to-any-file:
-          - "app/app.vue"
-          - "app/error.vue"
-          - "app/layouts/**"
+          - "web/app/app.vue"
+          - "web/app/error.vue"
+          - "web/app/layouts/**"
 
 area-components:
   - changed-files:
       - any-glob-to-any-file:
-          - "app/components/**"
+          - "web/app/components/**"
 
 area-pages:
   - changed-files:
       - any-glob-to-any-file:
-          - "app/pages/**"
+          - "web/app/pages/**"
 
 area-composables:
   - changed-files:
       - any-glob-to-any-file:
-          - "app/composables/**"
+          - "web/app/composables/**"
 
 area-stores:
   - changed-files:
       - any-glob-to-any-file:
-          - "app/stores/**"
+          - "web/app/stores/**"
 
 area-plugins:
   - changed-files:
       - any-glob-to-any-file:
-          - "app/plugins/**"
-          - "modules/**"
+          - "web/app/plugins/**"
+          - "web/modules/**"
 
 area-middleware:
   - changed-files:
       - any-glob-to-any-file:
-          - "app/middleware/**"
+          - "web/app/middleware/**"
 
 area-server:
   - changed-files:
       - any-glob-to-any-file:
-          - "server/**"
+          - "web/server/**"
 
 area-styles:
   - changed-files:
       - any-glob-to-any-file:
-          - "assets/**/*.css"
-          - "assets/**/*.scss"
-          - "assets/**/*.sass"
-          - "assets/**/*.less"
-          - "app/assets/**/*.css"
-          - "app/assets/**/*.scss"
-          - "app/assets/**/*.sass"
-          - "app/assets/**/*.less"
+          - "web/assets/**/*.css"
+          - "web/assets/**/*.scss"
+          - "web/assets/**/*.sass"
+          - "web/assets/**/*.less"
+          - "web/app/assets/**/*.css"
+          - "web/app/assets/**/*.scss"
+          - "web/app/assets/**/*.sass"
+          - "web/app/assets/**/*.less"
 
 area-assets:
   - changed-files:
       - any-glob-to-any-file:
-          - "assets/images/**"
-          - "assets/fonts/**"
-          - "app/assets/images/**"
-          - "app/assets/fonts/**"
-          - "public/**"
+          - "web/assets/images/**"
+          - "web/assets/fonts/**"
+          - "web/app/assets/images/**"
+          - "web/app/assets/fonts/**"
+          - "web/public/**"
 
 area-data:
   - changed-files:
       - any-glob-to-any-file:
-          - "app/data/**"
+          - "web/app/data/**"
 
 area-types:
   - changed-files:
       - any-glob-to-any-file:
-          - "app/types/**"
-          - "**/*.d.ts"
+          - "web/app/types/**"
+          - "web/**/*.d.ts"
 
 area-utils:
   - changed-files:
       - any-glob-to-any-file:
-          - "app/utils/**"
-          - "lib/**"
+          - "web/app/utils/**"
+          - "web/lib/**"
 
 area-tests:
   - changed-files:
       - any-glob-to-any-file:
-          - "test/**"
-          - "tests/**"
-          - "**/*.test.ts"
-          - "**/*.spec.ts"
-          - "playwright/**"
-          - "vitest.config.*"
-          - "playwright.config.*"
+          - "web/test/**"
+          - "web/tests/**"
+          - "web/**/*.test.ts"
+          - "web/**/*.spec.ts"
+          - "web/playwright/**"
+          - "web/vitest.config.*"
+          - "web/playwright.config.*"
 
 area-configuration:
   - changed-files:
       - any-glob-to-any-file:
-          - "nuxt.config.*"
-          - "app.config.*"
-          - "tsconfig.json"
-          - "eslint.config.*"
-          - "prettier.config.*"
-          - ".prettierrc"
-          - ".prettierrc.*"
-          - ".prettierignore"
-          - "tailwind.config.*"
-          - "postcss.config.*"
-          - ".editorconfig"
-          - ".npmrc"
+          - "web/nuxt.config.*"
+          - "web/app.config.*"
+          - "web/tsconfig.json"
+          - "web/eslint.config.*"
+          - "web/stylelint.config.*"
+          - "web/prettier.config.*"
+          - "web/.prettierrc"
+          - "web/.prettierrc.*"
+          - "web/.prettierignore"
+          - "web/.editorconfig"
+          - "web/.npmrc"
 
 area-infrastructure:
   - changed-files:
@@ -125,22 +124,23 @@ area-infrastructure:
 area-dependencies:
   - changed-files:
       - any-glob-to-any-file:
-          - "package.json"
-          - "bun.lock"
-          - "package-lock.json"
-          - "pnpm-lock.yaml"
-          - "yarn.lock"
+          - "web/package.json"
+          - "web/bun.lock"
+          - "web/package-lock.json"
+          - "web/pnpm-lock.yaml"
+          - "web/yarn.lock"
 
 area-documentation:
   - changed-files:
       - any-glob-to-any-file:
-          - "**/*.md"
-          - "docs/**"
+          - "web/**/*.md"
+          - "web/docs/**"
+          - "README.md"
           - "LICENSE"
           - "LICENSE.*"
 
 area-environment:
   - changed-files:
       - any-glob-to-any-file:
-          - ".env.example"
-          - ".env.*.example"
+          - "web/.env.example"
+          - "web/.env.*.example"
