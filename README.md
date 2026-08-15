@@ -3,7 +3,7 @@
     <img
       src="documentation/images/logo.png"
       alt="qadam-logo"
-      width="420"
+      width="500"
     >
   </picture>
 </p>

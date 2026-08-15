@@ -1,13 +1,11 @@
-:root {
+:root,
+:root[data-theme="light"] {
   color-scheme: light;
 
   --color-primary: var(--indigo-600);
   --color-primary-hover: var(--indigo-700);
   --color-primary-active: var(--indigo-800);
   --color-on-primary: var(--neutral-0);
-
-  --color-accent: var(--yellow-400);
-  --color-on-accent: var(--neutral-950);
 
   --color-background: var(--neutral-50);
   --color-surface: var(--neutral-0);
@@ -20,10 +18,4 @@
 
   --color-border: var(--neutral-200);
   --color-border-strong: var(--neutral-300);
-
-  --color-focus: var(--indigo-500);
-
-  --color-success: var(--green-500);
-  --color-warning: var(--orange-500);
-  --color-danger: var(--red-500);
 }

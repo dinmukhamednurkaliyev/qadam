@@ -3,5 +3,6 @@
 @import url("./tokens/fonts.css");
 @import url("./tokens/animations.css");
 @import url("./themes/light.css");
+@import url("./themes/dark.css");
 @import url("./reset.css");
 @import url("./base.css");

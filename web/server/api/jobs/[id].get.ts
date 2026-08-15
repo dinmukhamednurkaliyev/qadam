@@ -1,7 +1,6 @@
-import type { HhVacancy } from "../../integrations/hh/types";
-import { mapHhVacancyToJob } from "../../integrations/hh/mapper";
+import { getJobById } from "../../repositories/job";
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler((event) => {
   const id = getRouterParam(event, "id");
 
   if (!id) {
@@ -11,11 +10,13 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const vacancy = await $fetch<HhVacancy>(`https://api.hh.ru/vacancies/${id}`, {
-    query: {
-      host: "hh.kz",
-    },
-  });
+  const job = getJobById(id);
 
-  return mapHhVacancyToJob(vacancy);
+  if (!job) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: "Job not found",
+    });
+  }
+  return job;
 });

@@ -1,13 +1,51 @@
-export type JobSource = "hh" | "qadam";
-
 export interface Job {
   id: string;
-  source: JobSource;
-  externalId?: string;
   title: string;
-  company: string;
-  location: string;
-  description: string;
+  description?: string;
   url?: string;
+
+  company: {
+    name: string;
+    website?: string;
+  };
+
+  location: {
+    city: string;
+    country: string;
+  };
+
   createdAt: string;
+  updatedAt: string;
+}
+
+export interface CreateJobInput {
+  title: string;
+  description?: string;
+  url?: string;
+
+  company: {
+    name: string;
+    website?: string;
+  };
+
+  location: {
+    city: string;
+    country: string;
+  };
+}
+
+export interface UpdateJobInput {
+  title?: string;
+  description?: string;
+  url?: string;
+
+  company?: {
+    name?: string;
+    website?: string;
+  };
+
+  location?: {
+    city?: string;
+    country?: string;
+  };
 }
