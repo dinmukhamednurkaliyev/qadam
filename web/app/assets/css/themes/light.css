@@ -7,6 +7,10 @@
   --color-primary-active: var(--indigo-800);
   --color-on-primary: var(--neutral-0);
 
+  --color-danger: var(--red-500);
+  --color-danger-hover: var(--red-600);
+  --color-on-danger: var(--neutral-0);
+
   --color-background: var(--neutral-50);
   --color-surface: var(--neutral-0);
   --color-surface-hover: var(--neutral-100);
