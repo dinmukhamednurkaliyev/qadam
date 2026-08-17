@@ -1,4 +1,4 @@
-import { getJobByIdService } from "../../services/jobs/get-job-by-id";
+import { deleteJobService } from "../../services/jobs/delete-job";
 
 export default defineEventHandler((event) => {
   const jobId = getRouterParam(event, "id");
@@ -10,14 +10,14 @@ export default defineEventHandler((event) => {
     });
   }
 
-  const job = getJobByIdService(jobId);
+  const deletedJob = deleteJobService(jobId);
 
-  if (!job) {
+  if (!deletedJob) {
     throw createError({
       statusCode: 404,
       statusMessage: "Job not found",
     });
   }
 
-  return job;
+  setResponseStatus(event, 204);
 });

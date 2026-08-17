@@ -1,5 +1,5 @@
-import { getJobs } from "../../repositories/job";
+import { getJobsService } from "../../services/jobs/get-jobs";
 
 export default defineEventHandler(() => {
-  return getJobs();
+  return getJobsService();
 });

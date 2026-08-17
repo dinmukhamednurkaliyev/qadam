@@ -1,5 +1,5 @@
-import type { CreateJobInput, Job } from "~/types/job";
-import { createJob } from "../../repositories/job";
+import type { CreateJobInput } from "~/types/job";
+import { createJobService } from "../../services/jobs/create-job";
 
 export default defineEventHandler(async (event) => {
   const input = await readBody<CreateJobInput>(event);
@@ -32,16 +32,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const now = new Date().toISOString();
-
-  const job: Job = {
-    id: crypto.randomUUID(),
-    ...input,
-    createdAt: now,
-    updatedAt: now,
-  };
-
-  const createdJob = createJob(job);
+  const createdJob = createJobService(input);
 
   setResponseStatus(event, 201);
 
