@@ -7,7 +7,7 @@ defineProps<{
 
 <template>
   <header class="page-header">
-    <h1 class="page-header-title">{{ title }}</h1>
+    <h1>{{ title }}</h1>
     <p v-if="description" class="page-header-description">{{ description }}</p>
   </header>
 </template>
@@ -15,13 +15,6 @@ defineProps<{
 <style scoped>
 .page-header {
   margin-bottom: var(--space-8);
-}
-
-.page-header-title {
-  margin: 0;
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
 }
 
 .page-header-description {
