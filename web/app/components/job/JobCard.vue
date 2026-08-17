@@ -9,7 +9,7 @@ defineProps<{
 <template>
   <article class="job-card">
     <div class="job-card-content">
-      <div class="job-card__header">
+      <div class="job-card-header">
         <h2>{{ job.title }}</h2>
 
         <p class="job-card-company">
