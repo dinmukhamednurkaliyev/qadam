@@ -113,7 +113,6 @@
 
 .app-main-content {
   width: 100%;
-  max-width: var(--content-width);
 }
 
 @media (width <= 48rem) {
