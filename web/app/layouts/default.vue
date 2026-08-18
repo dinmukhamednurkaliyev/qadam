@@ -16,6 +16,11 @@
           <span>Jobs</span>
         </NuxtLink>
 
+        <NuxtLink to="/companies">
+          <Icon name="lucide:building-2" />
+          <span>Companies</span>
+        </NuxtLink>
+
         <NuxtLink to="/applications">
           <Icon name="lucide:send" />
           <span>Applications</span>
