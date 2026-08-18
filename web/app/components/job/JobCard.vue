@@ -138,7 +138,7 @@ defineProps<{
 }
 
 .job-card-bookmark:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 

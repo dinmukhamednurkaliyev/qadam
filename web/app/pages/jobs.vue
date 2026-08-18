@@ -6,23 +6,14 @@ const { data: jobs, pending, error } = await useFetch<Job[]>("/api/jobs");
 
 <template>
   <div>
-    <PageHeader title="Jobs" description="Track and manage job opportunities in one place." />
+    <PageHeader title="Jobs" description="Explore job opportunities and find your next role." />
 
     <p v-if="pending">Loading jobs...</p>
 
     <p v-else-if="error">Failed to load jobs.</p>
 
-    <p v-else-if="!jobs?.length">No jobs yet.</p>
+    <p v-else-if="!jobs?.length">No jobs found.</p>
 
-    <div v-else class="jobs-list">
-      <JobCard v-for="job in jobs" :key="job.id" :job="job" />
-    </div>
+    <JobList v-else :jobs="jobs" />
   </div>
 </template>
-
-<style scoped>
-.jobs-list {
-  display: grid;
-  gap: var(--space-4);
-}
-</style>
