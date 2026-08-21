@@ -4,10 +4,14 @@ import type { Job } from "~/types/job";
 defineProps<{
   job: Job;
 }>();
+
+const emit = defineEmits<{
+  select: [jobId: string];
+}>();
 </script>
 
 <template>
-  <article class="job-card">
+  <article class="job-card" @click="emit('select', job.id)">
     <div class="job-card-content">
       <header class="job-card-header">
         <div class="job-card-heading">
@@ -18,7 +22,7 @@ defineProps<{
           </p>
         </div>
 
-        <button class="job-card-bookmark" type="button" aria-label="Save job">
+        <button class="job-card-bookmark" type="button" aria-label="Save job" @click.stop>
           <Icon name="lucide:bookmark" />
         </button>
       </header>
