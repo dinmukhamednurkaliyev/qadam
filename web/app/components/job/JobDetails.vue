@@ -24,6 +24,8 @@ const companyInitial = computed(() => props.job.company.name.charAt(0).toUpperCa
           rel="noopener noreferrer"
         >
           {{ job.company.name }}
+
+          <Icon name="lucide:external-link" />
         </a>
 
         <p v-else class="job-details-company">
@@ -99,9 +101,29 @@ const companyInitial = computed(() => props.job.company.name.charAt(0).toUpperCa
 }
 
 .job-details-company {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: fit-content;
   color: var(--color-on-primary);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+}
+
+a.job-details-company:hover {
+  text-decoration: underline;
+}
+
+a.job-details-company:focus-visible {
+  outline: 2px solid var(--color-on-primary);
+  outline-offset: 2px;
+}
+
+.job-details-company svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
 }
 
 .job-details-website {
