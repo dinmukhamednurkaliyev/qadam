@@ -7,7 +7,7 @@ defineProps<{
 
 <template>
   <header class="page-header">
-    <h1 class="page-header-title">{{ title }}</h1>
+    <h1>{{ title }}</h1>
     <p v-if="description" class="page-header-description">{{ description }}</p>
   </header>
 </template>
@@ -17,17 +17,10 @@ defineProps<{
   margin-bottom: var(--space-8);
 }
 
-.page-header-title {
-  margin: 0;
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
-}
-
 .page-header-description {
   margin: var(--space-2) 0 0;
   color: var(--color-text-secondary);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-medium);
   line-height: var(--line-height-normal);
 }
 </style>

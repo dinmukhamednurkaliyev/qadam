@@ -1,3 +1,138 @@
+<script setup lang="ts">
+import type { Job } from "~/types/job";
+
+const { data: jobs, pending, error } = await useFetch<Job[]>("/api/jobs");
+
+const selectedJobId = ref<string | null>(null);
+
+const selectedJob = computed(() => {
+  return jobs.value?.find((job) => job.id === selectedJobId.value) ?? null;
+});
+</script>
+
 <template>
-  <PageHeader title="Jobs" description="Discover and track job opportunities." />
+  <div class="jobs-page">
+    <PageHeader title="Jobs" description="Explore job opportunities and find your next role." />
+
+    <div v-if="pending" class="jobs-state">
+      <div class="jobs-state-icon">
+        <Icon name="lucide:loader-circle" />
+      </div>
+
+      <div class="jobs-state-content">
+        <h2>Loading jobs</h2>
+
+        <p>Finding available opportunities...</p>
+      </div>
+    </div>
+
+    <div v-else-if="error" class="jobs-state">
+      <div class="jobs-state-icon">
+        <Icon name="lucide:circle-alert" />
+      </div>
+
+      <div class="jobs-state-content">
+        <h2>Unable to load jobs</h2>
+
+        <p>Something went wrong while loading available opportunities.</p>
+      </div>
+    </div>
+
+    <div v-else-if="!jobs?.length" class="jobs-state">
+      <div class="jobs-state-icon">
+        <Icon name="lucide:briefcase-business" />
+      </div>
+
+      <div class="jobs-state-content">
+        <h2>No jobs found</h2>
+
+        <p>There are no available opportunities yet.</p>
+      </div>
+    </div>
+
+    <div v-else class="jobs-workspace">
+      <section class="jobs-workspace-list">
+        <JobList :jobs="jobs" :selected-job-id="selectedJobId" @select="selectedJobId = $event" />
+      </section>
+
+      <aside class="jobs-workspace-details">
+        <JobDetails v-if="selectedJob" :job="selectedJob" />
+
+        <div v-else class="jobs-empty-details">
+          <div class="jobs-empty-details-icon">
+            <Icon name="lucide:panel-right-open" />
+          </div>
+
+          <div class="jobs-empty-details-content">
+            <h2>Select a job</h2>
+
+            <p>Choose an opportunity from the list to view its full details.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
 </template>
+
+<style scoped>
+.jobs-page {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.jobs-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(20rem, 1fr);
+  align-items: start;
+  gap: var(--space-6);
+}
+
+.jobs-workspace-list,
+.jobs-workspace-details {
+  min-width: 0;
+}
+
+.jobs-state,
+.jobs-empty-details {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: var(--space-4);
+  min-height: 20rem;
+  padding: var(--space-8);
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.jobs-state-icon,
+.jobs-empty-details-icon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  color: var(--color-primary);
+  background: var(--color-surface-active);
+  border-radius: var(--radius-md);
+}
+
+.jobs-state-icon svg,
+.jobs-empty-details-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.jobs-state-content,
+.jobs-empty-details-content {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 20rem;
+}
+
+.jobs-state-content p,
+.jobs-empty-details-content p {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+</style>
