@@ -39,10 +39,6 @@ const emit = defineEmits<{
           {{ job.location.city }}, {{ job.location.country }}
         </span>
       </div>
-
-      <p v-if="job.description" class="job-card-description">
-        {{ job.description }}
-      </p>
     </div>
   </article>
 </template>
@@ -105,7 +101,7 @@ const emit = defineEmits<{
 
 .job-card-company {
   color: var(--color-primary);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-small);
   font-weight: var(--font-weight-medium);
 }
 
@@ -120,19 +116,13 @@ const emit = defineEmits<{
   align-items: center;
   gap: var(--space-2);
   color: var(--color-text-muted);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-small);
 }
 
 .job-card-location svg {
   width: 1rem;
   height: 1rem;
   flex-shrink: 0;
-}
-
-.job-card-description {
-  max-width: 48rem;
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
 }
 
 .job-card-bookmark {

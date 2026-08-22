@@ -1,8 +1,9 @@
 export interface Job {
   id: string;
   title: string;
-  description?: string;
-  url?: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
 
   company: {
     name: string;
@@ -13,15 +14,11 @@ export interface Job {
     city: string;
     country: string;
   };
-
-  createdAt: string;
-  updatedAt: string;
 }
 
 export interface CreateJobInput {
   title: string;
-  description?: string;
-  url?: string;
+  content: string;
 
   company: {
     name: string;
@@ -36,8 +33,7 @@ export interface CreateJobInput {
 
 export interface UpdateJobInput {
   title?: string;
-  description?: string;
-  url?: string;
+  content?: string;
 
   company?: {
     name?: string;

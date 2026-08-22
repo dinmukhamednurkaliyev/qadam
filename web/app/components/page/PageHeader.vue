@@ -20,7 +20,7 @@ defineProps<{
 .page-header-description {
   margin: var(--space-2) 0 0;
   color: var(--color-text-secondary);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-medium);
   line-height: var(--line-height-normal);
 }
 </style>
