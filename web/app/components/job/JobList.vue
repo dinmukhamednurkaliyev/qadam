@@ -3,6 +3,7 @@ import type { Job } from "~/types/job";
 
 defineProps<{
   jobs: Job[];
+  selectedJobId: string | null;
 }>();
 
 const emit = defineEmits<{
@@ -12,7 +13,13 @@ const emit = defineEmits<{
 
 <template>
   <div class="job-list">
-    <JobCard v-for="job in jobs" :key="job.id" :job="job" @select="emit('select', $event)" />
+    <JobCard
+      v-for="job in jobs"
+      :key="job.id"
+      :job="job"
+      :selected="job.id === selectedJobId"
+      @select="emit('select', $event)"
+    />
   </div>
 </template>
 

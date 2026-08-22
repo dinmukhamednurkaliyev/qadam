@@ -3,6 +3,7 @@ import type { Job } from "~/types/job";
 
 defineProps<{
   job: Job;
+  selected: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -11,7 +12,11 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <article class="job-card" @click="emit('select', job.id)">
+  <article
+    class="job-card"
+    :class="{ 'job-card-selected': selected }"
+    @click="emit('select', job.id)"
+  >
     <div class="job-card-content">
       <header class="job-card-header">
         <div class="job-card-heading">
@@ -50,9 +55,10 @@ const emit = defineEmits<{
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
+  cursor: pointer;
   transition:
-    border-color var(--duration-normal) var(--ease-standard),
-    background-color var(--duration-normal) var(--ease-standard);
+    background-color var(--duration-normal) var(--ease-standard),
+    border-color var(--duration-normal) var(--ease-standard);
 }
 
 .job-card::before {
@@ -67,6 +73,16 @@ const emit = defineEmits<{
 .job-card:hover {
   background: var(--color-surface-hover);
   border-color: var(--color-border-strong);
+}
+
+.job-card-selected {
+  background: var(--color-surface-active);
+  border-color: var(--color-primary);
+}
+
+.job-card-selected:hover {
+  background: var(--color-surface-active);
+  border-color: var(--color-primary);
 }
 
 .job-card-content {

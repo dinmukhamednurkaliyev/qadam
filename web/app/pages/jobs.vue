@@ -22,7 +22,12 @@ const selectedJob = computed(() => {
 
         <p v-else-if="!jobs?.length">No jobs found.</p>
 
-        <JobList v-else :jobs="jobs" @select="selectedJobId = $event" />
+        <JobList
+          v-else
+          :jobs="jobs"
+          :selected-job-id="selectedJobId"
+          @select="selectedJobId = $event"
+        />
       </section>
 
       <aside class="jobs-workspace-details">
