@@ -19,6 +19,16 @@
 
 Qadam is a job search management platform designed to help users discover, organize, and track job opportunities and applications in one place.
 
+## Roadmap
+
+<p align="center">
+  <img
+    src="documentation/images/roadmap.png"
+    alt="Qadam product roadmap"
+    width="100%"
+  >
+</p>
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
