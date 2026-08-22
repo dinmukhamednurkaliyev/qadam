@@ -1,60 +1,222 @@
 <script setup lang="ts">
 import type { Job } from "~/types/job";
 
-defineProps<{
+const props = defineProps<{
   job: Job;
 }>();
+
+const companyInitial = computed(() => props.job.company.name.charAt(0).toUpperCase());
 </script>
 
 <template>
   <article class="job-details">
-    <header class="job-details-header">
-      <h2>{{ job.title }}</h2>
+    <header class="job-details-banner">
+      <div class="job-details-company-logo">
+        {{ companyInitial }}
+      </div>
 
-      <p class="job-details-company">
-        {{ job.company.name }}
-      </p>
+      <div class="job-details-company-info">
+        <a
+          v-if="job.company.website"
+          class="job-details-company"
+          :href="job.company.website"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ job.company.name }}
+        </a>
+
+        <p v-else class="job-details-company">
+          {{ job.company.name }}
+        </p>
+      </div>
     </header>
 
-    <div class="job-details-meta">
-      <p class="job-details-location">{{ job.location.city }}, {{ job.location.country }}</p>
-    </div>
+    <div class="job-details-main">
+      <section class="job-details-overview">
+        <div class="job-details-heading">
+          <h2>{{ job.title }}</h2>
 
-    <p v-if="job.content" class="job-details-content">
-      {{ job.content }}
-    </p>
+          <span class="job-details-location">
+            <Icon name="lucide:map-pin" />
+
+            {{ job.location.city }}, {{ job.location.country }}
+          </span>
+        </div>
+
+        <button class="job-details-bookmark" type="button" aria-label="Save job">
+          <Icon name="lucide:bookmark" />
+        </button>
+      </section>
+
+      <hr class="job-details-divider" />
+
+      <section class="job-details-body">
+        <h3>About this job</h3>
+
+        <div class="job-details-content">
+          {{ job.content }}
+        </div>
+      </section>
+    </div>
   </article>
 </template>
 
 <style scoped>
 .job-details {
-  display: grid;
-  gap: var(--space-6);
-  padding: var(--space-6);
+  overflow: hidden;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
 }
 
-.job-details-header {
+.job-details-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 8rem;
+  padding: var(--space-6);
+  background: var(--color-primary);
+}
+
+.job-details-company-logo {
   display: grid;
-  gap: var(--space-1);
+  place-items: center;
+  flex-shrink: 0;
+  width: 4rem;
+  height: 4rem;
+  color: var(--color-primary);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+}
+
+.job-details-company-info {
+  display: grid;
+  gap: var(--space-2);
 }
 
 .job-details-company {
-  color: var(--color-primary);
-  font-size: var(--font-size-small);
-  font-weight: var(--font-weight-medium);
+  color: var(--color-on-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.job-details-website {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: fit-content;
+  color: var(--color-on-primary);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity var(--duration-normal) var(--ease-standard);
+}
+
+.job-details-website:hover {
+  opacity: 1;
+}
+
+.job-details-website:focus-visible {
+  outline: 2px solid var(--color-on-primary);
+  outline-offset: 2px;
+}
+
+.job-details-website svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.job-details-main {
+  display: grid;
+  gap: var(--space-6);
+  padding: var(--space-6);
+}
+
+.job-details-overview {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.job-details-heading {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
 }
 
 .job-details-location {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: fit-content;
   color: var(--color-text-muted);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-sm);
+}
+
+.job-details-location svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.job-details-bookmark {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  color: var(--color-on-primary);
+  background: var(--color-primary);
+  border: 0;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-normal) var(--ease-standard),
+    transform var(--duration-normal) var(--ease-standard);
+}
+
+.job-details-bookmark:hover {
+  background: var(--color-primary-hover);
+}
+
+.job-details-bookmark:active {
+  transform: scale(0.96);
+}
+
+.job-details-bookmark:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.job-details-bookmark svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.job-details-divider {
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  background: var(--color-border);
+  border: 0;
+}
+
+.job-details-body {
+  display: grid;
+  gap: var(--space-4);
 }
 
 .job-details-content {
+  max-width: 68ch;
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
   white-space: pre-line;
 }
 </style>

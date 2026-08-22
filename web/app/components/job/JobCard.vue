@@ -64,6 +64,7 @@ const emit = defineEmits<{
   width: 0.25rem;
   background: var(--color-primary);
   content: "";
+  transition: width var(--duration-normal) var(--ease-standard);
 }
 
 .job-card:hover {
@@ -71,14 +72,14 @@ const emit = defineEmits<{
   border-color: var(--color-border-strong);
 }
 
-.job-card-selected {
-  background: var(--color-surface-active);
+.job-card-selected,
+.job-card-selected:hover {
+  background: var(--color-surface);
   border-color: var(--color-primary);
 }
 
-.job-card-selected:hover {
-  background: var(--color-surface-active);
-  border-color: var(--color-primary);
+.job-card-selected::before {
+  width: 0.375rem;
 }
 
 .job-card-content {
@@ -101,7 +102,7 @@ const emit = defineEmits<{
 
 .job-card-company {
   color: var(--color-primary);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
 }
 
@@ -116,7 +117,7 @@ const emit = defineEmits<{
   align-items: center;
   gap: var(--space-2);
   color: var(--color-text-muted);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-sm);
 }
 
 .job-card-location svg {
@@ -129,22 +130,25 @@ const emit = defineEmits<{
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  width: 2rem;
-  height: 2rem;
+  width: 2.25rem;
+  height: 2.25rem;
   padding: 0;
-  color: var(--color-text-muted);
-  background: transparent;
-  border: 1px solid transparent;
+  color: var(--color-on-primary);
+  background: var(--color-primary);
+  border: 0;
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition:
-    color var(--duration-normal) var(--ease-standard),
-    background-color var(--duration-normal) var(--ease-standard);
+    background-color var(--duration-normal) var(--ease-standard),
+    transform var(--duration-normal) var(--ease-standard);
 }
 
 .job-card-bookmark:hover {
-  color: var(--color-primary);
-  background: var(--color-surface-active);
+  background: var(--color-primary-hover);
+}
+
+.job-card-bookmark:active {
+  transform: scale(0.96);
 }
 
 .job-card-bookmark:focus-visible {
