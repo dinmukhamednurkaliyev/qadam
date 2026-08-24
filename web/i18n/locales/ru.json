@@ -4,8 +4,7 @@
     "jobs": "Вакансии",
     "companies": "Компании",
     "applications": "Отклики",
-    "analytics": "Аналитика",
-    "settings": "Настройки"
+    "analytics": "Аналитика"
   },
 
   "dashboard": {
@@ -55,6 +54,11 @@
 
   "settings": {
     "title": "Настройки",
-    "description": "Управляйте настройками приложения."
+    "description": "Управляйте настройками приложения.",
+
+    "language": {
+      "title": "Язык",
+      "description": "Выберите язык интерфейса Qadam."
+    }
   }
 }

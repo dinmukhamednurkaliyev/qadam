@@ -54,6 +54,11 @@
 
   "settings": {
     "title": "Settings",
-    "description": "Manage your application preferences."
+    "description": "Manage your application preferences.",
+
+    "language": {
+      "title": "Language",
+      "description": "Choose the language used in Qadam."
+    }
   }
 }

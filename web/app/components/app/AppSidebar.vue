@@ -47,7 +47,7 @@ const items = [
     <NuxtLink :to="localePath('/settings')" class="sidebar-link sidebar-settings">
       <Icon name="lucide:settings" />
 
-      <span>{{ $t("navigation.settings") }}</span>
+      <span>{{ $t("settings.title") }}</span>
     </NuxtLink>
   </aside>
 </template>
