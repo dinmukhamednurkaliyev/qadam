@@ -1,5 +1,5 @@
 <template>
   <div class="applications-page">
-    <PageHeader title="Applications" description="Manage your job applications." />
+    <PageHeader :title="$t('applications.title')" :description="$t('applications.description')" />
   </div>
 </template>

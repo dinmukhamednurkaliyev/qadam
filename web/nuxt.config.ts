@@ -1,7 +1,25 @@
 import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
-  modules: ["@pinia/nuxt", "@nuxt/eslint", "@nuxt/icon", "motion-v/nuxt"],
+  modules: ["@pinia/nuxt", "@nuxt/eslint", "@nuxt/icon", "motion-v/nuxt", "@nuxtjs/i18n"],
+  i18n: {
+    defaultLocale: "en",
+    strategy: "prefix_except_default",
+    locales: [
+      {
+        code: "en",
+        name: "English",
+        language: "en-US",
+        file: "en.json",
+      },
+      {
+        code: "ru",
+        name: "Русский",
+        language: "ru-RU",
+        file: "ru.json",
+      },
+    ],
+  },
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
   compatibilityDate: "2025-07-15",

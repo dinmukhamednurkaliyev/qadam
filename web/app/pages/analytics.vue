@@ -1,5 +1,5 @@
 <template>
   <div class="analytics-page">
-    <PageHeader title="Analytics" description="Review your job search performance." />
+    <PageHeader :title="$t('analytics.title')" :description="$t('analytics.description')" />
   </div>
 </template>
