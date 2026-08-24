@@ -1,8 +1,5 @@
 <template>
   <div class="dashboard-page">
-    <PageHeader
-      title="Dashboard"
-      description="Track your job search progress and recent activity."
-    />
+    <PageHeader :title="$t('dashboard.title')" :description="$t('dashboard.description')" />
   </div>
 </template>

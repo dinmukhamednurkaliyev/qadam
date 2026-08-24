@@ -1,0 +1,64 @@
+{
+  "navigation": {
+    "dashboard": "Dashboard",
+    "jobs": "Jobs",
+    "companies": "Companies",
+    "applications": "Applications",
+    "analytics": "Analytics"
+  },
+
+  "dashboard": {
+    "title": "Dashboard",
+    "description": "Track your job search progress and recent activity."
+  },
+
+  "jobs": {
+    "title": "Jobs",
+    "description": "Explore job opportunities and find your next role.",
+
+    "loading": {
+      "title": "Loading jobs",
+      "description": "Finding available opportunities..."
+    },
+
+    "error": {
+      "title": "Unable to load jobs",
+      "description": "Something went wrong while loading available opportunities."
+    },
+
+    "empty": {
+      "title": "No jobs found",
+      "description": "There are no available opportunities yet."
+    },
+
+    "details": {
+      "title": "Select a job",
+      "description": "Choose an opportunity from the list to view its full details."
+    }
+  },
+
+  "companies": {
+    "title": "Companies",
+    "description": "Explore and track companies in your job search."
+  },
+
+  "applications": {
+    "title": "Applications",
+    "description": "Manage your job applications."
+  },
+
+  "analytics": {
+    "title": "Analytics",
+    "description": "Review your job search performance."
+  },
+
+  "settings": {
+    "title": "Settings",
+    "description": "Manage your application preferences.",
+
+    "language": {
+      "title": "Language",
+      "description": "Choose the language used in Qadam."
+    }
+  }
+}

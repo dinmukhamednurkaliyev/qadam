@@ -12,7 +12,7 @@ const selectedJob = computed(() => {
 
 <template>
   <div class="jobs-page">
-    <PageHeader title="Jobs" description="Explore job opportunities and find your next role." />
+    <PageHeader :title="$t('jobs.title')" :description="$t('jobs.description')" />
 
     <div v-if="pending" class="jobs-state">
       <div class="jobs-state-icon">
@@ -20,9 +20,9 @@ const selectedJob = computed(() => {
       </div>
 
       <div class="jobs-state-content">
-        <h2>Loading jobs</h2>
+        <h2>{{ $t("jobs.loading.title") }}</h2>
 
-        <p>Finding available opportunities...</p>
+        <p>{{ $t("jobs.loading.description") }}</p>
       </div>
     </div>
 
@@ -32,9 +32,9 @@ const selectedJob = computed(() => {
       </div>
 
       <div class="jobs-state-content">
-        <h2>Unable to load jobs</h2>
+        <h2>{{ $t("jobs.error.title") }}</h2>
 
-        <p>Something went wrong while loading available opportunities.</p>
+        <p>{{ $t("jobs.error.description") }}</p>
       </div>
     </div>
 
@@ -44,9 +44,9 @@ const selectedJob = computed(() => {
       </div>
 
       <div class="jobs-state-content">
-        <h2>No jobs found</h2>
+        <h2>{{ $t("jobs.empty.title") }}</h2>
 
-        <p>There are no available opportunities yet.</p>
+        <p>{{ $t("jobs.empty.description") }}</p>
       </div>
     </div>
 
@@ -64,9 +64,9 @@ const selectedJob = computed(() => {
           </div>
 
           <div class="jobs-empty-details-content">
-            <h2>Select a job</h2>
+            <h2>{{ $t("jobs.details.title") }}</h2>
 
-            <p>Choose an opportunity from the list to view its full details.</p>
+            <p>{{ $t("jobs.details.description") }}</p>
           </div>
         </div>
       </aside>
