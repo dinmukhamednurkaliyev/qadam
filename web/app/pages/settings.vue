@@ -23,12 +23,12 @@ const switchLocalePath = useSwitchLocalePath();
 
       <div class="settings-language-options">
         <button
-          @click="navigateTo(switchLocalePath(item.code))"
           v-for="item in locales"
           :key="item.code"
           class="settings-language-option"
           :class="{ 'settings-language-option-selected': item.code === locale }"
           type="button"
+          @click="navigateTo(switchLocalePath(item.code))"
         >
           <div class="settings-language-visual">
             <span class="settings-language-code">
