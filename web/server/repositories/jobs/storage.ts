@@ -5,7 +5,7 @@ export const jobs: Job[] = [
     id: "frontend-developer-acme",
     title: "Frontend Developer",
 
-    content: `We are looking for a Frontend Developer to join our product team and help build modern web applications.
+    description: `We are looking for a Frontend Developer to join our product team and help build modern web applications.
 
 What you'll do:
 - Build and maintain user interfaces with Vue and Nuxt
@@ -45,7 +45,7 @@ We offer:
     id: "nuxt-developer-nova",
     title: "Nuxt Developer",
 
-    content: `Nova is looking for a Nuxt Developer to work on full-stack web products.
+    description: `Nova is looking for a Nuxt Developer to work on full-stack web products.
 
 You will work with Nuxt, Vue and TypeScript to develop new features and maintain existing applications.
 

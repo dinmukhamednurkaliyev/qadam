@@ -57,7 +57,7 @@ const companyInitial = computed(() => props.job.company.name.charAt(0).toUpperCa
         <h3>About this job</h3>
 
         <div class="job-details-content">
-          {{ job.content }}
+          {{ job.description }}
         </div>
       </section>
     </div>
