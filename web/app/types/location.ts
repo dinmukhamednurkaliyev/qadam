@@ -1,11 +1,7 @@
-export interface Region {
-  id: string;
-  name: string;
-  code: string;
-}
+import type { Region } from "./region";
 
 export interface Location {
   id: string;
-  regionId: string;
   city: string;
+  region: Region;
 }

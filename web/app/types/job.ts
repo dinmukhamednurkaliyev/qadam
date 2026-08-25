@@ -1,14 +1,18 @@
+import type { Company } from "./company";
+import type { Location } from "./location";
+
 export type WorkFormat = "remote" | "office" | "hybrid";
 
 export type SalaryCurrency = "KZT" | "USD" | "EUR";
 
 export interface Job {
   id: string;
-  companyId: string;
-  locationId?: string;
-
   title: string;
   description?: string;
+
+  company: Company;
+  location?: Location;
+
   sourceUrl?: string;
   workFormat?: WorkFormat;
 
@@ -26,6 +30,7 @@ export interface CreateJobInput {
 
   title: string;
   description?: string;
+
   sourceUrl?: string;
   workFormat?: WorkFormat;
 
@@ -40,6 +45,7 @@ export interface UpdateJobInput {
 
   title?: string;
   description?: string;
+
   sourceUrl?: string;
   workFormat?: WorkFormat;
 
