@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { Job } from "~/types/job";
+import type { JobEntity } from "~/types/jobs/job-entity";
 
-const { data: jobs, pending, error } = await useFetch<Job[]>("/api/jobs");
+const { data: jobs, pending, error } = await useFetch<JobEntity[]>("/api/jobs");
 
 const selectedJobId = ref<string | null>(null);
 

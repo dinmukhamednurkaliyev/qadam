@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Job } from "~/types/job";
+import type { JobEntity } from "~/types/entities/job-entity";
 
 const props = defineProps<{
-  job: Job;
+  job: JobEntity;
 }>();
 
 const companyInitial = computed(() => props.job.company.name.charAt(0).toUpperCase());

@@ -1,4 +1,4 @@
-import type { Job, UpdateJobInput } from "~/types/job";
+import type { JobEntity, UpdateJobInput } from "~/types/entities/job-entity";
 import { getJobById } from "../../repositories/jobs/get-job-by-id";
 import { updateJob } from "../../repositories/jobs/update-job";
 
@@ -9,7 +9,7 @@ export function updateJobService(jobId: string, input: UpdateJobInput) {
     return undefined;
   }
 
-  const updatedJob: Job = {
+  const updatedJob: JobEntity = {
     ...job,
     ...input,
 

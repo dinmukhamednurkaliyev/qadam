@@ -1,8 +1,11 @@
-import type { Job } from "~/types/job";
+import type { JobRecord } from "~/server/types/job";
 
-export const jobs: Job[] = [
+export const jobs: JobRecord[] = [
   {
     id: "frontend-developer-acme",
+    companyId: "company-acme",
+    locationId: "location-almaty",
+
     title: "Frontend Developer",
 
     description: `We are looking for a Frontend Developer to join our product team and help build modern web applications.
@@ -27,22 +30,15 @@ We offer:
 - Modern development tools
 - Opportunities to grow with the product`,
 
-    company: {
-      name: "Acme",
-      website: "https://example.com",
-    },
-
-    location: {
-      city: "Almaty",
-      country: "Kazakhstan",
-    },
-
     createdAt: "2026-08-18T00:00:00.000Z",
     updatedAt: "2026-08-18T00:00:00.000Z",
   },
 
   {
     id: "nuxt-developer-nova",
+    companyId: "company-nova",
+    locationId: "location-astana",
+
     title: "Nuxt Developer",
 
     description: `Nova is looking for a Nuxt Developer to work on full-stack web products.
@@ -63,15 +59,6 @@ Requirements:
 - Familiarity with Git and REST APIs
 
 We value practical engineering, simple solutions and readable code.`,
-
-    company: {
-      name: "Nova",
-    },
-
-    location: {
-      city: "Astana",
-      country: "Kazakhstan",
-    },
 
     createdAt: "2026-08-18T00:00:00.000Z",
     updatedAt: "2026-08-18T00:00:00.000Z",

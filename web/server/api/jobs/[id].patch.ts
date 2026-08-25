@@ -1,4 +1,4 @@
-import type { UpdateJobInput } from "~/types/job";
+import type { UpdateJobInput } from "~/types/entities/job-entity";
 import { updateJobService } from "../../services/jobs/update-job";
 
 export default defineEventHandler(async (event) => {

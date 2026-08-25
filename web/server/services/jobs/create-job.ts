@@ -1,10 +1,11 @@
-import type { CreateJobInput, Job } from "~/types/job";
+import type { JobEntity } from "~/types/job-entity";
+import type { CreateJobInput } from "~/types/job-input";
 import { createJob } from "../../repositories/jobs/create-job";
 
 export function createJobService(input: CreateJobInput) {
   const now = new Date().toISOString();
 
-  const job: Job = {
+  const job: JobEntity = {
     id: crypto.randomUUID(),
     ...input,
     createdAt: now,

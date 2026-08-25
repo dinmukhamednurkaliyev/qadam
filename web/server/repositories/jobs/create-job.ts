@@ -1,7 +1,7 @@
-import type { Job } from "~/types/job";
+import type { JobEntity } from "~/types/job-entity";
 import { jobs } from "./storage";
 
-export function createJob(job: Job) {
+export function createJob(job: JobEntity) {
   jobs.push(job);
 
   return job;

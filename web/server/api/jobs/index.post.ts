@@ -1,4 +1,4 @@
-import type { CreateJobInput } from "~/types/job";
+import type { CreateJobInput } from "~/types/entities/job-entity";
 import { createJobService } from "../../services/jobs/create-job";
 
 export default defineEventHandler(async (event) => {

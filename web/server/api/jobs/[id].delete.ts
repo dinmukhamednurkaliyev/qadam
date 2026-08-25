@@ -1,4 +1,4 @@
-import { deleteJobService } from "../../services/jobs/delete-job";
+import { deleteJobService } from "~~/server/services/jobs/delete-job";
 
 export default defineEventHandler((event) => {
   const jobId = getRouterParam(event, "id");

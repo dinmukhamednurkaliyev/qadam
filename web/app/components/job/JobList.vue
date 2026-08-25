@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Job } from "~/types/job";
+import type { JobEntity } from "~/types/jobs/job-entity";
 
 defineProps<{
-  jobs: Job[];
+  jobs: JobEntity[];
   selectedJobId: string | null;
 }>();
 

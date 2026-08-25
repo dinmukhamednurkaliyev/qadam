@@ -1,28 +1,4 @@
-import type { Company } from "./company";
-import type { Location } from "./location";
-
-export type WorkFormat = "remote" | "office" | "hybrid";
-
-export type SalaryCurrency = "KZT" | "USD" | "EUR";
-
-export interface Job {
-  id: string;
-  title: string;
-  description?: string;
-
-  company: Company;
-  location?: Location;
-
-  sourceUrl?: string;
-  workFormat?: WorkFormat;
-
-  salaryFrom?: number;
-  salaryTo?: number;
-  salaryCurrency?: SalaryCurrency;
-
-  createdAt: string;
-  updatedAt: string;
-}
+import type { SalaryCurrency, WorkFormat } from "../entities/job-value";
 
 export interface CreateJobInput {
   companyId: string;

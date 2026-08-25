@@ -1,7 +1,7 @@
-import type { Job } from "~/types/job";
+import type { JobEntity } from "~/types/entities/job-entity";
 import { jobs } from "./storage";
 
-export function updateJob(job: Job) {
+export function updateJob(job: JobEntity) {
   const jobIndex = jobs.findIndex((currentJob) => currentJob.id === job.id);
 
   if (jobIndex === -1) {
