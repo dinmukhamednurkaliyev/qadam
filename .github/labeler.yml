@@ -1,47 +1,47 @@
-area-app:
+app:
   - changed-files:
       - any-glob-to-any-file:
           - "web/app/app.vue"
           - "web/app/error.vue"
           - "web/app/layouts/**"
 
-area-components:
+components:
   - changed-files:
       - any-glob-to-any-file:
           - "web/app/components/**"
 
-area-pages:
+pages:
   - changed-files:
       - any-glob-to-any-file:
           - "web/app/pages/**"
 
-area-composables:
+composables:
   - changed-files:
       - any-glob-to-any-file:
           - "web/app/composables/**"
 
-area-stores:
+stores:
   - changed-files:
       - any-glob-to-any-file:
           - "web/app/stores/**"
 
-area-plugins:
+plugins:
   - changed-files:
       - any-glob-to-any-file:
           - "web/app/plugins/**"
           - "web/modules/**"
 
-area-middleware:
+middleware:
   - changed-files:
       - any-glob-to-any-file:
           - "web/app/middleware/**"
 
-area-server:
+server:
   - changed-files:
       - any-glob-to-any-file:
           - "web/server/**"
 
-area-styles:
+styles:
   - changed-files:
       - any-glob-to-any-file:
           - "web/assets/**/*.css"
@@ -53,7 +53,7 @@ area-styles:
           - "web/app/assets/**/*.sass"
           - "web/app/assets/**/*.less"
 
-area-assets:
+assets:
   - changed-files:
       - any-glob-to-any-file:
           - "web/assets/images/**"
@@ -62,24 +62,24 @@ area-assets:
           - "web/app/assets/fonts/**"
           - "web/public/**"
 
-area-data:
+data:
   - changed-files:
       - any-glob-to-any-file:
           - "web/app/data/**"
 
-area-types:
+types:
   - changed-files:
       - any-glob-to-any-file:
           - "web/app/types/**"
           - "web/**/*.d.ts"
 
-area-utils:
+utils:
   - changed-files:
       - any-glob-to-any-file:
           - "web/app/utils/**"
           - "web/lib/**"
 
-area-tests:
+tests:
   - changed-files:
       - any-glob-to-any-file:
           - "web/test/**"
@@ -90,7 +90,7 @@ area-tests:
           - "web/vitest.config.*"
           - "web/playwright.config.*"
 
-area-configuration:
+configuration:
   - changed-files:
       - any-glob-to-any-file:
           - "web/nuxt.config.*"
@@ -105,7 +105,7 @@ area-configuration:
           - "web/.editorconfig"
           - "web/.npmrc"
 
-area-infrastructure:
+infrastructure:
   - changed-files:
       - any-glob-to-any-file:
           - ".github/**"
@@ -121,7 +121,7 @@ area-infrastructure:
           - "netlify.toml"
           - "vercel.json"
 
-area-dependencies:
+dependencies:
   - changed-files:
       - any-glob-to-any-file:
           - "web/package.json"
@@ -130,7 +130,7 @@ area-dependencies:
           - "web/pnpm-lock.yaml"
           - "web/yarn.lock"
 
-area-documentation:
+documentation:
   - changed-files:
       - any-glob-to-any-file:
           - "web/**/*.md"
@@ -139,7 +139,7 @@ area-documentation:
           - "LICENSE"
           - "LICENSE.*"
 
-area-environment:
+environment:
   - changed-files:
       - any-glob-to-any-file:
           - "web/.env.example"
