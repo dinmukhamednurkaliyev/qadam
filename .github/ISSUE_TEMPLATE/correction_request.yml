@@ -1,0 +1,21 @@
+name: Correction Request
+description: Request a correction for an existing problem
+labels:
+  - problem
+
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is not working as expected?
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Outcome
+      description: What should happen instead?
+    validations:
+      required: true

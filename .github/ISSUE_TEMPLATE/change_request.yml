@@ -1,0 +1,21 @@
+name: Change Request
+description: Request a change to the project
+labels:
+  - change
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What should be changed?
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Why is this needed?
+    validations:
+      required: true
