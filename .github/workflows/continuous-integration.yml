@@ -47,6 +47,7 @@ jobs:
               - 'web/server/**'
 
             configuration:
+              - 'mise.toml'
               - 'web/package.json'
               - 'web/bun.lock'
               - 'web/nuxt.config.ts'
@@ -103,10 +104,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v6.0.3
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2.2.0
-        with:
-          cache: true
+      - name: Setup mise
+        uses: jdx/mise-action@v4.3.0
 
       - name: Install Dependencies
         run: |

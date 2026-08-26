@@ -93,6 +93,7 @@ tests:
 configuration:
   - changed-files:
       - any-glob-to-any-file:
+          - "mise.toml"
           - "web/nuxt.config.*"
           - "web/app.config.*"
           - "web/tsconfig.json"
