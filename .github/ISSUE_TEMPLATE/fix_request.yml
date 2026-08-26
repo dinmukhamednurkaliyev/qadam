@@ -1,21 +1,21 @@
-name: Correction Request
-description: Request a correction for an existing problem
+name: Fix Request
+description: Request a fix for incorrect behavior
 labels:
-  - problem
+  - fix
 
 body:
   - type: textarea
     id: problem
     attributes:
       label: Problem
-      description: What is not working as expected?
+      description: What is not working correctly?
     validations:
       required: true
 
   - type: textarea
     id: expected
     attributes:
-      label: Expected Outcome
+      label: Expected Behavior
       description: What should happen instead?
     validations:
       required: true

@@ -1,14 +1,14 @@
-name: Maintenance Request
-description: Request project maintenance
+name: Refactor Request
+description: Request an internal code improvement
 labels:
-  - maintenance
+  - refactor
 
 body:
   - type: textarea
     id: description
     attributes:
       label: Description
-      description: What should be maintained?
+      description: What should be refactored?
     validations:
       required: true
 

@@ -1,14 +1,14 @@
-name: Change Request
-description: Request a change to the project
+name: Feature Request
+description: Request new functionality
 labels:
-  - change
+  - feature
 
 body:
   - type: textarea
     id: description
     attributes:
       label: Description
-      description: What should be changed?
+      description: What should be added?
     validations:
       required: true
 

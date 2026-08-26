@@ -1,14 +1,14 @@
-name: Maintenance Request
-description: Request project maintenance
+name: Performance Request
+description: Request a performance improvement
 labels:
-  - maintenance
+  - performance
 
 body:
   - type: textarea
     id: description
     attributes:
       label: Description
-      description: What should be maintained?
+      description: What should be improved?
     validations:
       required: true
 
