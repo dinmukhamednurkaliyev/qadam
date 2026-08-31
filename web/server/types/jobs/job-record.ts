@@ -1,4 +1,4 @@
-import type { SalaryCurrency, WorkFormat } from "~/types/job-value";
+import type { SalaryCurrency, WorkFormat } from "~/types/jobs/job-value";
 
 export interface JobRecord {
   id: string;

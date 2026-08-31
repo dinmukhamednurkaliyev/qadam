@@ -1,5 +1,5 @@
-import type { JobEntity } from "~/types/job-entity";
-import type { CreateJobInput } from "~/types/job-input";
+import type { JobEntity } from "~/types/jobs/job-entity";
+import type { CreateJobInput } from "~/types/jobs/job-input";
 import { createJob } from "../../repositories/jobs/create-job";
 
 export function createJobService(input: CreateJobInput) {

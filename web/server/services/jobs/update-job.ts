@@ -1,4 +1,4 @@
-import type { JobEntity, UpdateJobInput } from "~/types/entities/job-entity";
+import type { JobEntity, UpdateJobInput } from "~/types/jobs/job-entity";
 import { getJobById } from "../../repositories/jobs/get-job-by-id";
 import { updateJob } from "../../repositories/jobs/update-job";
 

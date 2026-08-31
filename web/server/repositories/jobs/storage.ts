@@ -1,4 +1,4 @@
-import type { JobRecord } from "~/server/types/job";
+import type { JobRecord } from "~~/server/types/jobs/job-record";
 
 export const jobs: JobRecord[] = [
   {

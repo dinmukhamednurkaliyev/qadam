@@ -1,4 +1,4 @@
-import type { JobEntity } from "~/types/entities/job-entity";
+import type { JobEntity } from "~/types/jobs/job-entity";
 import { jobs } from "./storage";
 
 export function updateJob(job: JobEntity) {

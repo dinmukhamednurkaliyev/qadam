@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: qadam-postgres
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: qadam
+      POSTGRES_USER: qadam
+      POSTGRES_PASSWORD: qadam
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - qadam-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  qadam-postgres-data:
