@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1788290922013,
-      "tag": "0000_create-regions",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1788291375993,
-      "tag": "0001_create-locations",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1788293154959,
-      "tag": "0002_create-users",
+      "when": 1788295833699,
+      "tag": "0000_initial-schema",
       "breakpoints": true
     }
   ]
