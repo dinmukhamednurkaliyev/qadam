@@ -16,7 +16,9 @@
     "check": "run-s type-check lint format:check"
   },
   "dependencies": {
-    "hono": "^4.13.5"
+    "drizzle-orm": "^0.45.2",
+    "hono": "^4.13.5",
+    "postgres": "^3.4.9"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -24,6 +26,7 @@
     "@types/node": "^25",
     "@typescript-eslint/eslint-plugin": "^8.69.0",
     "@typescript-eslint/parser": "^8.69.0",
+    "drizzle-kit": "^0.31.10",
     "eslint": "^10.9.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-oxlint": "^1.81.0",
