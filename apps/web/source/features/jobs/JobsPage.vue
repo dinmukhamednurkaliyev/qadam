@@ -1,7 +1,5 @@
-<script setup lang="ts"></script>
-
 <template>
-  <h1>Jobs</h1>
+  <div>
+    <h1>Jobs</h1>
+  </div>
 </template>
-
-<style scoped></style>
