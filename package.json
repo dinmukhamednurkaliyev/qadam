@@ -1,0 +1,8 @@
+{
+  "name": "qadam",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
