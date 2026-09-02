@@ -1,110 +1,65 @@
 app:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/app/app.vue"
-          - "web/app/error.vue"
-          - "web/app/layouts/**"
+          - "apps/web/source/app/**"
+          - "apps/web/source/main.ts"
+          - "apps/web/index.html"
+
+features:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "apps/web/source/features/**"
 
 components:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/app/components/**"
+          - "apps/web/source/components/**"
+          - "apps/web/source/**/components/**"
 
 pages:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/app/pages/**"
-
-composables:
-  - changed-files:
-      - any-glob-to-any-file:
-          - "web/app/composables/**"
-
-stores:
-  - changed-files:
-      - any-glob-to-any-file:
-          - "web/app/stores/**"
-
-plugins:
-  - changed-files:
-      - any-glob-to-any-file:
-          - "web/app/plugins/**"
-          - "web/modules/**"
-
-middleware:
-  - changed-files:
-      - any-glob-to-any-file:
-          - "web/app/middleware/**"
-
-server:
-  - changed-files:
-      - any-glob-to-any-file:
-          - "web/server/**"
+          - "apps/web/source/pages/**"
+          - "apps/web/source/**/pages/**"
 
 styles:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/assets/**/*.css"
-          - "web/assets/**/*.scss"
-          - "web/assets/**/*.sass"
-          - "web/assets/**/*.less"
-          - "web/app/assets/**/*.css"
-          - "web/app/assets/**/*.scss"
-          - "web/app/assets/**/*.sass"
-          - "web/app/assets/**/*.less"
+          - "apps/web/source/assets/**/*.css"
+          - "apps/web/source/assets/**/*.scss"
+          - "apps/web/source/**/*.css"
+          - "apps/web/source/**/*.scss"
 
 assets:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/assets/images/**"
-          - "web/assets/fonts/**"
-          - "web/app/assets/images/**"
-          - "web/app/assets/fonts/**"
-          - "web/public/**"
+          - "apps/web/source/assets/**"
+          - "apps/web/public/**"
 
-data:
+server:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/app/data/**"
-
-types:
-  - changed-files:
-      - any-glob-to-any-file:
-          - "web/app/types/**"
-          - "web/**/*.d.ts"
-
-utils:
-  - changed-files:
-      - any-glob-to-any-file:
-          - "web/app/utils/**"
-          - "web/lib/**"
+          - "apps/server/**"
 
 tests:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/test/**"
-          - "web/tests/**"
-          - "web/**/*.test.ts"
-          - "web/**/*.spec.ts"
-          - "web/playwright/**"
-          - "web/vitest.config.*"
-          - "web/playwright.config.*"
+          - "apps/**/*.test.ts"
+          - "apps/**/*.spec.ts"
+          - "apps/**/*.test.tsx"
+          - "apps/**/*.spec.tsx"
+          - "tests/**"
 
 configuration:
   - changed-files:
       - any-glob-to-any-file:
           - "mise.toml"
-          - "web/nuxt.config.*"
-          - "web/app.config.*"
-          - "web/tsconfig.json"
-          - "web/eslint.config.*"
-          - "web/stylelint.config.*"
-          - "web/prettier.config.*"
-          - "web/.prettierrc"
-          - "web/.prettierrc.*"
-          - "web/.prettierignore"
-          - "web/.editorconfig"
-          - "web/.npmrc"
+          - "apps/web/vite.config.*"
+          - "apps/web/tsconfig.json"
+          - "apps/web/eslint.config.*"
+          - "apps/web/stylelint.config.*"
+          - "apps/web/.editorconfig"
+          - ".vscode/**"
 
 infrastructure:
   - changed-files:
@@ -119,23 +74,23 @@ infrastructure:
           - "docker-compose.yaml"
           - "compose.yml"
           - "compose.yaml"
-          - "netlify.toml"
-          - "vercel.json"
 
 dependencies:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/package.json"
-          - "web/bun.lock"
-          - "web/package-lock.json"
-          - "web/pnpm-lock.yaml"
-          - "web/yarn.lock"
+          - "package.json"
+          - "apps/*/package.json"
+          - "packages/*/package.json"
+          - "bun.lock"
+          - "package-lock.json"
+          - "pnpm-lock.yaml"
+          - "yarn.lock"
 
 documentation:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/**/*.md"
-          - "web/docs/**"
+          - "**/*.md"
+          - "documentation/**"
           - "README.md"
           - "LICENSE"
           - "LICENSE.*"
@@ -143,5 +98,5 @@ documentation:
 environment:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/.env.example"
-          - "web/.env.*.example"
+          - "**/.env.example"
+          - "**/.env.*.example"
