@@ -1,9 +1,9 @@
 import { Hono } from 'hono'
 
+import { jobsRoute } from '@/features/jobs/jobs-route'
+
 const app = new Hono()
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+app.route('/jobs', jobsRoute)
 
 export default app
