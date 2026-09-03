@@ -13,7 +13,8 @@
     "format": "prettier source/ --write",
     "format:check": "prettier source/ --check",
     "fix": "run-s lint:fix format",
-    "check": "run-s type-check lint format:check"
+    "check": "run-s type-check lint format:check",
+    "seed": "bun source/database/seed.ts"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.2",
