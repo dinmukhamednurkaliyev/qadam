@@ -19,6 +19,8 @@ CREATE TABLE "candidate_profiles" (
 	"user_id" uuid NOT NULL,
 	"first_name" varchar(100) NOT NULL,
 	"last_name" varchar(100) NOT NULL,
+	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
+	"updated_at" timestamp with time zone DEFAULT now() NOT NULL,
 	CONSTRAINT "candidate_profiles_user_id_unique" UNIQUE("user_id")
 );
 --> statement-breakpoint
