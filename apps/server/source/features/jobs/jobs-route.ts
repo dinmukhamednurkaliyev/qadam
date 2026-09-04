@@ -2,14 +2,16 @@ import { Hono } from 'hono'
 import { eq } from 'drizzle-orm'
 
 import { database } from '@/database/database'
-import { companiesTable } from '@/database/schemas/company-schema'
+import { organizationTable } from '@/database/schemas/organization-schema'
 import { jobsTable } from '@/database/schemas/job-schema'
 import { locationsTable } from '@/database/schemas/location-schema'
 
 export const jobsRoute = new Hono()
 
-jobsRoute.get('/', async (context) => {
-  const jobs = await database
+jobsRoute.get('/:id', async (context) => {
+  const id = context.req.param('id')
+
+  const [job] = await database
     .select({
       id: jobsTable.id,
       title: jobsTable.title,
@@ -17,10 +19,10 @@ jobsRoute.get('/', async (context) => {
       createdAt: jobsTable.createdAt,
       updatedAt: jobsTable.updatedAt,
 
-      company: {
-        id: companiesTable.id,
-        name: companiesTable.name,
-        website: companiesTable.website,
+      organization: {
+        id: organizationTable.id,
+        name: organizationTable.name,
+        website: organizationTable.website,
       },
 
       location: {
@@ -29,8 +31,13 @@ jobsRoute.get('/', async (context) => {
       },
     })
     .from(jobsTable)
-    .innerJoin(companiesTable, eq(jobsTable.companyId, companiesTable.id))
+    .innerJoin(organizationTable, eq(jobsTable.organizationId, organizationTable.id))
     .leftJoin(locationsTable, eq(jobsTable.locationId, locationsTable.id))
+    .where(eq(jobsTable.id, id))
 
-  return context.json(jobs)
+  if (!job) {
+    return context.json({ message: 'Job not found' }, 404)
+  }
+
+  return context.json(job)
 })

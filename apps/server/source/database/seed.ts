@@ -1,5 +1,5 @@
 import { database } from '@/database/database'
-import { companiesTable } from '@/database/schemas/company-schema'
+import { organizationTable } from '@/database/schemas/organization-schema'
 import { jobsTable } from '@/database/schemas/job-schema'
 import { locationsTable } from '@/database/schemas/location-schema'
 import { regionsTable } from '@/database/schemas/region-schema'
@@ -20,8 +20,8 @@ const [location] = await database
   })
   .returning()
 
-const [company] = await database
-  .insert(companiesTable)
+const [organization] = await database
+  .insert(organizationTable)
   .values({
     name: 'Qadam',
     description: 'A job platform for candidates and employers',
@@ -30,7 +30,7 @@ const [company] = await database
   .returning()
 
 await database.insert(jobsTable).values({
-  companyId: company.id,
+  organizationId: organization.id,
   locationId: location.id,
   title: 'Frontend Developer',
   description: 'Vue developer position',

@@ -1,14 +1,14 @@
 import { pgTable, text, timestamp, uuid, varchar } from 'drizzle-orm/pg-core'
 
-import { companiesTable } from './company-schema'
+import { organizationTable } from './organization-schema'
 import { locationsTable } from './location-schema'
 
 export const jobsTable = pgTable('jobs', {
   id: uuid('id').primaryKey().defaultRandom(),
 
-  companyId: uuid('company_id')
+  organizationId: uuid('organization_id')
     .notNull()
-    .references(() => companiesTable.id),
+    .references(() => organizationTable.id),
 
   locationId: uuid('location_id').references(() => locationsTable.id),
 
