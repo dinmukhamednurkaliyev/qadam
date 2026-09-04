@@ -1,8 +1,45 @@
 {
   "name": "qadam",
   "private": true,
+  "packageManager": "bun@1.3.14",
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "dev": "bun run --workspaces --parallel dev",
+    "build": "bun run --workspaces --if-present build",
+    "type-check": "bun run --workspaces type-check",
+    "test": "bun run --workspaces --if-present test",
+    "lint": "bun run lint:oxlint && bun run lint:eslint",
+    "lint:oxlint": "oxlint apps/web apps/server",
+    "lint:oxlint:fix": "oxlint apps/web apps/server --fix",
+    "lint:eslint": "eslint apps/web apps/server",
+    "lint:eslint:fix": "eslint apps/web apps/server --fix",
+    "lint:fix": "bun run lint:oxlint:fix && bun run lint:eslint:fix",
+    "stylelint": "stylelint \"apps/web/source/**/*.{css,vue}\" --config apps/web/stylelint.config.ts",
+    "stylelint:fix": "bun run stylelint --fix",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "check": "bun run type-check && bun run lint && bun run stylelint && bun run test && bun run format:check"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.4.1",
+    "@vitest/eslint-plugin": "^1.6.27",
+    "@vue/eslint-config-typescript": "^14.9.0",
+    "eslint": "^10.9.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-oxlint": "^1.81.0",
+    "eslint-plugin-vue": "^10.10.0",
+    "jiti": "2.7.0",
+    "oxlint": "^1.81.0",
+    "postcss-html": "^2.0.0",
+    "prettier": "^3.9.6",
+    "stylelint": "^17.14.1",
+    "stylelint-config-standard": "^40.0.0",
+    "typescript": "~6.0.0",
+    "typescript-eslint": "^8.69.0",
+    "vue-eslint-parser": "10.4.1"
+  }
 }

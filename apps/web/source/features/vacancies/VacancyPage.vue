@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 
-const vacancies = ref<unknown[]>([])
+import { isVacancyList, type Vacancy } from '@/features/vacancies/vacancy'
+
+const vacancies = ref<Vacancy[]>([])
 const isLoading = ref(true)
 const errorMessage = ref<string | null>(null)
 
@@ -13,15 +15,15 @@ onMounted(async () => {
       throw new Error(`Request failed with status ${response.status}`)
     }
 
-    const data = await response.json()
+    const data: unknown = await response.json()
 
-    if (!Array.isArray(data)) {
+    if (!isVacancyList(data)) {
       throw new Error('Invalid vacancies response')
     }
 
     vacancies.value = data
   } catch (error) {
-    console.error(error)
+    console.error('Failed to load vacancies:', error)
 
     errorMessage.value = 'Failed to load vacancies'
   } finally {

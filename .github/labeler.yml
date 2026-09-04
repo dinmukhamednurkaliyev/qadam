@@ -1,102 +1,102 @@
 app:
   - changed-files:
       - any-glob-to-any-file:
-          - "apps/web/source/app/**"
-          - "apps/web/source/main.ts"
-          - "apps/web/index.html"
+          - 'apps/web/source/app/**'
+          - 'apps/web/source/main.ts'
+          - 'apps/web/index.html'
 
 features:
   - changed-files:
       - any-glob-to-any-file:
-          - "apps/web/source/features/**"
+          - 'apps/web/source/features/**'
 
 components:
   - changed-files:
       - any-glob-to-any-file:
-          - "apps/web/source/components/**"
-          - "apps/web/source/**/components/**"
+          - 'apps/web/source/components/**'
+          - 'apps/web/source/**/components/**'
 
 pages:
   - changed-files:
       - any-glob-to-any-file:
-          - "apps/web/source/pages/**"
-          - "apps/web/source/**/pages/**"
+          - 'apps/web/source/pages/**'
+          - 'apps/web/source/**/pages/**'
 
 styles:
   - changed-files:
       - any-glob-to-any-file:
-          - "apps/web/source/assets/**/*.css"
-          - "apps/web/source/assets/**/*.scss"
-          - "apps/web/source/**/*.css"
-          - "apps/web/source/**/*.scss"
+          - 'apps/web/source/assets/**/*.css'
+          - 'apps/web/source/assets/**/*.scss'
+          - 'apps/web/source/**/*.css'
+          - 'apps/web/source/**/*.scss'
 
 assets:
   - changed-files:
       - any-glob-to-any-file:
-          - "apps/web/source/assets/**"
-          - "apps/web/public/**"
+          - 'apps/web/source/assets/**'
+          - 'apps/web/public/**'
 
 server:
   - changed-files:
       - any-glob-to-any-file:
-          - "apps/server/**"
+          - 'apps/server/**'
 
 tests:
   - changed-files:
       - any-glob-to-any-file:
-          - "apps/**/*.test.ts"
-          - "apps/**/*.spec.ts"
-          - "apps/**/*.test.tsx"
-          - "apps/**/*.spec.tsx"
-          - "tests/**"
+          - 'apps/**/*.test.ts'
+          - 'apps/**/*.spec.ts'
+          - 'apps/**/*.test.tsx'
+          - 'apps/**/*.spec.tsx'
+          - 'tests/**'
 
 configuration:
   - changed-files:
       - any-glob-to-any-file:
-          - "mise.toml"
-          - "apps/web/vite.config.*"
-          - "apps/web/tsconfig.json"
-          - "apps/web/eslint.config.*"
-          - "apps/web/stylelint.config.*"
-          - "apps/web/.editorconfig"
-          - ".vscode/**"
+          - 'mise.toml'
+          - 'apps/web/vite.config.*'
+          - 'apps/web/tsconfig.json'
+          - 'apps/web/eslint.config.*'
+          - 'apps/web/stylelint.config.*'
+          - 'apps/web/.editorconfig'
+          - '.vscode/**'
 
 infrastructure:
   - changed-files:
       - any-glob-to-any-file:
-          - ".github/**"
-          - "docker/**"
-          - "terraform/**"
-          - "k8s/**"
-          - "Dockerfile"
-          - "Dockerfile.*"
-          - "docker-compose.yml"
-          - "docker-compose.yaml"
-          - "compose.yml"
-          - "compose.yaml"
+          - '.github/**'
+          - 'docker/**'
+          - 'terraform/**'
+          - 'k8s/**'
+          - 'Dockerfile'
+          - 'Dockerfile.*'
+          - 'docker-compose.yml'
+          - 'docker-compose.yaml'
+          - 'compose.yml'
+          - 'compose.yaml'
 
 dependencies:
   - changed-files:
       - any-glob-to-any-file:
-          - "package.json"
-          - "apps/*/package.json"
-          - "packages/*/package.json"
-          - "bun.lock"
-          - "package-lock.json"
-          - "pnpm-lock.yaml"
-          - "yarn.lock"
+          - 'package.json'
+          - 'apps/*/package.json'
+          - 'packages/*/package.json'
+          - 'bun.lock'
+          - 'package-lock.json'
+          - 'pnpm-lock.yaml'
+          - 'yarn.lock'
 
 documentation:
   - changed-files:
       - any-glob-to-any-file:
-          - "**/*.md"
-          - "documentation/**"
-          - "README.md"
-          - "LICENSE"
-          - "LICENSE.*"
+          - '**/*.md'
+          - 'documentation/**'
+          - 'README.md'
+          - 'LICENSE'
+          - 'LICENSE.*'
 
 environment:
   - changed-files:
       - any-glob-to-any-file:
-          - "**/.env.example"
-          - "**/.env.*.example"
+          - '**/.env.example'
+          - '**/.env.*.example'

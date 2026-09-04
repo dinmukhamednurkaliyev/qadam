@@ -1,19 +1,11 @@
 {
   "name": "@qadam/server",
+  "private": true,
+  "type": "module",
   "scripts": {
     "dev": "bun run --hot source/main.ts",
     "start": "bun source/main.ts",
     "type-check": "tsc --noEmit",
-    "lint": "run-s lint:oxlint lint:eslint",
-    "lint:oxlint": "oxlint .",
-    "lint:eslint": "eslint . --cache",
-    "lint:fix": "run-s lint:oxlint:fix lint:eslint:fix",
-    "lint:oxlint:fix": "oxlint . --fix",
-    "lint:eslint:fix": "eslint . --fix --cache",
-    "format": "prettier source/ --write",
-    "format:check": "prettier source/ --check",
-    "fix": "run-s lint:fix format",
-    "check": "run-s type-check lint format:check",
     "seed": "bun source/database/seed.ts"
   },
   "dependencies": {
@@ -22,20 +14,8 @@
     "postgres": "^3.4.9"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
     "@types/bun": "latest",
-    "@types/node": "^25",
-    "@typescript-eslint/eslint-plugin": "^8.69.0",
-    "@typescript-eslint/parser": "^8.69.0",
     "drizzle-kit": "^0.31.10",
-    "eslint": "^10.9.1",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-oxlint": "^1.81.0",
-    "npm-run-all2": "^9.0.3",
-    "oxlint": "^1.81.0",
-    "prettier": "^3.9.6",
-    "typescript": "~6.0.0",
-    "typescript-eslint": "^8.69.0",
-    "vitest": "^4.1.11"
+    "typescript": "~6.0.0"
   }
 }
