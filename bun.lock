@@ -34,7 +34,7 @@
       "devDependencies": {
         "@types/bun": "latest",
         "drizzle-kit": "^0.31.10",
-        "typescript": "~6.0.0",
+        "typescript": "catalog:",
       },
     },
     "apps/web": {
@@ -51,13 +51,16 @@
         "@vitejs/plugin-vue": "^6.0.8",
         "@vue/tsconfig": "^0.9.1",
         "jsdom": "^29.1.1",
-        "typescript": "~6.0.0",
+        "typescript": "catalog:",
         "vite": "^8.1.5",
         "vite-plugin-vue-devtools": "^8.1.5",
         "vitest": "^4.1.10",
         "vue-tsc": "^3.3.7",
       },
     },
+  },
+  "catalog": {
+    "typescript": "~6.0.0",
   },
   "packages": {
     "@asamuzakjp/css-color": ["@asamuzakjp/css-color@5.1.11", "", { "dependencies": { "@asamuzakjp/generational-cache": "^1.0.1", "@csstools/css-calc": "^3.2.0", "@csstools/css-color-parser": "^4.1.0", "@csstools/css-parser-algorithms": "^4.0.0", "@csstools/css-tokenizer": "^4.0.0" } }, "sha512-KVw6qIiCTUQhByfTd78h2yD1/00waTmm9uy/R7Ck/ctUyAPj+AEDLkQIdJW0T8+qGgj3j5bpNKK7Q3G+LedJWg=="],
