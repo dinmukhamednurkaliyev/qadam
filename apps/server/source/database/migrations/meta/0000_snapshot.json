@@ -1,5 +1,5 @@
 {
-  "id": "dc1ad5fb-9690-4fbd-8ce7-dd3ebd31ba25",
+  "id": "45d39cb5-e842-4865-ba9f-47ad923e7fd1",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -21,8 +21,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "job_id": {
-          "name": "job_id",
+        "vacancy_id": {
+          "name": "vacancy_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": true
@@ -50,12 +50,12 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "applications_job_id_jobs_id_fk": {
-          "name": "applications_job_id_jobs_id_fk",
+        "applications_vacancy_id_vacancies_id_fk": {
+          "name": "applications_vacancy_id_vacancies_id_fk",
           "tableFrom": "applications",
-          "tableTo": "jobs",
+          "tableTo": "vacancies",
           "columnsFrom": [
-            "job_id"
+            "vacancy_id"
           ],
           "columnsTo": [
             "id"
@@ -66,12 +66,12 @@
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "applications_user_id_job_id_unique": {
-          "name": "applications_user_id_job_id_unique",
+        "applications_user_id_vacancy_id_unique": {
+          "name": "applications_user_id_vacancy_id_unique",
           "nullsNotDistinct": false,
           "columns": [
             "user_id",
-            "job_id"
+            "vacancy_id"
           ]
         }
       },
@@ -96,8 +96,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "job_id": {
-          "name": "job_id",
+        "vacancy_id": {
+          "name": "vacancy_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": true
@@ -125,12 +125,12 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "bookmarks_job_id_jobs_id_fk": {
-          "name": "bookmarks_job_id_jobs_id_fk",
+        "bookmarks_vacancy_id_vacancies_id_fk": {
+          "name": "bookmarks_vacancy_id_vacancies_id_fk",
           "tableFrom": "bookmarks",
-          "tableTo": "jobs",
+          "tableTo": "vacancies",
           "columnsFrom": [
-            "job_id"
+            "vacancy_id"
           ],
           "columnsTo": [
             "id"
@@ -141,12 +141,12 @@
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "bookmarks_user_id_job_id_unique": {
-          "name": "bookmarks_user_id_job_id_unique",
+        "bookmarks_user_id_vacancy_id_unique": {
+          "name": "bookmarks_user_id_vacancy_id_unique",
           "nullsNotDistinct": false,
           "columns": [
             "user_id",
-            "job_id"
+            "vacancy_id"
           ]
         }
       },
@@ -228,91 +228,6 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.jobs": {
-      "name": "jobs",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
-        },
-        "organization_id": {
-          "name": "organization_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "location_id": {
-          "name": "location_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "title": {
-          "name": "title",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "description": {
-          "name": "description",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "jobs_organization_id_companies_id_fk": {
-          "name": "jobs_organization_id_companies_id_fk",
-          "tableFrom": "jobs",
-          "tableTo": "companies",
-          "columnsFrom": [
-            "organization_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
-        "jobs_location_id_locations_id_fk": {
-          "name": "jobs_location_id_locations_id_fk",
-          "tableFrom": "jobs",
-          "tableTo": "locations",
-          "columnsFrom": [
-            "location_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
     "public.locations": {
       "name": "locations",
       "schema": "",
@@ -385,10 +300,10 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "organization_members_organization_id_companies_id_fk": {
-          "name": "organization_members_organization_id_companies_id_fk",
+        "organization_members_organization_id_organization_id_fk": {
+          "name": "organization_members_organization_id_organization_id_fk",
           "tableFrom": "organization_members",
-          "tableTo": "companies",
+          "tableTo": "organization",
           "columnsFrom": [
             "organization_id"
           ],
@@ -427,8 +342,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.companies": {
-      "name": "companies",
+    "public.organization": {
+      "name": "organization",
       "schema": "",
       "columns": {
         "id": {
@@ -569,6 +484,91 @@
           ]
         }
       },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.vacancies": {
+      "name": "vacancies",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "organization_id": {
+          "name": "organization_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "location_id": {
+          "name": "location_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "title": {
+          "name": "title",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "vacancies_organization_id_organization_id_fk": {
+          "name": "vacancies_organization_id_organization_id_fk",
+          "tableFrom": "vacancies",
+          "tableTo": "organization",
+          "columnsFrom": [
+            "organization_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "vacancies_location_id_locations_id_fk": {
+          "name": "vacancies_location_id_locations_id_fk",
+          "tableFrom": "vacancies",
+          "tableTo": "locations",
+          "columnsFrom": [
+            "location_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false

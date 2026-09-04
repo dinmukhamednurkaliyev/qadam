@@ -1,9 +1,9 @@
 import { pgTable, timestamp, unique, uuid } from 'drizzle-orm/pg-core'
 
-import { jobsTable } from './job-schema'
+import { vacancyTable } from './vacancy-schema'
 import { usersTable } from './user-schema'
 
-export const bookmarksTable = pgTable(
+export const bookmarkTable = pgTable(
   'bookmarks',
   {
     id: uuid('id').primaryKey().defaultRandom(),
@@ -12,9 +12,9 @@ export const bookmarksTable = pgTable(
       .notNull()
       .references(() => usersTable.id),
 
-    jobId: uuid('job_id')
+    vacancyId: uuid('vacancy_id')
       .notNull()
-      .references(() => jobsTable.id),
+      .references(() => vacancyTable.id),
 
     createdAt: timestamp('created_at', {
       withTimezone: true,
@@ -23,5 +23,5 @@ export const bookmarksTable = pgTable(
       .defaultNow()
       .notNull(),
   },
-  (table) => [unique().on(table.userId, table.jobId)],
+  (table) => [unique().on(table.userId, table.vacancyId)],
 )

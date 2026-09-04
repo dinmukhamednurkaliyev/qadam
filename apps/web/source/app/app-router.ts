@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import { jobRoutes } from '@/features/jobs/job-routes'
+import { vacancyRoutes } from '@/features/vacancies/vacancy-routes'
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [...jobRoutes],
+  routes: [...vacancyRoutes],
 })
 
 export default router

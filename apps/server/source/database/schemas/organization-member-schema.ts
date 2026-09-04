@@ -3,7 +3,7 @@ import { pgTable, unique, uuid } from 'drizzle-orm/pg-core'
 import { organizationTable } from './organization-schema'
 import { usersTable } from './user-schema'
 
-export const organizationMembersTable = pgTable(
+export const organizationMemberTable = pgTable(
   'organization_members',
   {
     id: uuid('id').primaryKey().defaultRandom(),

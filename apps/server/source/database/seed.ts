@@ -1,7 +1,7 @@
 import { database } from '@/database/database'
 import { organizationTable } from '@/database/schemas/organization-schema'
-import { jobsTable } from '@/database/schemas/job-schema'
-import { locationsTable } from '@/database/schemas/location-schema'
+import { vacancyTable } from '@/database/schemas/vacancy-schema'
+import { locationTable } from '@/database/schemas/location-schema'
 import { regionsTable } from '@/database/schemas/region-schema'
 
 const [region] = await database
@@ -13,7 +13,7 @@ const [region] = await database
   .returning()
 
 const [location] = await database
-  .insert(locationsTable)
+  .insert(locationTable)
   .values({
     regionId: region.id,
     name: 'Almaty',
@@ -29,7 +29,7 @@ const [organization] = await database
   })
   .returning()
 
-await database.insert(jobsTable).values({
+await database.insert(vacancyTable).values({
   organizationId: organization.id,
   locationId: location.id,
   title: 'Frontend Developer',

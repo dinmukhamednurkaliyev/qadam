@@ -2,7 +2,7 @@ import { pgTable, uuid, varchar } from 'drizzle-orm/pg-core'
 
 import { regionsTable } from './region-schema'
 
-export const locationsTable = pgTable('locations', {
+export const locationTable = pgTable('locations', {
   id: uuid('id').primaryKey().defaultRandom(),
 
   regionId: uuid('region_id')
