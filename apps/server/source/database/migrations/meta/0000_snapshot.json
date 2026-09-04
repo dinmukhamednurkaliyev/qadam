@@ -1,5 +1,5 @@
 {
-  "id": "45d39cb5-e842-4865-ba9f-47ad923e7fd1",
+  "id": "0cc64f48-7293-4bcc-a681-eb512a92943c",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -41,8 +41,12 @@
           "name": "applications_user_id_users_id_fk",
           "tableFrom": "applications",
           "tableTo": "users",
-          "columnsFrom": ["user_id"],
-          "columnsTo": ["id"],
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -50,8 +54,12 @@
           "name": "applications_vacancy_id_vacancies_id_fk",
           "tableFrom": "applications",
           "tableTo": "vacancies",
-          "columnsFrom": ["vacancy_id"],
-          "columnsTo": ["id"],
+          "columnsFrom": [
+            "vacancy_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -61,7 +69,10 @@
         "applications_user_id_vacancy_id_unique": {
           "name": "applications_user_id_vacancy_id_unique",
           "nullsNotDistinct": false,
-          "columns": ["user_id", "vacancy_id"]
+          "columns": [
+            "user_id",
+            "vacancy_id"
+          ]
         }
       },
       "policies": {},
@@ -105,8 +116,12 @@
           "name": "bookmarks_user_id_users_id_fk",
           "tableFrom": "bookmarks",
           "tableTo": "users",
-          "columnsFrom": ["user_id"],
-          "columnsTo": ["id"],
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -114,8 +129,12 @@
           "name": "bookmarks_vacancy_id_vacancies_id_fk",
           "tableFrom": "bookmarks",
           "tableTo": "vacancies",
-          "columnsFrom": ["vacancy_id"],
-          "columnsTo": ["id"],
+          "columnsFrom": [
+            "vacancy_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -125,7 +144,10 @@
         "bookmarks_user_id_vacancy_id_unique": {
           "name": "bookmarks_user_id_vacancy_id_unique",
           "nullsNotDistinct": false,
-          "columns": ["user_id", "vacancy_id"]
+          "columns": [
+            "user_id",
+            "vacancy_id"
+          ]
         }
       },
       "policies": {},
@@ -182,8 +204,12 @@
           "name": "candidate_profiles_user_id_users_id_fk",
           "tableFrom": "candidate_profiles",
           "tableTo": "users",
-          "columnsFrom": ["user_id"],
-          "columnsTo": ["id"],
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -193,7 +219,9 @@
         "candidate_profiles_user_id_unique": {
           "name": "candidate_profiles_user_id_unique",
           "nullsNotDistinct": false,
-          "columns": ["user_id"]
+          "columns": [
+            "user_id"
+          ]
         }
       },
       "policies": {},
@@ -230,8 +258,12 @@
           "name": "locations_region_id_regions_id_fk",
           "tableFrom": "locations",
           "tableTo": "regions",
-          "columnsFrom": ["region_id"],
-          "columnsTo": ["id"],
+          "columnsFrom": [
+            "region_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -268,12 +300,16 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "organization_members_organization_id_organization_id_fk": {
-          "name": "organization_members_organization_id_organization_id_fk",
+        "organization_members_organization_id_organizations_id_fk": {
+          "name": "organization_members_organization_id_organizations_id_fk",
           "tableFrom": "organization_members",
-          "tableTo": "organization",
-          "columnsFrom": ["organization_id"],
-          "columnsTo": ["id"],
+          "tableTo": "organizations",
+          "columnsFrom": [
+            "organization_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -281,8 +317,12 @@
           "name": "organization_members_user_id_users_id_fk",
           "tableFrom": "organization_members",
           "tableTo": "users",
-          "columnsFrom": ["user_id"],
-          "columnsTo": ["id"],
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -292,15 +332,18 @@
         "organization_members_organization_id_user_id_unique": {
           "name": "organization_members_organization_id_user_id_unique",
           "nullsNotDistinct": false,
-          "columns": ["organization_id", "user_id"]
+          "columns": [
+            "organization_id",
+            "user_id"
+          ]
         }
       },
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.organization": {
-      "name": "organization",
+    "public.organizations": {
+      "name": "organizations",
       "schema": "",
       "columns": {
         "id": {
@@ -382,7 +425,9 @@
         "regions_code_unique": {
           "name": "regions_code_unique",
           "nullsNotDistinct": false,
-          "columns": ["code"]
+          "columns": [
+            "code"
+          ]
         }
       },
       "policies": {},
@@ -434,7 +479,9 @@
         "users_email_unique": {
           "name": "users_email_unique",
           "nullsNotDistinct": false,
-          "columns": ["email"]
+          "columns": [
+            "email"
+          ]
         }
       },
       "policies": {},
@@ -493,12 +540,16 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "vacancies_organization_id_organization_id_fk": {
-          "name": "vacancies_organization_id_organization_id_fk",
+        "vacancies_organization_id_organizations_id_fk": {
+          "name": "vacancies_organization_id_organizations_id_fk",
           "tableFrom": "vacancies",
-          "tableTo": "organization",
-          "columnsFrom": ["organization_id"],
-          "columnsTo": ["id"],
+          "tableTo": "organizations",
+          "columnsFrom": [
+            "organization_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -506,8 +557,12 @@
           "name": "vacancies_location_id_locations_id_fk",
           "tableFrom": "vacancies",
           "tableTo": "locations",
-          "columnsFrom": ["location_id"],
-          "columnsTo": ["id"],
+          "columnsFrom": [
+            "location_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
