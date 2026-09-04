@@ -1,0 +1,21 @@
+name: Documentation Request
+description: Request a documentation change
+labels:
+  - documentation
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What should be documented?
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Why is this needed?
+    validations:
+      required: true

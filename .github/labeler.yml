@@ -1,146 +1,102 @@
-area-app:
+app:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/app/app.vue"
-          - "web/app/error.vue"
-          - "web/app/layouts/**"
+          - 'apps/web/source/app/**'
+          - 'apps/web/source/main.ts'
+          - 'apps/web/index.html'
 
-area-components:
+features:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/app/components/**"
+          - 'apps/web/source/features/**'
 
-area-pages:
+components:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/app/pages/**"
+          - 'apps/web/source/components/**'
+          - 'apps/web/source/**/components/**'
 
-area-composables:
+pages:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/app/composables/**"
+          - 'apps/web/source/pages/**'
+          - 'apps/web/source/**/pages/**'
 
-area-stores:
+styles:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/app/stores/**"
+          - 'apps/web/source/assets/**/*.css'
+          - 'apps/web/source/assets/**/*.scss'
+          - 'apps/web/source/**/*.css'
+          - 'apps/web/source/**/*.scss'
 
-area-plugins:
+assets:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/app/plugins/**"
-          - "web/modules/**"
+          - 'apps/web/source/assets/**'
+          - 'apps/web/public/**'
 
-area-middleware:
+server:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/app/middleware/**"
+          - 'apps/server/**'
 
-area-server:
+tests:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/server/**"
+          - 'apps/**/*.test.ts'
+          - 'apps/**/*.spec.ts'
+          - 'apps/**/*.test.tsx'
+          - 'apps/**/*.spec.tsx'
+          - 'tests/**'
 
-area-styles:
+configuration:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/assets/**/*.css"
-          - "web/assets/**/*.scss"
-          - "web/assets/**/*.sass"
-          - "web/assets/**/*.less"
-          - "web/app/assets/**/*.css"
-          - "web/app/assets/**/*.scss"
-          - "web/app/assets/**/*.sass"
-          - "web/app/assets/**/*.less"
+          - 'mise.toml'
+          - 'apps/web/vite.config.*'
+          - 'apps/web/tsconfig.json'
+          - 'apps/web/eslint.config.*'
+          - 'apps/web/stylelint.config.*'
+          - 'apps/web/.editorconfig'
+          - '.vscode/**'
 
-area-assets:
+infrastructure:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/assets/images/**"
-          - "web/assets/fonts/**"
-          - "web/app/assets/images/**"
-          - "web/app/assets/fonts/**"
-          - "web/public/**"
+          - '.github/**'
+          - 'docker/**'
+          - 'terraform/**'
+          - 'k8s/**'
+          - 'Dockerfile'
+          - 'Dockerfile.*'
+          - 'docker-compose.yml'
+          - 'docker-compose.yaml'
+          - 'compose.yml'
+          - 'compose.yaml'
 
-area-data:
+dependencies:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/app/data/**"
+          - 'package.json'
+          - 'apps/*/package.json'
+          - 'packages/*/package.json'
+          - 'bun.lock'
+          - 'package-lock.json'
+          - 'pnpm-lock.yaml'
+          - 'yarn.lock'
 
-area-types:
+documentation:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/app/types/**"
-          - "web/**/*.d.ts"
+          - '**/*.md'
+          - 'documentation/**'
+          - 'README.md'
+          - 'LICENSE'
+          - 'LICENSE.*'
 
-area-utils:
+environment:
   - changed-files:
       - any-glob-to-any-file:
-          - "web/app/utils/**"
-          - "web/lib/**"
-
-area-tests:
-  - changed-files:
-      - any-glob-to-any-file:
-          - "web/test/**"
-          - "web/tests/**"
-          - "web/**/*.test.ts"
-          - "web/**/*.spec.ts"
-          - "web/playwright/**"
-          - "web/vitest.config.*"
-          - "web/playwright.config.*"
-
-area-configuration:
-  - changed-files:
-      - any-glob-to-any-file:
-          - "web/nuxt.config.*"
-          - "web/app.config.*"
-          - "web/tsconfig.json"
-          - "web/eslint.config.*"
-          - "web/stylelint.config.*"
-          - "web/prettier.config.*"
-          - "web/.prettierrc"
-          - "web/.prettierrc.*"
-          - "web/.prettierignore"
-          - "web/.editorconfig"
-          - "web/.npmrc"
-
-area-infrastructure:
-  - changed-files:
-      - any-glob-to-any-file:
-          - ".github/**"
-          - "docker/**"
-          - "terraform/**"
-          - "k8s/**"
-          - "Dockerfile"
-          - "Dockerfile.*"
-          - "docker-compose.yml"
-          - "docker-compose.yaml"
-          - "compose.yml"
-          - "compose.yaml"
-          - "netlify.toml"
-          - "vercel.json"
-
-area-dependencies:
-  - changed-files:
-      - any-glob-to-any-file:
-          - "web/package.json"
-          - "web/bun.lock"
-          - "web/package-lock.json"
-          - "web/pnpm-lock.yaml"
-          - "web/yarn.lock"
-
-area-documentation:
-  - changed-files:
-      - any-glob-to-any-file:
-          - "web/**/*.md"
-          - "web/docs/**"
-          - "README.md"
-          - "LICENSE"
-          - "LICENSE.*"
-
-area-environment:
-  - changed-files:
-      - any-glob-to-any-file:
-          - "web/.env.example"
-          - "web/.env.*.example"
+          - '**/.env.example'
+          - '**/.env.*.example'

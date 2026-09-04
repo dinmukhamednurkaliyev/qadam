@@ -29,7 +29,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v6.0.3
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
 
@@ -39,24 +39,25 @@ jobs:
         with:
           filters: |
             frontend:
-              - 'web/app/**'
-              - 'web/assets/**'
-              - 'web/public/**'
+              - 'apps/web/source/**'
+              - 'apps/web/public/**'
+              - 'apps/web/index.html'
 
             server:
-              - 'web/server/**'
+              - 'apps/server/**'
 
             configuration:
-              - 'web/package.json'
-              - 'web/bun.lock'
-              - 'web/nuxt.config.ts'
-              - 'web/tsconfig.json'
-              - 'web/eslint.config.mjs'
-              - 'web/stylelint.config.mjs'
-              - 'web/.prettierrc'
-              - 'web/.prettierrc.*'
-              - 'web/.prettierignore'
-              - 'web/.editorconfig'
+              - 'mise.toml'
+              - 'package.json'
+              - 'apps/web/package.json'
+              - 'apps/web/tsconfig.json'
+              - 'apps/web/vite.config.*'
+              - 'apps/web/eslint.config.*'
+              - 'apps/web/stylelint.config.*'
+              - 'apps/web/.prettierrc'
+              - 'apps/web/.prettierrc.*'
+              - 'apps/web/.prettierignore'
+              - 'apps/web/.editorconfig'
               - '.github/workflows/continuous-integration.yml'
 
       - name: Log Detected Changes
@@ -97,16 +98,14 @@ jobs:
 
     defaults:
       run:
-        working-directory: web
+        working-directory: apps/web
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v6.0.3
+        uses: actions/checkout@v7.0.1
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2.2.0
-        with:
-          cache: true
+      - name: Setup mise
+        uses: jdx/mise-action@v4.3.0
 
       - name: Install Dependencies
         run: |

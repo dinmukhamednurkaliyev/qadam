@@ -1,0 +1,21 @@
+name: Fix Request
+description: Request a fix for incorrect behavior
+labels:
+  - fix
+
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is not working correctly?
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should happen instead?
+    validations:
+      required: true
