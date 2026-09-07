@@ -34,7 +34,7 @@ jobs:
           fetch-depth: 0
 
       - name: Detect Changed Files
-        uses: dorny/paths-filter@v4.0.2
+        uses: dorny/paths-filter@v4.0.3
         id: filter
         with:
           filters: |
@@ -83,7 +83,7 @@ jobs:
 
     steps:
       - name: Label Pull Request
-        uses: actions/labeler@v6.1.0
+        uses: actions/labeler@v7.0.0
         with:
           configuration-path: .github/labeler.yml
           sync-labels: true
