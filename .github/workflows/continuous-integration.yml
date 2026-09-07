@@ -44,11 +44,13 @@ jobs:
               - 'apps/web/index.html'
 
             server:
-              - 'apps/server/**'
+              - 'apps/server/source/**'
 
             configuration:
               - 'mise.toml'
               - 'package.json'
+              - 'bun.lock'
+
               - 'apps/web/package.json'
               - 'apps/web/tsconfig.json'
               - 'apps/web/vite.config.*'
@@ -58,6 +60,10 @@ jobs:
               - 'apps/web/.prettierrc.*'
               - 'apps/web/.prettierignore'
               - 'apps/web/.editorconfig'
+
+              - 'apps/server/package.json'
+              - 'apps/server/tsconfig.json'
+
               - '.github/workflows/continuous-integration.yml'
 
       - name: Log Detected Changes
@@ -96,10 +102,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: apps/web
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v7.0.1
@@ -110,6 +112,7 @@ jobs:
       - name: Install Dependencies
         run: |
           echo -e "\e[36mInstalling dependencies...\e[0m"
+
           bun install --frozen-lockfile
 
       - name: Run Security Audit
@@ -152,14 +155,23 @@ jobs:
         run: |
           echo -e "\e[33mChecking TypeScript types...\e[0m"
 
-          bun run typecheck || {
+          bun run type-check || {
             echo -e "\e[31mType checking failed!\e[0m"
             exit 1
           }
 
-      - name: Build Application
+      - name: Run Tests
         run: |
-          echo -e "\e[35mBuilding production application...\e[0m"
+          echo -e "\e[33mRunning tests...\e[0m"
+
+          bun run test || {
+            echo -e "\e[31mTests failed!\e[0m"
+            exit 1
+          }
+
+      - name: Build Applications
+        run: |
+          echo -e "\e[35mBuilding production applications...\e[0m"
 
           bun run build || {
             echo -e "\e[31mProduction build failed!\e[0m"
