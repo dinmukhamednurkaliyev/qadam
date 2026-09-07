@@ -1,5 +1,5 @@
 {
-  "id": "f7c3b769-bd06-4f77-bd86-6534aa5af39e",
+  "id": "837b1cea-6de1-4df8-92da-57c47f4b76a7",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -23,6 +23,12 @@
         },
         "vacancy_id": {
           "name": "vacancy_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "resume_id": {
+          "name": "resume_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": true
@@ -63,6 +69,21 @@
         }
       },
       "indexes": {
+        "applications_resume_id_index": {
+          "name": "applications_resume_id_index",
+          "columns": [
+            {
+              "expression": "resume_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
         "applications_user_id_status_index": {
           "name": "applications_user_id_status_index",
           "columns": [
@@ -129,6 +150,21 @@
           ],
           "columnsTo": [
             "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "applications_resume_owner_fk": {
+          "name": "applications_resume_owner_fk",
+          "tableFrom": "applications",
+          "tableTo": "resumes",
+          "columnsFrom": [
+            "resume_id",
+            "user_id"
+          ],
+          "columnsTo": [
+            "id",
+            "user_id"
           ],
           "onDelete": "no action",
           "onUpdate": "no action"
@@ -395,9 +431,9 @@
           "primaryKey": false,
           "notNull": false
         },
-        "resume_url": {
-          "name": "resume_url",
-          "type": "varchar(2048)",
+        "default_resume_id": {
+          "name": "default_resume_id",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": false
         },
@@ -416,7 +452,23 @@
           "default": "now()"
         }
       },
-      "indexes": {},
+      "indexes": {
+        "candidate_profiles_default_resume_id_index": {
+          "name": "candidate_profiles_default_resume_id_index",
+          "columns": [
+            {
+              "expression": "default_resume_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
       "foreignKeys": {
         "candidate_profiles_user_id_users_id_fk": {
           "name": "candidate_profiles_user_id_users_id_fk",
@@ -429,6 +481,21 @@
             "id"
           ],
           "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "candidate_profiles_default_resume_owner_fk": {
+          "name": "candidate_profiles_default_resume_owner_fk",
+          "tableFrom": "candidate_profiles",
+          "tableTo": "resumes",
+          "columnsFrom": [
+            "default_resume_id",
+            "user_id"
+          ],
+          "columnsTo": [
+            "id",
+            "user_id"
+          ],
+          "onDelete": "no action",
           "onUpdate": "no action"
         }
       },
@@ -1028,6 +1095,125 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
+    "public.resumes": {
+      "name": "resumes",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "original_file_name": {
+          "name": "original_file_name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "storage_key": {
+          "name": "storage_key",
+          "type": "varchar(1024)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "size_bytes": {
+          "name": "size_bytes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mime_type": {
+          "name": "mime_type",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'application/pdf'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "archived_at": {
+          "name": "archived_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "resumes_user_id_index": {
+          "name": "resumes_user_id_index",
+          "columns": [
+            {
+              "expression": "user_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "resumes_user_id_users_id_fk": {
+          "name": "resumes_user_id_users_id_fk",
+          "tableFrom": "resumes",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "resumes_storage_key_unique": {
+          "name": "resumes_storage_key_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "storage_key"
+          ]
+        },
+        "resumes_id_user_id_unique": {
+          "name": "resumes_id_user_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "id",
+            "user_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "resumes_size_positive": {
+          "name": "resumes_size_positive",
+          "value": "\"resumes\".\"size_bytes\" > 0"
+        },
+        "resumes_pdf_only": {
+          "name": "resumes_pdf_only",
+          "value": "\"resumes\".\"mime_type\" = 'application/pdf'"
+        }
+      },
+      "isRLSEnabled": false
+    },
     "public.sessions": {
       "name": "sessions",
       "schema": "",
@@ -1449,17 +1635,6 @@
         "withdrawn"
       ]
     },
-    "public.employment_type": {
-      "name": "employment_type",
-      "schema": "public",
-      "values": [
-        "full_time",
-        "part_time",
-        "contract",
-        "internship",
-        "temporary"
-      ]
-    },
     "public.organization_role": {
       "name": "organization_role",
       "schema": "public",
@@ -1485,6 +1660,17 @@
       "values": [
         "user",
         "admin"
+      ]
+    },
+    "public.employment_type": {
+      "name": "employment_type",
+      "schema": "public",
+      "values": [
+        "full_time",
+        "part_time",
+        "contract",
+        "internship",
+        "temporary"
       ]
     },
     "public.vacancy_status": {
