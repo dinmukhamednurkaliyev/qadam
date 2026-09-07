@@ -1,4 +1,4 @@
-import { pgTable, timestamp, unique, uuid } from 'drizzle-orm/pg-core'
+import { index, pgTable, timestamp, unique, uuid } from 'drizzle-orm/pg-core'
 
 import { vacancyTable } from './vacancy-schema'
 import { usersTable } from './user-schema'
@@ -10,11 +10,11 @@ export const bookmarkTable = pgTable(
 
     userId: uuid('user_id')
       .notNull()
-      .references(() => usersTable.id),
+      .references(() => usersTable.id, { onDelete: 'cascade' }),
 
     vacancyId: uuid('vacancy_id')
       .notNull()
-      .references(() => vacancyTable.id),
+      .references(() => vacancyTable.id, { onDelete: 'cascade' }),
 
     createdAt: timestamp('created_at', {
       withTimezone: true,
@@ -23,5 +23,8 @@ export const bookmarkTable = pgTable(
       .defaultNow()
       .notNull(),
   },
-  (table) => [unique().on(table.userId, table.vacancyId)],
+  (table) => [
+    unique().on(table.userId, table.vacancyId),
+    index('bookmarks_vacancy_id_index').on(table.vacancyId),
+  ],
 )

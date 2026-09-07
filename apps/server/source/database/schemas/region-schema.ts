@@ -1,9 +1,15 @@
-import { pgTable, uuid, varchar } from 'drizzle-orm/pg-core'
+import { pgTable, unique, uuid, varchar } from 'drizzle-orm/pg-core'
 
-export const regionsTable = pgTable('regions', {
-  id: uuid('id').primaryKey().defaultRandom(),
+export const regionsTable = pgTable(
+  'regions',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
 
-  name: varchar('name', { length: 255 }).notNull(),
+    countryCode: varchar('country_code', { length: 2 }).notNull(),
 
-  code: varchar('code', { length: 50 }).notNull().unique(),
-})
+    name: varchar('name', { length: 255 }).notNull(),
+
+    code: varchar('code', { length: 50 }).notNull(),
+  },
+  (table) => [unique().on(table.countryCode, table.code)],
+)
