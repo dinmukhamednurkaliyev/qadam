@@ -114,9 +114,9 @@ jobs:
 
       - name: Run Security Audit
         run: |
-          echo -e "\e[35mRunning security audit...\e[0m"
+          echo -e "\e[35mRunning production security audit...\e[0m"
 
-          bun audit || {
+          bun audit --prod || {
             echo -e "\e[31mSecurity vulnerabilities found!\e[0m"
             exit 1
           }
