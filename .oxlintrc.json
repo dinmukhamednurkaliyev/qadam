@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": {
+    "correctness": "error"
+  },
+  "overrides": [
+    {
+      "files": ["apps/web/**/*.{js,ts,vue}"],
+      "plugins": ["eslint", "typescript", "unicorn", "oxc", "vue", "vitest"],
+      "env": {
+        "browser": true,
+        "builtin": true
+      }
+    },
+    {
+      "files": ["apps/server/**/*.{js,ts}"],
+      "plugins": ["eslint", "typescript", "unicorn", "oxc", "vitest"],
+      "env": {
+        "builtin": true
+      }
+    }
+  ]
+}

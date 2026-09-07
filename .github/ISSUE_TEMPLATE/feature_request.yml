@@ -1,0 +1,21 @@
+name: Feature Request
+description: Request new functionality
+labels:
+  - feature
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What should be added?
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Why is this needed?
+    validations:
+      required: true
