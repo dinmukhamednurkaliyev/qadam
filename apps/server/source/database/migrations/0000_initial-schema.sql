@@ -1,14 +1,15 @@
 CREATE TYPE "public"."application_status" AS ENUM('submitted', 'reviewing', 'interview', 'offered', 'hired', 'rejected', 'withdrawn');--> statement-breakpoint
-CREATE TYPE "public"."employment_type" AS ENUM('full_time', 'part_time', 'contract', 'internship', 'temporary');--> statement-breakpoint
 CREATE TYPE "public"."organization_role" AS ENUM('owner', 'recruiter');--> statement-breakpoint
 CREATE TYPE "public"."organization_status" AS ENUM('draft', 'pending', 'verified', 'rejected', 'suspended');--> statement-breakpoint
 CREATE TYPE "public"."platform_role" AS ENUM('user', 'admin');--> statement-breakpoint
+CREATE TYPE "public"."employment_type" AS ENUM('full_time', 'part_time', 'contract', 'internship', 'temporary');--> statement-breakpoint
 CREATE TYPE "public"."vacancy_status" AS ENUM('draft', 'published', 'closed', 'archived');--> statement-breakpoint
 CREATE TYPE "public"."workplace_type" AS ENUM('onsite', 'hybrid', 'remote');--> statement-breakpoint
 CREATE TABLE "applications" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"user_id" uuid NOT NULL,
 	"vacancy_id" uuid NOT NULL,
+	"resume_id" uuid NOT NULL,
 	"status" "application_status" DEFAULT 'submitted' NOT NULL,
 	"cover_letter" text,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
@@ -43,7 +44,7 @@ CREATE TABLE "candidate_profiles" (
 	"headline" varchar(255),
 	"bio" text,
 	"phone" varchar(50),
-	"resume_url" varchar(2048),
+	"default_resume_id" uuid,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
 	"updated_at" timestamp with time zone DEFAULT now() NOT NULL,
 	CONSTRAINT "candidate_profiles_user_id_unique" UNIQUE("user_id")
@@ -104,6 +105,21 @@ CREATE TABLE "regions" (
 	CONSTRAINT "regions_country_code_code_unique" UNIQUE("country_code","code")
 );
 --> statement-breakpoint
+CREATE TABLE "resumes" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"user_id" uuid NOT NULL,
+	"original_file_name" varchar(255) NOT NULL,
+	"storage_key" varchar(1024) NOT NULL,
+	"size_bytes" integer NOT NULL,
+	"mime_type" varchar(100) DEFAULT 'application/pdf' NOT NULL,
+	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
+	"archived_at" timestamp with time zone,
+	CONSTRAINT "resumes_storage_key_unique" UNIQUE("storage_key"),
+	CONSTRAINT "resumes_id_user_id_unique" UNIQUE("id","user_id"),
+	CONSTRAINT "resumes_size_positive" CHECK ("resumes"."size_bytes" > 0),
+	CONSTRAINT "resumes_pdf_only" CHECK ("resumes"."mime_type" = 'application/pdf')
+);
+--> statement-breakpoint
 CREATE TABLE "sessions" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"user_id" uuid NOT NULL,
@@ -147,11 +163,13 @@ CREATE TABLE "vacancies" (
 --> statement-breakpoint
 ALTER TABLE "applications" ADD CONSTRAINT "applications_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "applications" ADD CONSTRAINT "applications_vacancy_id_vacancies_id_fk" FOREIGN KEY ("vacancy_id") REFERENCES "public"."vacancies"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "applications" ADD CONSTRAINT "applications_resume_owner_fk" FOREIGN KEY ("resume_id","user_id") REFERENCES "public"."resumes"("id","user_id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "application_status_history" ADD CONSTRAINT "application_status_history_application_id_applications_id_fk" FOREIGN KEY ("application_id") REFERENCES "public"."applications"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "application_status_history" ADD CONSTRAINT "application_status_history_changed_by_user_id_users_id_fk" FOREIGN KEY ("changed_by_user_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "bookmarks" ADD CONSTRAINT "bookmarks_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "bookmarks" ADD CONSTRAINT "bookmarks_vacancy_id_vacancies_id_fk" FOREIGN KEY ("vacancy_id") REFERENCES "public"."vacancies"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "candidate_profiles" ADD CONSTRAINT "candidate_profiles_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "candidate_profiles" ADD CONSTRAINT "candidate_profiles_default_resume_owner_fk" FOREIGN KEY ("default_resume_id","user_id") REFERENCES "public"."resumes"("id","user_id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "locations" ADD CONSTRAINT "locations_region_id_regions_id_fk" FOREIGN KEY ("region_id") REFERENCES "public"."regions"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "organization_invitations" ADD CONSTRAINT "organization_invitations_organization_id_organizations_id_fk" FOREIGN KEY ("organization_id") REFERENCES "public"."organizations"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "organization_invitations" ADD CONSTRAINT "organization_invitations_invited_by_user_id_users_id_fk" FOREIGN KEY ("invited_by_user_id") REFERENCES "public"."users"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
@@ -159,14 +177,17 @@ ALTER TABLE "organization_members" ADD CONSTRAINT "organization_members_organiza
 ALTER TABLE "organization_members" ADD CONSTRAINT "organization_members_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "organizations" ADD CONSTRAINT "organizations_created_by_user_id_users_id_fk" FOREIGN KEY ("created_by_user_id") REFERENCES "public"."users"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "organizations" ADD CONSTRAINT "organizations_verified_by_user_id_users_id_fk" FOREIGN KEY ("verified_by_user_id") REFERENCES "public"."users"("id") ON DELETE set null ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "resumes" ADD CONSTRAINT "resumes_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "sessions" ADD CONSTRAINT "sessions_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "vacancies" ADD CONSTRAINT "vacancies_organization_id_organizations_id_fk" FOREIGN KEY ("organization_id") REFERENCES "public"."organizations"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "vacancies" ADD CONSTRAINT "vacancies_created_by_user_id_users_id_fk" FOREIGN KEY ("created_by_user_id") REFERENCES "public"."users"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "vacancies" ADD CONSTRAINT "vacancies_location_id_locations_id_fk" FOREIGN KEY ("location_id") REFERENCES "public"."locations"("id") ON DELETE set null ON UPDATE no action;--> statement-breakpoint
+CREATE INDEX "applications_resume_id_index" ON "applications" USING btree ("resume_id");--> statement-breakpoint
 CREATE INDEX "applications_user_id_status_index" ON "applications" USING btree ("user_id","status");--> statement-breakpoint
 CREATE INDEX "applications_vacancy_id_status_index" ON "applications" USING btree ("vacancy_id","status");--> statement-breakpoint
 CREATE INDEX "application_status_history_application_id_created_at_index" ON "application_status_history" USING btree ("application_id","created_at");--> statement-breakpoint
 CREATE INDEX "bookmarks_vacancy_id_index" ON "bookmarks" USING btree ("vacancy_id");--> statement-breakpoint
+CREATE INDEX "candidate_profiles_default_resume_id_index" ON "candidate_profiles" USING btree ("default_resume_id");--> statement-breakpoint
 CREATE INDEX "locations_region_id_index" ON "locations" USING btree ("region_id");--> statement-breakpoint
 CREATE UNIQUE INDEX "organization_invitations_token_hash_unique" ON "organization_invitations" USING btree ("token_hash");--> statement-breakpoint
 CREATE INDEX "organization_invitations_organization_id_index" ON "organization_invitations" USING btree ("organization_id");--> statement-breakpoint
@@ -177,6 +198,7 @@ CREATE UNIQUE INDEX "organizations_slug_unique" ON "organizations" USING btree (
 CREATE UNIQUE INDEX "organizations_registration_unique" ON "organizations" USING btree ("registration_country_code","registration_number");--> statement-breakpoint
 CREATE INDEX "organizations_created_by_user_id_index" ON "organizations" USING btree ("created_by_user_id");--> statement-breakpoint
 CREATE INDEX "organizations_status_index" ON "organizations" USING btree ("status");--> statement-breakpoint
+CREATE INDEX "resumes_user_id_index" ON "resumes" USING btree ("user_id");--> statement-breakpoint
 CREATE UNIQUE INDEX "sessions_token_hash_unique" ON "sessions" USING btree ("token_hash");--> statement-breakpoint
 CREATE INDEX "sessions_user_id_index" ON "sessions" USING btree ("user_id");--> statement-breakpoint
 CREATE INDEX "sessions_expires_at_index" ON "sessions" USING btree ("expires_at");--> statement-breakpoint

@@ -1,0 +1,22 @@
+{
+  "name": "@qadam/shared",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./source/index.ts",
+    "./vacancies": "./source/vacancies/vacancy-contracts.ts",
+    "./common": "./source/common/error-response.ts"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "test": "bun test --pass-with-no-tests",
+    "test:watch": "bun test --watch"
+  },
+  "dependencies": {
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "catalog:"
+  }
+}

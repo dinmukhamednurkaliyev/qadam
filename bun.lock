@@ -9,17 +9,17 @@
         "@types/node": "^26.4.1",
         "@vitest/eslint-plugin": "^1.6.27",
         "@vue/eslint-config-typescript": "^14.9.0",
-        "eslint": "^10.9.1",
+        "eslint": "^10.10.0",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-oxlint": "^1.81.0",
-        "eslint-plugin-vue": "^10.10.0",
+        "eslint-plugin-vue": "^10.11.0",
         "jiti": "2.7.0",
         "oxlint": "^1.81.0",
         "postcss-html": "^2.0.0",
         "prettier": "^3.9.6",
-        "stylelint": "^17.14.1",
+        "stylelint": "^17.15.0",
         "stylelint-config-standard": "^40.0.0",
-        "typescript": "~6.0.0",
+        "typescript": "~6.0.3",
         "typescript-eslint": "^8.69.0",
         "vue-eslint-parser": "10.4.1",
       },
@@ -27,6 +27,7 @@
     "apps/server": {
       "name": "@qadam/server",
       "dependencies": {
+        "@qadam/shared": "workspace:*",
         "drizzle-orm": "^0.45.2",
         "hono": "^4.13.5",
         "postgres": "^3.4.9",
@@ -40,6 +41,7 @@
     "apps/web": {
       "name": "@qadam/web",
       "dependencies": {
+        "@qadam/shared": "workspace:*",
         "pinia": "^4.0.2",
         "vue": "^3.5.40",
         "vue-router": "^5.2.0",
@@ -56,6 +58,16 @@
         "vite-plugin-vue-devtools": "^8.1.5",
         "vitest": "^4.1.10",
         "vue-tsc": "^3.3.7",
+      },
+    },
+    "packages/shared": {
+      "name": "@qadam/shared",
+      "dependencies": {
+        "zod": "^4.5.4",
+      },
+      "devDependencies": {
+        "@types/bun": "latest",
+        "typescript": "catalog:",
       },
     },
   },
@@ -304,6 +316,8 @@
     "@polka/url": ["@polka/url@1.0.0-next.29", "", {}, "sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww=="],
 
     "@qadam/server": ["@qadam/server@workspace:apps/server"],
+
+    "@qadam/shared": ["@qadam/shared@workspace:packages/shared"],
 
     "@qadam/web": ["@qadam/web@workspace:apps/web"],
 
@@ -1022,6 +1036,8 @@
     "yallist": ["yallist@3.1.1", "", {}, "sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g=="],
 
     "yocto-queue": ["yocto-queue@0.1.0", "", {}, "sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q=="],
+
+    "zod": ["zod@4.5.4", "", {}, "sha512-sC95tT5iHHH9gtpj6A81kh+NEaRAUFN+qlUPDUbRfOMvNf5QCBqsb3WgvnpVtK5Y+4UfA6KqufotuTvMGiTlsA=="],
 
     "@babel/code-frame/js-tokens": ["js-tokens@4.0.0", "", {}, "sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ=="],
 
