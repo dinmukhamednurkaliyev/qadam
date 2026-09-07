@@ -12,7 +12,7 @@
     }
   },
   "scripts": {
-    "dev": "bun run --workspaces --parallel dev",
+    "dev": "bun run --workspaces --parallel --if-present dev",
     "dev:server": "bun run --filter @qadam/server dev",
     "dev:web": "bun run --filter @qadam/web dev",
     "build": "bun run --workspaces --if-present build",
