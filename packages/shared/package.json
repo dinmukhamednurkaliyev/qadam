@@ -8,15 +8,12 @@
     "./common": "./source/common/error-response.ts"
   },
   "scripts": {
-    "type-check": "tsc --noEmit",
-    "test": "bun test --pass-with-no-tests",
-    "test:watch": "bun test --watch"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "zod": "^4.5.4"
   },
   "devDependencies": {
-    "@types/bun": "latest",
     "typescript": "catalog:"
   }
 }

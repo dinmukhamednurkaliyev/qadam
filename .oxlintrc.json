@@ -1,12 +1,11 @@
 {
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
   "categories": {
     "correctness": "error"
   },
   "overrides": [
     {
       "files": ["apps/web/**/*.{js,ts,vue}"],
-      "plugins": ["typescript", "unicorn", "oxc", "vue", "vitest"],
+      "plugins": ["typescript", "unicorn", "oxc", "vue"],
       "env": {
         "browser": true,
         "builtin": true
@@ -14,7 +13,7 @@
     },
     {
       "files": ["apps/server/**/*.{js,ts}", "packages/**/*.{js,ts}"],
-      "plugins": ["typescript", "unicorn", "oxc", "vitest"],
+      "plugins": ["typescript", "unicorn", "oxc"],
       "env": {
         "builtin": true
       },
@@ -30,5 +29,5 @@
     }
   ],
   "plugins": ["typescript", "unicorn", "oxc"],
-  "ignorePatterns": ["**/dist/**", "**/dist-ssr/**", "**/coverage/**", "**/node_modules/**"]
+  "ignorePatterns": ["**/dist/**", "**/dist-ssr/**", "**/node_modules/**"]
 }

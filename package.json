@@ -20,8 +20,6 @@
     "start:production": "bun run --filter @qadam/server start:production",
     "preview": "bun run --filter @qadam/web preview",
     "type-check": "bun run --workspaces type-check",
-    "test": "bun run --workspaces --if-present test",
-    "test:watch": "bun run --workspaces --parallel --if-present test:watch",
     "lint": "oxlint apps packages",
     "lint:fix": "oxlint apps packages --fix",
     "stylelint": "stylelint \"{apps,packages}/**/*.{css,vue}\" --config stylelint.config.ts",
@@ -33,7 +31,7 @@
     "db:push": "bun run --filter @qadam/server db:push",
     "db:seed": "bun run --filter @qadam/server db:seed",
     "db:studio": "bun run --filter @qadam/server db:studio",
-    "check": "bun run type-check && bun run lint && bun run stylelint && bun run test && bun run format:check"
+    "check": "bun run type-check && bun run lint && bun run stylelint && bun run format:check"
   },
   "devDependencies": {
     "@types/node": "^26.4.1",

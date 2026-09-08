@@ -1,4 +1,3 @@
 **/dist
 **/dist-ssr
-**/coverage
 apps/server/source/database/migrations/**

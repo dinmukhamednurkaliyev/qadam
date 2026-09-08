@@ -41,15 +41,6 @@ server:
       - any-glob-to-any-file:
           - 'apps/server/**'
 
-tests:
-  - changed-files:
-      - any-glob-to-any-file:
-          - 'apps/**/*.test.ts'
-          - 'apps/**/*.spec.ts'
-          - 'apps/**/*.test.tsx'
-          - 'apps/**/*.spec.tsx'
-          - 'tests/**'
-
 configuration:
   - changed-files:
       - any-glob-to-any-file:

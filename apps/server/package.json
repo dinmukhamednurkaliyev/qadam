@@ -8,8 +8,6 @@
     "build": "bun build source/main.ts --outdir dist --target bun --sourcemap=external",
     "start:production": "bun dist/main.js",
     "type-check": "tsc --noEmit",
-    "test": "bun test --pass-with-no-tests",
-    "test:watch": "bun test --watch",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",

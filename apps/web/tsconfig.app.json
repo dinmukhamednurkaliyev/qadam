@@ -1,7 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": ["env.d.ts", "source/**/*", "source/**/*.vue", "source/main.ts"],
-  "exclude": ["source/**/__tests__/*"],
   "compilerOptions": {
     "noUncheckedIndexedAccess": true,
 

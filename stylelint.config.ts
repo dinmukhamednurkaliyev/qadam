@@ -10,5 +10,5 @@ export default {
     },
   ],
 
-  ignoreFiles: ['**/node_modules/**', '**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
+  ignoreFiles: ['**/node_modules/**', '**/dist/**', '**/dist-ssr/**'],
 } satisfies Config

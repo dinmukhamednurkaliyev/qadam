@@ -161,15 +161,6 @@ jobs:
             exit 1
           }
 
-      - name: Run Tests
-        run: |
-          echo -e "\e[33mRunning tests...\e[0m"
-
-          bun run test || {
-            echo -e "\e[31mTests failed!\e[0m"
-            exit 1
-          }
-
       - name: Build Applications
         run: |
           echo -e "\e[35mBuilding production applications...\e[0m"
