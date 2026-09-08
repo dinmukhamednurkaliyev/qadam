@@ -18,11 +18,11 @@
   },
   "devDependencies": {
     "@tsconfig/node24": "^24.0.4",
-    "@types/jsdom": "^28.0.3",
+    "@types/jsdom": "^30.0.0",
     "@types/node": "^24.13.3",
     "@vitejs/plugin-vue": "^6.0.8",
     "@vue/tsconfig": "^0.9.1",
-    "jsdom": "^29.1.1",
+    "jsdom": "^30.0.1",
     "typescript": "catalog:",
     "vite": "^8.1.5",
     "vite-plugin-vue-devtools": "^8.1.5",
