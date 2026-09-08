@@ -1,4 +1,4 @@
-# Qadam — Employment Platform
+# Qadam - Employment Platform
 
 ![Bun](https://img.shields.io/badge/Bun-000000?logo=bun&logoColor=white)
 ![Vue](https://img.shields.io/badge/Vue-4FC08D?logo=vue.js&logoColor=white)
