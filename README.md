@@ -1,4 +1,4 @@
-# Qadam
+# Qadam — Employment Platform
 
 ![Bun](https://img.shields.io/badge/Bun-000000?logo=bun&logoColor=white)
 ![Vue](https://img.shields.io/badge/Vue-4FC08D?logo=vue.js&logoColor=white)
@@ -9,8 +9,7 @@
 ![Drizzle](https://img.shields.io/badge/Drizzle-C5F74F?logo=drizzle&logoColor=black)
 ![License](https://img.shields.io/github/license/dinmukhamednurkaliyev/qadam)
 
-Qadam is a job search management platform designed to help users discover,
-organize, and track job opportunities and applications in one place.
+Qadam is an employment platform that connects job seekers with employers and allows them to discover, publish, and manage job opportunities and applications.
 
 ## License
 
