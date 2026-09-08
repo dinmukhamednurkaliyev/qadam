@@ -57,7 +57,7 @@ configuration:
           - 'apps/web/vite.config.*'
           - 'apps/web/tsconfig.json'
           - '.oxlintrc.json'
-          - 'apps/web/stylelint.config.*'
+          - 'stylelint.config.*'
           - 'apps/web/.editorconfig'
           - '.vscode/**'
 

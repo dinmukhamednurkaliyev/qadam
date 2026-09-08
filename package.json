@@ -24,7 +24,7 @@
     "test:watch": "bun run --workspaces --parallel --if-present test:watch",
     "lint": "oxlint apps packages",
     "lint:fix": "oxlint apps packages --fix",
-    "stylelint": "stylelint \"apps/web/source/**/*.{css,vue}\" --config apps/web/stylelint.config.ts",
+    "stylelint": "stylelint \"{apps,packages}/**/*.{css,vue}\" --config stylelint.config.ts",
     "stylelint:fix": "bun run stylelint --fix",
     "format": "prettier . --write",
     "format:check": "prettier . --check",

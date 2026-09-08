@@ -56,7 +56,7 @@ jobs:
               - 'apps/web/vite.config.*'
               - '.oxlintrc.json'
               - 'packages/**'
-              - 'apps/web/stylelint.config.*'
+              - 'stylelint.config.*'
               - 'apps/web/.prettierrc'
               - 'apps/web/.prettierrc.*'
               - 'apps/web/.prettierignore'
