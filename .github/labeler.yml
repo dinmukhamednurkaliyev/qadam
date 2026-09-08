@@ -56,7 +56,7 @@ configuration:
           - 'mise.toml'
           - 'apps/web/vite.config.*'
           - 'apps/web/tsconfig.json'
-          - 'apps/web/eslint.config.*'
+          - '.oxlintrc.json'
           - 'apps/web/stylelint.config.*'
           - 'apps/web/.editorconfig'
           - '.vscode/**'

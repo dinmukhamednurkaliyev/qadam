@@ -54,7 +54,8 @@ jobs:
               - 'apps/web/package.json'
               - 'apps/web/tsconfig.json'
               - 'apps/web/vite.config.*'
-              - 'apps/web/eslint.config.*'
+              - '.oxlintrc.json'
+              - 'packages/**'
               - 'apps/web/stylelint.config.*'
               - 'apps/web/.prettierrc'
               - 'apps/web/.prettierrc.*'
@@ -124,12 +125,12 @@ jobs:
             exit 1
           }
 
-      - name: Run ESLint
+      - name: Run Oxlint
         run: |
-          echo -e "\e[33mRunning ESLint...\e[0m"
+          echo -e "\e[33mRunning Oxlint...\e[0m"
 
           bun run lint || {
-            echo -e "\e[31mESLint check failed. Run 'bun run lint:fix' locally.\e[0m"
+            echo -e "\e[31mOxlint check failed. Run 'bun run lint:fix' locally.\e[0m"
             exit 1
           }
 
