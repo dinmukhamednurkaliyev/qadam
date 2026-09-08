@@ -1,12 +1,4 @@
-<p align="center">
-  <picture>
-    <img
-      src="documentation/images/logo.png"
-      alt="qadam-logo"
-      width="500"
-    >
-  </picture>
-</p>
+# Qadam
 
 ![Bun](https://img.shields.io/badge/Bun-000000?logo=bun&logoColor=white)
 ![Vue](https://img.shields.io/badge/Vue-4FC08D?logo=vue.js&logoColor=white)
@@ -17,20 +9,10 @@
 ![Drizzle](https://img.shields.io/badge/Drizzle-C5F74F?logo=drizzle&logoColor=black)
 ![License](https://img.shields.io/github/license/dinmukhamednurkaliyev/qadam)
 
-## Overview
-
-Qadam is a job search management platform designed to help users discover, organize, and track job opportunities and applications in one place.
-
-## Roadmap
-
-<p align="center">
-  <img
-    src="documentation/images/roadmap.png"
-    alt="Qadam product roadmap"
-    width="100%"
-  >
-</p>
+Qadam is a job search management platform designed to help users discover,
+organize, and track job opportunities and applications in one place.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE)
+file for details.

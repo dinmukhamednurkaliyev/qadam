@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./source/index.ts",
+    ".": "./source/main.ts",
     "./vacancies": "./source/vacancies/vacancy-contracts.ts",
     "./common": "./source/common/error-response.ts"
   },
