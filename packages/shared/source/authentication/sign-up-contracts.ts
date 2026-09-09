@@ -29,5 +29,5 @@ export const signUpResponseSchema = z.object({
   }),
 })
 
-export type SignUpInput = z.infer<typeof signUpRequestSchema>
+export type SignUpRequest = z.infer<typeof signUpRequestSchema>
 export type SignUpResponse = z.infer<typeof signUpResponseSchema>
