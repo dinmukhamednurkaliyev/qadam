@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 
-import { isVacancyList, type Vacancy } from '@/features/vacancies/vacancy'
+import { isVacancyList, type Vacancy } from '@/features/vacancy/vacancy'
 
 const vacancies = ref<Vacancy[]>([])
 const isLoading = ref(true)
