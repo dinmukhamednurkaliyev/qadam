@@ -4,6 +4,6 @@ export const vacancyRoutes: RouteRecordRaw[] = [
   {
     path: '/vacancies',
     name: 'vacancies',
-    component: () => import('@/features/vacancies/VacancyPage.vue'),
+    component: () => import('@/features/vacancy/VacancyPage.vue'),
   },
 ]
