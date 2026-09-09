@@ -16,9 +16,18 @@ const signUpPasswordSchema = z.string().refine(
   { error: 'Password must contain between 15 and 128 characters' },
 )
 
-export const signUpInputSchema = z.strictObject({
+export const signUpRequestSchema = z.strictObject({
   email: signUpEmailSchema,
   password: signUpPasswordSchema,
 })
 
-export type SignUpInput = z.infer<typeof signUpInputSchema>
+export const signUpResponseSchema = z.object({
+  user: z.object({
+    id: z.uuid(),
+    email: z.email().max(255),
+    emailVerified: z.boolean(),
+  }),
+})
+
+export type SignUpInput = z.infer<typeof signUpRequestSchema>
+export type SignUpResponse = z.infer<typeof signUpResponseSchema>
