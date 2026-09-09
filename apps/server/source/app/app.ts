@@ -2,6 +2,7 @@ import { cors } from 'hono/cors'
 import { Hono } from 'hono'
 
 import { appConfiguration } from '@/app/app-configuration'
+import { signUpRoute } from '@/features/authentication/sign-up-route'
 import { organizationsRoute } from '@/features/organization/organization-route'
 import { vacanciesRoute } from '@/features/vacancy/vacancy-route'
 
@@ -15,6 +16,7 @@ app.use(
 )
 
 app.route('/vacancies', vacanciesRoute)
+app.route('/authentication/register', signUpRoute)
 app.route('/organizations', organizationsRoute)
 
 export default {

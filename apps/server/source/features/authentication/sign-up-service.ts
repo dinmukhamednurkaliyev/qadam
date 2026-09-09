@@ -1,4 +1,4 @@
-import { signUpRequestSchema, signUpResponseSchema, type SignUpResponse } from '@qadam/shared'
+import { signUpResponseSchema, type SignUpInput, type SignUpResponse } from '@qadam/shared'
 
 import { database } from '@/database/database'
 import { usersTable } from '@/database/schemas/user-schema'
@@ -10,9 +10,7 @@ export class EmailAlreadyInUseError extends Error {
   }
 }
 
-export async function signUp(request: unknown): Promise<SignUpResponse> {
-  const input = signUpRequestSchema.parse(request)
-
+export async function signUp(input: SignUpInput): Promise<SignUpResponse> {
   const passwordHash = await Bun.password.hash(input.password, {
     algorithm: 'argon2id',
     memoryCost: 65536,

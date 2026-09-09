@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 export const errorResponseSchema = z.object({
-  code: z.enum(['VALIDATION_ERROR', 'NOT_FOUND', 'INTERNAL_ERROR']),
+  code: z.enum(['VALIDATION_ERROR', 'NOT_FOUND', 'CONFLICT', 'INTERNAL_ERROR']),
   message: z.string(),
   issues: z
     .array(
