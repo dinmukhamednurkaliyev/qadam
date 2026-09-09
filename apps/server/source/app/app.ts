@@ -16,7 +16,7 @@ app.use(
 )
 
 app.route('/vacancies', vacanciesRoute)
-app.route('/authentication/register', signUpRoute)
+app.route('/authentication/sign-up', signUpRoute)
 app.route('/organizations', organizationsRoute)
 
 export default {
