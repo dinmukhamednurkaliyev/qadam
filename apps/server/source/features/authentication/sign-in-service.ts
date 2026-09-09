@@ -4,6 +4,13 @@ import { sql } from 'drizzle-orm'
 import { database } from '@/database/database'
 import { usersTable } from '@/database/schemas/user-schema'
 
+import { createSession, type CreatedSession } from './session-service'
+
+export type SignInResult = {
+  response: SignInResponse
+  session: CreatedSession
+}
+
 const fallbackPasswordHash =
   '$argon2id$v=19$m=65536,t=2,p=1$dJq/ZeJPkAJR2WiQLZ5KUaq4T4sNJib8tMLmnh/8fmc$IAiTW64GUKMdxb/ZT2BX0bRN5C5ZSGHnPT8XkospyBg'
 
@@ -14,7 +21,7 @@ export class InvalidCredentialsError extends Error {
   }
 }
 
-export async function signIn(input: SignInRequest): Promise<SignInResponse> {
+export async function signIn(input: SignInRequest): Promise<SignInResult> {
   const [user] = await database
     .select({
       id: usersTable.id,
@@ -33,11 +40,18 @@ export async function signIn(input: SignInRequest): Promise<SignInResponse> {
     throw new InvalidCredentialsError()
   }
 
-  return signInResponseSchema.parse({
+  const response = signInResponseSchema.parse({
     user: {
       id: user.id,
       email: user.email,
       emailVerified: user.emailVerifiedAt !== null,
     },
   })
+
+  const session = await createSession(user.id)
+
+  return {
+    response: response,
+    session: session,
+  }
 }
