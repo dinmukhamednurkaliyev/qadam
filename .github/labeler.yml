@@ -2,7 +2,7 @@ app:
   - changed-files:
       - any-glob-to-any-file:
           - 'apps/web/source/app/**'
-          - 'apps/web/source/main.ts'
+          - 'apps/server/source/app/**'
           - 'apps/web/index.html'
 
 features:

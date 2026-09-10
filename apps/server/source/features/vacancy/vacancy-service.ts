@@ -1,12 +1,11 @@
 import {
-  errorResponseScheme,
   vacancyDetailsSchema,
-  vacancyFiltersSchema,
   vacancyListResponseSchema,
-  vacancyParametersSchema,
+  type VacancyFilters,
+  type VacancyDetails,
+  type VacancyListResponse,
 } from '@qadam/shared'
 import { and, desc, eq, ilike, inArray } from 'drizzle-orm'
-import { Hono } from 'hono'
 
 import { database } from '@/database/database'
 import { locationTable } from '@/database/schemas/location-schema'
@@ -53,36 +52,7 @@ function serializeVacancy(row: Awaited<ReturnType<typeof publicQuery>>[number]) 
   }
 }
 
-export const vacanciesRoute = new Hono()
-
-vacanciesRoute.onError((error, context) => {
-  console.error('Vacancies request failed:', error)
-  return context.json(
-    errorResponseScheme.parse({
-      code: 'INTERNAL_ERROR',
-      message: 'Unable to process vacancies request',
-    }),
-    500,
-  )
-})
-
-vacanciesRoute.get('/', async (context) => {
-  const parsed = vacancyFiltersSchema.safeParse(context.req.query())
-  if (!parsed.success) {
-    return context.json(
-      errorResponseScheme.parse({
-        code: 'VALIDATION_ERROR',
-        message: 'Invalid vacancy filters',
-        issues: parsed.error.issues.map((issue) => ({
-          path: issue.path.join('.'),
-          message: issue.message,
-        })),
-      }),
-      400,
-    )
-  }
-
-  const filters = parsed.data
+export async function getVacancies(filters: VacancyFilters): Promise<VacancyListResponse> {
   const search = filters.search?.replace(/[\\%_]/g, '\\$&')
   const rows = await publicQuery()
     .where(
@@ -104,25 +74,14 @@ vacanciesRoute.get('/', async (context) => {
     .limit(filters.limit)
     .offset(filters.offset)
 
-  return context.json(vacancyListResponseSchema.parse(rows.map(serializeVacancy)))
-})
+  return vacancyListResponseSchema.parse(rows.map(serializeVacancy))
+}
 
-vacanciesRoute.get('/:id', async (context) => {
-  const parsed = vacancyParametersSchema.safeParse(context.req.param())
-  if (!parsed.success) {
-    return context.json(
-      errorResponseScheme.parse({
-        code: 'VALIDATION_ERROR',
-        message: 'Invalid vacancy ID',
-      }),
-      400,
-    )
-  }
-
+export async function getVacancy(vacancyId: string): Promise<VacancyDetails | null> {
   const [row] = await publicQuery()
     .where(
       and(
-        eq(vacancyTable.id, parsed.data.id),
+        eq(vacancyTable.id, vacancyId),
         eq(organizationTable.status, 'verified'),
         inArray(vacancyTable.status, ['published', 'closed']),
       ),
@@ -130,14 +89,8 @@ vacanciesRoute.get('/:id', async (context) => {
     .limit(1)
 
   if (!row) {
-    return context.json(
-      errorResponseScheme.parse({
-        code: 'NOT_FOUND',
-        message: 'Vacancy not found',
-      }),
-      404,
-    )
+    return null
   }
 
-  return context.json(vacancyDetailsSchema.parse(serializeVacancy(row)))
-})
+  return vacancyDetailsSchema.parse(serializeVacancy(row))
+}

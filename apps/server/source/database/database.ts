@@ -1,12 +1,8 @@
 import { drizzle } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'
 
-const url = process.env.DATABASE_URL
+import { appConfiguration } from '@/app/app-configuration'
 
-if (!url) {
-  throw new Error('DATABASE_URL is not defined')
-}
-
-const client = postgres(url)
+const client = postgres(appConfiguration.databaseUrl)
 
 export const database = drizzle(client)
