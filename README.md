@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="documentation/images/qadam-banner.png" alt="Qadam"  width="100%/>
+</p>
+
 # Qadam - Employment Platform
 
 ![Bun](https://img.shields.io/badge/Bun-000000?logo=bun&logoColor=white)
