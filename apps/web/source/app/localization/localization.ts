@@ -1,9 +1,27 @@
 import { watch } from 'vue'
 import { createI18n } from 'vue-i18n'
 
-import englishMessages from './messages/english.json'
-import kazakhMessages from './messages/kazakh.json'
-import russianMessages from './messages/russian.json'
+import englishCommonMessages from './locales/messages/english/common.json'
+import englishVacancyMessages from './locales/messages/english/vacancy.json'
+import kazakhCommonMessages from './locales/messages/kazakh/common.json'
+import kazakhVacancyMessages from './locales/messages/kazakh/vacancy.json'
+import russianCommonMessages from './locales/messages/russian/common.json'
+import russianVacancyMessages from './locales/messages/russian/vacancy.json'
+
+const englishMessages = {
+  common: englishCommonMessages,
+  vacancy: englishVacancyMessages,
+}
+
+const kazakhMessages = {
+  common: kazakhCommonMessages,
+  vacancy: kazakhVacancyMessages,
+}
+
+const russianMessages = {
+  common: russianCommonMessages,
+  vacancy: russianVacancyMessages,
+}
 
 export type Language = 'ru' | 'kk' | 'en'
 
