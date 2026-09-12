@@ -1,59 +1,53 @@
 import { watch } from 'vue'
 import { createI18n } from 'vue-i18n'
 
-import englishMessages from './messages/english.json'
-import kazakhMessages from './messages/kazakh.json'
-import russianMessages from './messages/russian.json'
+import { detectBrowserLanguage } from './language-detector'
+import { availableLanguages, resources, type Language, type Messages } from './resources'
 
-export type Language = 'ru' | 'kk' | 'en'
-
+const defaultLanguage: Language = 'ru'
+const fallbackLanguage: Language = 'en'
 const languageStorageKey = 'qadam.language'
 
-export const availableLanguages = [
-  { value: 'ru', label: 'Русский' },
-  { value: 'kk', label: 'Қазақша' },
-  { value: 'en', label: 'English' },
-] satisfies Array<{ value: Language; label: string }>
-
 function isLanguage(value: string | null): value is Language {
-  return value === 'ru' || value === 'kk' || value === 'en'
+  return availableLanguages.some(({ code }) => code === value)
 }
 
 function readLanguage(): Language {
   try {
-    const savedLanguage = localStorage.getItem(languageStorageKey)
+    const storedLanguage = localStorage.getItem(languageStorageKey)
 
-    if (isLanguage(savedLanguage)) {
-      return savedLanguage
+    if (isLanguage(storedLanguage)) {
+      return storedLanguage
     }
-  } catch {
-    // Browser storage can be unavailable; localization still works in memory.
+  } catch {}
+
+  const browserLanguage = detectBrowserLanguage()
+
+  if (browserLanguage) {
+    return browserLanguage
   }
 
-  return 'ru'
+  return defaultLanguage
 }
 
-export const localization = createI18n<[typeof englishMessages], Language, false>({
+function syncLanguage(language: Language): void {
+  document.documentElement.lang = language
+
+  try {
+    localStorage.setItem(languageStorageKey, language)
+  } catch {}
+}
+
+export const localization = createI18n<[Messages], Language, false>({
   legacy: false,
   locale: readLanguage(),
-  fallbackLocale: 'en',
-  messages: {
-    ru: russianMessages,
-    kk: kazakhMessages,
-    en: englishMessages,
-  },
+  fallbackLocale: fallbackLanguage,
+  messages: resources,
 })
 
-watch(
-  localization.global.locale,
-  (language: Language): void => {
-    document.documentElement.lang = language
-
-    try {
-      localStorage.setItem(languageStorageKey, language)
-    } catch {
-      // A blocked storage must not prevent changing the interface language.
-    }
-  },
-  { immediate: true, flush: 'sync' },
-)
+export function initializeLocalization(): void {
+  watch(localization.global.locale, syncLanguage, {
+    immediate: true,
+    flush: 'sync',
+  })
+}
