@@ -3,8 +3,6 @@ import { createI18n } from 'vue-i18n'
 
 import englishCommonMessages from './locales/messages/english/common.json'
 import englishVacancyMessages from './locales/messages/english/vacancy.json'
-import kazakhCommonMessages from './locales/messages/kazakh/common.json'
-import kazakhVacancyMessages from './locales/messages/kazakh/vacancy.json'
 import russianCommonMessages from './locales/messages/russian/common.json'
 import russianVacancyMessages from './locales/messages/russian/vacancy.json'
 
@@ -13,28 +11,22 @@ const englishMessages = {
   vacancy: englishVacancyMessages,
 }
 
-const kazakhMessages = {
-  common: kazakhCommonMessages,
-  vacancy: kazakhVacancyMessages,
-}
-
 const russianMessages = {
   common: russianCommonMessages,
   vacancy: russianVacancyMessages,
 }
 
-export type Language = 'ru' | 'kk' | 'en'
+export type Language = 'ru' | 'en'
 
 const languageStorageKey = 'qadam.language'
 
 export const availableLanguages = [
   { value: 'ru', label: 'Русский' },
-  { value: 'kk', label: 'Қазақша' },
   { value: 'en', label: 'English' },
 ] satisfies Array<{ value: Language; label: string }>
 
 function isLanguage(value: string | null): value is Language {
-  return value === 'ru' || value === 'kk' || value === 'en'
+  return value === 'ru' || value === 'en'
 }
 
 function readLanguage(): Language {
@@ -57,7 +49,6 @@ export const localization = createI18n<[typeof englishMessages], Language, false
   fallbackLocale: 'en',
   messages: {
     ru: russianMessages,
-    kk: kazakhMessages,
     en: englishMessages,
   },
 })
