@@ -2,6 +2,7 @@ import { cors } from 'hono/cors'
 import { Hono } from 'hono'
 
 import { appConfiguration } from '@/app/app-configuration'
+import { signInRoute } from '@/features/authentication/sign-in-route'
 import { signUpRoute } from '@/features/authentication/sign-up-route'
 import { organizationsRoute } from '@/features/organization/organization-route'
 import { vacanciesRoute } from '@/features/vacancy/vacancy-route'
@@ -11,11 +12,13 @@ const app = new Hono()
 app.use(
   '*',
   cors({
+    credentials: true,
     origin: appConfiguration.webOrigin,
   }),
 )
 
 app.route('/vacancies', vacanciesRoute)
+app.route('/authentication/sign-in', signInRoute)
 app.route('/authentication/sign-up', signUpRoute)
 app.route('/organizations', organizationsRoute)
 

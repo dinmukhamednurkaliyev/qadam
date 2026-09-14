@@ -7,6 +7,7 @@ export const employmentTypeSchema = z.enum([
   'internship',
   'temporary',
 ])
+
 export const workplaceTypeSchema = z.enum(['onsite', 'hybrid', 'remote'])
 export const vacancyParametersSchema = z.object({ id: z.uuid() })
 
