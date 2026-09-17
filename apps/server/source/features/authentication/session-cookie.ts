@@ -1,5 +1,5 @@
 import type { Context } from 'hono'
-import { getCookie, setCookie } from 'hono/cookie'
+import { deleteCookie, getCookie, setCookie } from 'hono/cookie'
 
 import { appConfiguration } from '@/app/app-configuration'
 
@@ -17,6 +17,13 @@ export function setSessionCookie(context: Context, session: CreatedSession): voi
     httpOnly: true,
     path: '/',
     sameSite: 'Lax',
+    secure: appConfiguration.environment === 'production',
+  })
+}
+
+export function clearSessionCookie(context: Context): void {
+  deleteCookie(context, sessionCookieName, {
+    path: '/',
     secure: appConfiguration.environment === 'production',
   })
 }

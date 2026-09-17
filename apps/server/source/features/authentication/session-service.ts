@@ -69,3 +69,7 @@ export async function findUserBySessionToken(
     emailVerified: user.emailVerifiedAt !== null,
   }
 }
+
+export async function deleteSessionByToken(token: string): Promise<void> {
+  await database.delete(sessionTable).where(eq(sessionTable.tokenHash, hashSessionToken(token)))
+}
