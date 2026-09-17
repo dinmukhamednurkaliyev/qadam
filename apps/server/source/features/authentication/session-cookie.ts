@@ -1,29 +1,43 @@
 import type { Context } from 'hono'
 import { deleteCookie, getCookie, setCookie } from 'hono/cookie'
 
-import { appConfiguration } from '@/app/app-configuration'
+import type { AuthenticationSession } from './authentication-service'
 
-import type { CreatedSession } from './session-service'
-
-const sessionCookieName = 'qadam_session'
-
-export function readSessionToken(context: Context): string | undefined {
-  return getCookie(context, sessionCookieName)
+export interface SessionCookieManager {
+  readSessionToken(context: Context): string | undefined
+  setSession(context: Context, session: AuthenticationSession): void
+  clearSession(context: Context): void
 }
 
-export function setSessionCookie(context: Context, session: CreatedSession): void {
-  setCookie(context, sessionCookieName, session.token, {
-    expires: session.expiresAt,
-    httpOnly: true,
-    path: '/',
-    sameSite: 'Lax',
-    secure: appConfiguration.environment === 'production',
-  })
+export type SessionCookieManagerDependencies = {
+  secure: boolean
 }
 
-export function clearSessionCookie(context: Context): void {
-  deleteCookie(context, sessionCookieName, {
-    path: '/',
-    secure: appConfiguration.environment === 'production',
-  })
+export function createSessionCookieManager(
+  dependencies: SessionCookieManagerDependencies,
+): SessionCookieManager {
+  const sessionCookieName = 'qadam_session'
+
+  return {
+    readSessionToken(context) {
+      return getCookie(context, sessionCookieName)
+    },
+
+    setSession(context, session) {
+      setCookie(context, sessionCookieName, session.token, {
+        expires: session.expiresAt,
+        httpOnly: true,
+        path: '/',
+        sameSite: 'Lax',
+        secure: dependencies.secure,
+      })
+    },
+
+    clearSession(context) {
+      deleteCookie(context, sessionCookieName, {
+        path: '/',
+        secure: dependencies.secure,
+      })
+    },
+  }
 }

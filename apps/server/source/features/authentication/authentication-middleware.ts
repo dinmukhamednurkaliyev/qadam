@@ -1,36 +1,48 @@
-import { errorResponseSchema } from '@qadam/shared'
+import type { AuthenticatedUser } from '@qadam/shared/authentication'
+import { errorResponseSchema } from '@qadam/shared/http'
 import { createMiddleware } from 'hono/factory'
 
-import { findUserBySessionToken, type AuthenticatedUser } from './session-service'
-import { readSessionToken } from './session-cookie'
+import type { AuthenticationService } from './authentication-service'
+import type { SessionCookieManager } from './session-cookie'
 
 declare module 'hono' {
   interface ContextVariableMap {
     currentUser: AuthenticatedUser
+    sessionToken: string
   }
 }
 
-function unauthorizedResponse() {
+export type AuthenticationMiddlewareDependencies = {
+  authenticationService: AuthenticationService
+  sessionCookieManager: SessionCookieManager
+}
+
+function createUnauthorizedResponse() {
   return errorResponseSchema.parse({
     code: 'UNAUTHORIZED',
     message: 'Authentication is required',
   })
 }
 
-export const requireAuthentication = createMiddleware(async (context, next) => {
-  const sessionToken = readSessionToken(context)
+export function createRequireAuthenticationMiddleware(
+  dependencies: AuthenticationMiddlewareDependencies,
+) {
+  return createMiddleware(async (context, next) => {
+    const sessionToken = dependencies.sessionCookieManager.readSessionToken(context)
 
-  if (!sessionToken) {
-    return context.json(unauthorizedResponse(), 401)
-  }
+    if (!sessionToken) {
+      return context.json(createUnauthorizedResponse(), 401)
+    }
 
-  const currentUser = await findUserBySessionToken(sessionToken)
+    const currentUser = await dependencies.authenticationService.getCurrentUser(sessionToken)
 
-  if (!currentUser) {
-    return context.json(unauthorizedResponse(), 401)
-  }
+    if (!currentUser) {
+      return context.json(createUnauthorizedResponse(), 401)
+    }
 
-  context.set('currentUser', currentUser)
+    context.set('currentUser', currentUser)
+    context.set('sessionToken', sessionToken)
 
-  await next()
-})
+    await next()
+  })
+}
