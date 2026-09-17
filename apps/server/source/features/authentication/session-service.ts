@@ -8,6 +8,8 @@ import { usersTable } from '@/database/schemas/user-schema'
 
 const sessionLifetimeMilliseconds = 7 * 24 * 60 * 60 * 1000
 
+type SessionDatabase = Pick<typeof database, 'insert'>
+
 export type CreatedSession = {
   token: string
   expiresAt: Date
@@ -23,12 +25,15 @@ function hashSessionToken(token: string): string {
   return createHash('sha256').update(token).digest('hex')
 }
 
-export async function createSession(userId: string): Promise<CreatedSession> {
+export async function createSession(
+  userId: string,
+  sessionDatabase: SessionDatabase = database,
+): Promise<CreatedSession> {
   const token = randomBytes(32).toString('hex')
   const tokenHash = hashSessionToken(token)
   const expiresAt = new Date(Date.now() + sessionLifetimeMilliseconds)
 
-  await database.insert(sessionTable).values({
+  await sessionDatabase.insert(sessionTable).values({
     userId: userId,
     tokenHash: tokenHash,
     expiresAt: expiresAt.toISOString(),

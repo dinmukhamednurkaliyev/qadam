@@ -2,6 +2,7 @@ import { errorResponseSchema, signUpRequestSchema } from '@qadam/shared'
 import { Hono } from 'hono'
 
 import { EmailAlreadyInUseError, signUp } from './sign-up-service'
+import { setSessionCookie } from './session-cookie'
 
 export const signUpRoute = new Hono()
 
@@ -56,7 +57,9 @@ signUpRoute.post('/', async (context) => {
     )
   }
 
-  const response = await signUp(validation.data)
+  const result = await signUp(validation.data)
 
-  return context.json(response, 201)
+  setSessionCookie(context, result.session)
+
+  return context.json(result.response, 201)
 })
