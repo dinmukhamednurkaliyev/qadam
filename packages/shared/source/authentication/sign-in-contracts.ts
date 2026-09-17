@@ -1,5 +1,7 @@
 import { z } from 'zod'
 
+import { authenticatedUserSchema } from './authenticated-user-contracts.js'
+
 const signInEmailSchema = z
   .string()
   .trim()
@@ -22,11 +24,7 @@ export const signInRequestSchema = z.strictObject({
 })
 
 export const signInResponseSchema = z.object({
-  user: z.object({
-    id: z.uuid(),
-    email: z.email().max(255),
-    emailVerified: z.boolean(),
-  }),
+  user: authenticatedUserSchema,
 })
 
 export type SignInRequest = z.infer<typeof signInRequestSchema>
