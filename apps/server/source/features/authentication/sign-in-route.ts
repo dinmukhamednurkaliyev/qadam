@@ -20,7 +20,7 @@ signInRoute.onError((error, context) => {
   return context.json(
     errorResponseSchema.parse({
       code: 'INTERNAL_ERROR',
-      message: 'Unable to sign in', 
+      message: 'Unable to sign in',
     }),
     500,
   )
