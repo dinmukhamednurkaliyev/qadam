@@ -4,8 +4,10 @@
   "type": "module",
   "exports": {
     ".": "./source/main.ts",
-    "./vacancies": "./source/vacancies/vacancy-contracts.ts",
-    "./common": "./source/common/error-response.ts"
+    "./authentication": "./source/authentication/index.ts",
+    "./http": "./source/http/index.ts",
+    "./organization": "./source/organization/index.ts",
+    "./vacancy": "./source/vacancy/index.ts"
   },
   "scripts": {
     "type-check": "tsc --noEmit"
