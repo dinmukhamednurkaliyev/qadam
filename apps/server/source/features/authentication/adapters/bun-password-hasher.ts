@@ -1,4 +1,4 @@
-import type { PasswordHasher } from '../password-hasher'
+import type { PasswordHasher } from '../ports/password-hasher'
 
 export function createBunPasswordHasher(): PasswordHasher {
   return {

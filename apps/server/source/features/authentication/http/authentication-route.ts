@@ -13,7 +13,7 @@ import {
   EmailAlreadyInUseError,
   InvalidCredentialsError,
   type AuthenticationService,
-} from './authentication-service'
+} from '../authentication-service'
 import type { SessionCookieManager } from './session-cookie'
 
 export type AuthenticationRouteDependencies = {

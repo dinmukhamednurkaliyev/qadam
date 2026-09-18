@@ -1,7 +1,7 @@
 import type { Context } from 'hono'
 import { deleteCookie, getCookie, setCookie } from 'hono/cookie'
 
-import type { AuthenticationSession } from './authentication-service'
+import type { AuthenticationSession } from '../authentication-service'
 
 export interface SessionCookieManager {
   readSessionToken(context: Context): string | undefined

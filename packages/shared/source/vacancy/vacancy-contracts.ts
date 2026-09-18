@@ -9,7 +9,9 @@ export const employmentTypeSchema = z.enum([
 ])
 
 export const workplaceTypeSchema = z.enum(['onsite', 'hybrid', 'remote'])
-export const vacancyParametersSchema = z.object({ id: z.uuid() })
+export const vacancyPathParametersSchema = z.strictObject({
+  id: z.uuid(),
+})
 
 export const vacancyFiltersSchema = z.strictObject({
   search: z.string().trim().min(1).max(200).optional(),
@@ -43,7 +45,7 @@ export const vacancyListItemSchema = z.object({
   closedAt: z.iso.datetime().nullable(),
 })
 
-export const vacancyDetailsSchema = vacancyListItemSchema.extend({})
+export const vacancyDetailsSchema = vacancyListItemSchema
 export const vacancyListResponseSchema = z.array(vacancyListItemSchema)
 
 export type VacancyFilters = z.infer<typeof vacancyFiltersSchema>

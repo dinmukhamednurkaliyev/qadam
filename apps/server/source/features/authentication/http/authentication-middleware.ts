@@ -2,7 +2,7 @@ import type { AuthenticatedUser } from '@qadam/shared/authentication'
 import { errorResponseSchema } from '@qadam/shared/http'
 import { createMiddleware } from 'hono/factory'
 
-import type { AuthenticationService } from './authentication-service'
+import type { AuthenticationService } from '../authentication-service'
 import type { SessionCookieManager } from './session-cookie'
 
 declare module 'hono' {

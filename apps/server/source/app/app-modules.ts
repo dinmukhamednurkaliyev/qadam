@@ -9,7 +9,7 @@ import {
 } from '@/features/authentication/adapters'
 import { createAuthenticationModule } from '@/features/authentication/authentication-module'
 import { createAuthenticationService } from '@/features/authentication/authentication-service'
-import { createSessionCookieManager } from '@/features/authentication/session-cookie'
+import { createSessionCookieManager } from '@/features/authentication/http/session-cookie'
 import { createDrizzleOrganizationRepository } from '@/features/organization/adapters'
 import { createOrganizationModule } from '@/features/organization/organization-module'
 import { createOrganizationService } from '@/features/organization/organization-service'

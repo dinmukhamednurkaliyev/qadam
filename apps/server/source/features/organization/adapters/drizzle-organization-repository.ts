@@ -1,10 +1,5 @@
-import {
-  organizationDetailsSchema,
-  organizationListItemSchema,
-  type OrganizationDetails,
-  type OrganizationListItem,
-} from '@qadam/shared/organization'
-import { eq } from 'drizzle-orm'
+import { type OrganizationDetails, type OrganizationListItem } from '@qadam/shared/organization'
+import { and, eq } from 'drizzle-orm'
 
 import type { database as applicationDatabase } from '@/database/database'
 import { organizationTable } from '@/database/schemas/organization-schema'
@@ -17,32 +12,26 @@ const publicFields = {
   id: organizationTable.id,
   name: organizationTable.name,
   slug: organizationTable.slug,
-  legalName: organizationTable.legalName,
-  registrationCountryCode: organizationTable.registrationCountryCode,
-  registrationNumber: organizationTable.registrationNumber,
-  contactEmail: organizationTable.contactEmail,
   website: organizationTable.website,
   description: organizationTable.description,
-  status: organizationTable.status,
   verifiedAt: organizationTable.verifiedAt,
-  createdAt: organizationTable.createdAt,
-  updatedAt: organizationTable.updatedAt,
 }
 
 function serializeOrganization(
   organization: Awaited<ReturnType<typeof selectPublicOrganizations>>[number],
 ): OrganizationListItem {
-  return organizationListItemSchema.parse({
+  return {
     ...organization,
     verifiedAt:
       organization.verifiedAt === null ? null : new Date(organization.verifiedAt).toISOString(),
-    createdAt: new Date(organization.createdAt).toISOString(),
-    updatedAt: new Date(organization.updatedAt).toISOString(),
-  })
+  }
 }
 
 function selectPublicOrganizations(database: OrganizationDatabase) {
-  return database.select(publicFields).from(organizationTable)
+  return database
+    .select(publicFields)
+    .from(organizationTable)
+    .where(eq(organizationTable.status, 'verified'))
 }
 
 export function createDrizzleOrganizationRepository(
@@ -59,12 +48,12 @@ export function createDrizzleOrganizationRepository(
       const [organization] = await database
         .select(publicFields)
         .from(organizationTable)
-        .where(eq(organizationTable.id, organizationId))
+        .where(
+          and(eq(organizationTable.id, organizationId), eq(organizationTable.status, 'verified')),
+        )
         .limit(1)
 
-      return organization === undefined
-        ? undefined
-        : organizationDetailsSchema.parse(serializeOrganization(organization))
+      return organization === undefined ? undefined : serializeOrganization(organization)
     },
   }
 }

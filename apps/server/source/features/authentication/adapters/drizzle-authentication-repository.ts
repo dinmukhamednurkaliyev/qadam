@@ -11,7 +11,7 @@ import type {
   AuthenticationUser,
   CreateAuthenticationUser,
   CreateSession,
-} from '../authentication-repository'
+} from '../ports/authentication-repository'
 
 type AuthenticationDatabase = Pick<typeof applicationDatabase, 'delete' | 'insert' | 'select'>
 

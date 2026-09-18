@@ -1,7 +1,7 @@
-import { createRequireAuthenticationMiddleware } from './authentication-middleware'
-import { createAuthenticationRoute } from './authentication-route'
+import { createRequireAuthenticationMiddleware } from './http/authentication-middleware'
+import { createAuthenticationRoute } from './http/authentication-route'
+import type { SessionCookieManager } from './http/session-cookie'
 import type { AuthenticationService } from './authentication-service'
-import type { SessionCookieManager } from './session-cookie'
 
 export type AuthenticationModuleDependencies = {
   authenticationService: AuthenticationService

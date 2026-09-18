@@ -1,4 +1,4 @@
-import type { Clock } from '../clock'
+import type { Clock } from '../ports/clock'
 
 export function createSystemClock(): Clock {
   return {

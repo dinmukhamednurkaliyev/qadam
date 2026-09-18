@@ -1,6 +1,4 @@
 import {
-  vacancyDetailsSchema,
-  vacancyListItemSchema,
   type VacancyDetails,
   type VacancyFilters,
   type VacancyListItem,
@@ -46,16 +44,25 @@ function createPublicQuery(database: VacancyDatabase) {
     .leftJoin(locationTable, eq(vacancyTable.locationId, locationTable.id))
 }
 
+function getPublicVacancyStatus(status: string): VacancyListItem['status'] {
+  if (status === 'published' || status === 'closed') {
+    return status
+  }
+
+  throw new Error(`Unexpected non-public vacancy status: ${status}`)
+}
+
 function serializeVacancy(
   vacancy: Awaited<ReturnType<typeof createPublicQuery>>[number],
 ): VacancyListItem {
-  return vacancyListItemSchema.parse({
+  return {
     ...vacancy,
     createdAt: new Date(vacancy.createdAt).toISOString(),
     updatedAt: new Date(vacancy.updatedAt).toISOString(),
+    status: getPublicVacancyStatus(vacancy.status),
     publishedAt: vacancy.publishedAt === null ? null : new Date(vacancy.publishedAt).toISOString(),
     closedAt: vacancy.closedAt === null ? null : new Date(vacancy.closedAt).toISOString(),
-  })
+  }
 }
 
 export function createDrizzleVacancyRepository(database: VacancyDatabase): VacancyRepository {
@@ -102,7 +109,7 @@ export function createDrizzleVacancyRepository(database: VacancyDatabase): Vacan
         return undefined
       }
 
-      return vacancyDetailsSchema.parse(serializeVacancy(vacancy))
+      return serializeVacancy(vacancy)
     },
   }
 }

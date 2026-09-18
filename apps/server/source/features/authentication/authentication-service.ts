@@ -4,10 +4,10 @@ import type {
   AuthenticationRepository,
   AuthenticationTransaction,
   AuthenticationUser,
-} from './authentication-repository'
-import type { Clock } from './clock'
-import type { PasswordHasher } from './password-hasher'
-import type { SessionTokenGenerator } from './session-token-generator'
+} from './ports/authentication-repository'
+import type { Clock } from './ports/clock'
+import type { PasswordHasher } from './ports/password-hasher'
+import type { SessionTokenGenerator } from './ports/session-token-generator'
 
 const fallbackPasswordHash =
   '$argon2id$v=19$m=65536,t=2,p=1$dJq/ZeJPkAJR2WiQLZ5KUaq4T4sNJib8tMLmnh/8fmc$IAiTW64GUKMdxb/ZT2BX0bRN5C5ZSGHnPT8XkospyBg'

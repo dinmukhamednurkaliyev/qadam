@@ -1,4 +1,4 @@
-import { vacancyFiltersSchema, vacancyParametersSchema } from '@qadam/shared/vacancy'
+import { vacancyFiltersSchema, vacancyPathParametersSchema } from '@qadam/shared/vacancy'
 import { errorResponseSchema } from '@qadam/shared/http'
 import { Hono } from 'hono'
 
@@ -40,7 +40,7 @@ export function createVacancyRoute(vacancyService: VacancyService): Hono {
   })
 
   vacancyRoute.get('/:id', async (context) => {
-    const parsed = vacancyParametersSchema.safeParse(context.req.param())
+    const parsed = vacancyPathParametersSchema.safeParse(context.req.param())
     if (!parsed.success) {
       return context.json(
         errorResponseSchema.parse({

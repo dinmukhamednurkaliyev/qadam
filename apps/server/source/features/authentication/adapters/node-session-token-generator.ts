@@ -1,6 +1,6 @@
 import { createHash, randomBytes } from 'node:crypto'
 
-import type { SessionTokenGenerator } from '../session-token-generator'
+import type { SessionTokenGenerator } from '../ports/session-token-generator'
 
 export function createNodeSessionTokenGenerator(): SessionTokenGenerator {
   return {

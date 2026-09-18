@@ -16,16 +16,9 @@ export const organizationListItemSchema = z.object({
   id: z.uuid(),
   name: z.string(),
   slug: z.string(),
-  legalName: z.string(),
-  registrationCountryCode: z.string().length(2),
-  registrationNumber: z.string(),
-  contactEmail: z.email().max(255),
   website: z.url().max(2048).nullable(),
   description: z.string(),
-  status: organizationStatusSchema,
   verifiedAt: z.iso.datetime().nullable(),
-  createdAt: z.iso.datetime(),
-  updatedAt: z.iso.datetime(),
 })
 
 export const organizationDetailsSchema = organizationListItemSchema
