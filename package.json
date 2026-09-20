@@ -32,7 +32,9 @@
     "database:push": "bun run --filter @qadam/server database:push",
     "database:seed": "bun run --filter @qadam/server database:seed",
     "database:studio": "bun run --filter @qadam/server database:studio",
-    "quality-check": "bun run type-check && bun run lint && bun run style-check && bun run format:check"
+    "validate": "bun run type-check && bun run lint && bun run style-check && bun run format:check",
+    "security:check": "bun audit --prod",
+    "verify": "bun run validate && bun run build"
   },
   "devDependencies": {
     "@types/node": "^26.6.2",

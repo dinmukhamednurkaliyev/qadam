@@ -9,8 +9,7 @@ Describe the user, product, or maintenance outcome of this pull request.
 
 ## Verification
 
-- [ ] `bun run quality-check`
-- [ ] `bun run build`
+- [ ] `bun run verify`
 
 ## Checklist
 
