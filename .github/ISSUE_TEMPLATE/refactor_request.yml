@@ -1,8 +1,5 @@
 name: Refactor Request
 description: Request an internal code improvement
-labels:
-  - refactor
-
 body:
   - type: textarea
     id: description

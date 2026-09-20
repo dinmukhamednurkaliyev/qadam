@@ -1,0 +1,38 @@
+@import url('./palettes.css');
+
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --qadam-color-background: var(--qadam-palette-neutral-99);
+  --qadam-color-surface: var(--qadam-palette-neutral-99);
+  --qadam-color-surface-raised: var(--qadam-palette-neutral-100);
+  --qadam-color-text: var(--qadam-palette-neutral-10);
+  --qadam-color-text-muted: var(--qadam-palette-neutral-30);
+  --qadam-color-border: var(--qadam-palette-neutral-variant-80);
+  --qadam-color-primary: var(--qadam-palette-primary-40);
+  --qadam-color-primary-hover: var(--qadam-palette-primary-30);
+  --qadam-color-on-primary: var(--qadam-palette-primary-100);
+  --qadam-color-accent: var(--qadam-palette-tertiary-80);
+  --qadam-color-on-accent: var(--qadam-palette-tertiary-20);
+  --qadam-color-success: var(--qadam-palette-success-40);
+  --qadam-color-on-success: var(--qadam-palette-success-100);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --qadam-color-background: var(--qadam-palette-neutral-10);
+  --qadam-color-surface: var(--qadam-palette-neutral-20);
+  --qadam-color-surface-raised: var(--qadam-palette-neutral-30);
+  --qadam-color-text: var(--qadam-palette-neutral-90);
+  --qadam-color-text-muted: var(--qadam-palette-neutral-80);
+  --qadam-color-border: var(--qadam-palette-neutral-variant-30);
+  --qadam-color-primary: var(--qadam-palette-primary-80);
+  --qadam-color-primary-hover: var(--qadam-palette-primary-90);
+  --qadam-color-on-primary: var(--qadam-palette-primary-20);
+  --qadam-color-accent: var(--qadam-palette-tertiary-80);
+  --qadam-color-on-accent: var(--qadam-palette-tertiary-20);
+  --qadam-color-success: var(--qadam-palette-success-80);
+  --qadam-color-on-success: var(--qadam-palette-success-20);
+}

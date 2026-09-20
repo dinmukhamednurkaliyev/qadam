@@ -1,0 +1,91 @@
+:root {
+  /* Primary: #2a28da */
+  --qadam-palette-primary-0: #000;
+  --qadam-palette-primary-10: #05006d;
+  --qadam-palette-primary-20: #0d00aa;
+  --qadam-palette-primary-30: #2420d6;
+  --qadam-palette-primary-40: #4143ec;
+  --qadam-palette-primary-50: #5e62ff;
+  --qadam-palette-primary-60: #7f84ff;
+  --qadam-palette-primary-70: #9fa3ff;
+  --qadam-palette-primary-80: #c0c1ff;
+  --qadam-palette-primary-90: #e1e0ff;
+  --qadam-palette-primary-95: #f1efff;
+  --qadam-palette-primary-99: #fffbff;
+  --qadam-palette-primary-100: #fff;
+
+  /* Secondary: #5f5eec */
+  --qadam-palette-secondary-0: #000;
+  --qadam-palette-secondary-10: #0a006b;
+  --qadam-palette-secondary-20: #1700a8;
+  --qadam-palette-secondary-30: #322bc0;
+  --qadam-palette-secondary-40: #4b49d8;
+  --qadam-palette-secondary-50: #6564f2;
+  --qadam-palette-secondary-60: #8283ff;
+  --qadam-palette-secondary-70: #a2a2ff;
+  --qadam-palette-secondary-80: #c1c1ff;
+  --qadam-palette-secondary-90: #e2dfff;
+  --qadam-palette-secondary-95: #f2efff;
+  --qadam-palette-secondary-99: #fffbff;
+  --qadam-palette-secondary-100: #fff;
+
+  /* Tertiary: #eeb64f */
+  --qadam-palette-tertiary-0: #000;
+  --qadam-palette-tertiary-10: #271900;
+  --qadam-palette-tertiary-20: #422c00;
+  --qadam-palette-tertiary-30: #5f4100;
+  --qadam-palette-tertiary-40: #7d5700;
+  --qadam-palette-tertiary-50: #9d6f02;
+  --qadam-palette-tertiary-60: #ba8824;
+  --qadam-palette-tertiary-70: #d8a23d;
+  --qadam-palette-tertiary-80: #f6bd55;
+  --qadam-palette-tertiary-90: #ffdeaa;
+  --qadam-palette-tertiary-95: #ffeed9;
+  --qadam-palette-tertiary-99: #fffbff;
+  --qadam-palette-tertiary-100: #fff;
+
+  /* Neutral: #080f32 */
+  --qadam-palette-neutral-0: #000;
+  --qadam-palette-neutral-10: #12193b;
+  --qadam-palette-neutral-20: #272e52;
+  --qadam-palette-neutral-30: #3e4469;
+  --qadam-palette-neutral-40: #565c83;
+  --qadam-palette-neutral-50: #6e759d;
+  --qadam-palette-neutral-60: #888eb8;
+  --qadam-palette-neutral-70: #a3a9d4;
+  --qadam-palette-neutral-80: #bec4f0;
+  --qadam-palette-neutral-90: #dee0ff;
+  --qadam-palette-neutral-95: #f0efff;
+  --qadam-palette-neutral-99: #fefbff;
+  --qadam-palette-neutral-100: #fff;
+
+  /* Neutral variant: #524f63 */
+  --qadam-palette-neutral-variant-0: #000;
+  --qadam-palette-neutral-variant-10: #1c192b;
+  --qadam-palette-neutral-variant-20: #312e41;
+  --qadam-palette-neutral-variant-30: #474458;
+  --qadam-palette-neutral-variant-40: #5f5c70;
+  --qadam-palette-neutral-variant-50: #78748a;
+  --qadam-palette-neutral-variant-60: #928ea4;
+  --qadam-palette-neutral-variant-70: #ada8bf;
+  --qadam-palette-neutral-variant-80: #c8c3db;
+  --qadam-palette-neutral-variant-90: #e5dff8;
+  --qadam-palette-neutral-variant-95: #f3eeff;
+  --qadam-palette-neutral-variant-99: #fffbff;
+  --qadam-palette-neutral-variant-100: #fff;
+
+  /* Success: #18b787 */
+  --qadam-palette-success-0: #000;
+  --qadam-palette-success-10: #002115;
+  --qadam-palette-success-20: #003827;
+  --qadam-palette-success-30: #00513a;
+  --qadam-palette-success-40: #006c4e;
+  --qadam-palette-success-50: #008862;
+  --qadam-palette-success-60: #00a578;
+  --qadam-palette-success-70: #2cc190;
+  --qadam-palette-success-80: #52ddaa;
+  --qadam-palette-success-90: #72fac5;
+  --qadam-palette-success-95: #bdffdf;
+  --qadam-palette-success-99: #f4fff7;
+  --qadam-palette-success-100: #fff;
+}

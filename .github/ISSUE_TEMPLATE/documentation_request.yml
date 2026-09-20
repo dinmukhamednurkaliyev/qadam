@@ -1,8 +1,5 @@
 name: Documentation Request
 description: Request a documentation change
-labels:
-  - documentation
-
 body:
   - type: textarea
     id: description

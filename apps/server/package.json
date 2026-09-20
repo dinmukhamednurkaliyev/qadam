@@ -3,25 +3,25 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "bun run --hot source/app/app.ts",
-    "start": "bun source/app/app.ts",
-    "build": "bun build source/app/app.ts --outdir dist --target bun --sourcemap=external",
-    "start:production": "bun dist/app.js",
+    "development": "bun run --hot source/main.ts",
+    "start": "bun source/main.ts",
+    "build": "bun build source/main.ts --outdir dist --target bun --sourcemap=external",
+    "start:production": "bun dist/main.js",
     "type-check": "tsc --noEmit",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
-    "db:push": "drizzle-kit push",
-    "db:seed": "bun source/database/seed.ts",
-    "db:studio": "drizzle-kit studio"
+    "database:generate": "drizzle-kit generate",
+    "database:migrate": "drizzle-kit migrate",
+    "database:push": "drizzle-kit push",
+    "database:seed": "bun source/database/seeds/database-seed.ts",
+    "database:studio": "drizzle-kit studio"
   },
   "dependencies": {
     "@qadam/shared": "workspace:*",
     "drizzle-orm": "^0.45.2",
-    "hono": "^4.13.7",
+    "hono": "^4.13.8",
     "postgres": "^3.4.9"
   },
   "devDependencies": {
-    "@types/bun": "latest",
+    "@types/bun": "1.4.2",
     "drizzle-kit": "^0.31.10",
     "typescript": "catalog:"
   }

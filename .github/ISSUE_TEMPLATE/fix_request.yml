@@ -1,8 +1,5 @@
 name: Fix Request
 description: Request a fix for incorrect behavior
-labels:
-  - fix
-
 body:
   - type: textarea
     id: problem
@@ -17,5 +14,21 @@ body:
     attributes:
       label: Expected Behavior
       description: What should happen instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction Steps
+      description: List the smallest steps that reproduce the problem.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include browser, operating system, app version, or other relevant context.
     validations:
       required: true

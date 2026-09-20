@@ -2,20 +2,20 @@
   "name": "qadam",
   "private": true,
   "version": "0.1.0",
-  "packageManager": "bun@1.3.14",
+  "packageManager": "bun@1.4.2",
   "workspaces": {
     "packages": [
       "apps/*",
       "packages/*"
     ],
     "catalog": {
-      "typescript": "~6.0.0"
+      "typescript": "~6.0.3"
     }
   },
   "scripts": {
-    "dev": "bun run --workspaces --parallel --if-present dev",
-    "dev:server": "bun run --filter @qadam/server dev",
-    "dev:web": "bun run --filter @qadam/web dev",
+    "development": "bun run --workspaces --parallel --if-present development",
+    "development:server": "bun run --filter @qadam/server development",
+    "development:web": "bun run --filter @qadam/web development",
     "build": "bun run --workspaces --if-present build",
     "start": "bun run --filter @qadam/server start",
     "start:production": "bun run --filter @qadam/server start:production",
@@ -23,25 +23,26 @@
     "type-check": "bun run --workspaces type-check",
     "lint": "oxlint apps packages",
     "lint:fix": "oxlint apps packages --fix",
-    "stylelint": "stylelint \"{apps,packages}/**/*.{css,vue}\" --config stylelint.config.ts",
-    "stylelint:fix": "bun run stylelint --fix",
+    "style-check": "stylelint \"{apps,packages}/**/*.{css,vue}\" --allow-empty-input --config stylelint.config.ts",
+    "style-check:fix": "bun run style-check --fix",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
-    "db:generate": "bun run --filter @qadam/server db:generate",
-    "db:migrate": "bun run --filter @qadam/server db:migrate",
-    "db:push": "bun run --filter @qadam/server db:push",
-    "db:seed": "bun run --filter @qadam/server db:seed",
-    "db:studio": "bun run --filter @qadam/server db:studio",
-    "check": "bun run type-check && bun run lint && bun run stylelint && bun run format:check"
+    "database:generate": "bun run --filter @qadam/server database:generate",
+    "database:migrate": "bun run --filter @qadam/server database:migrate",
+    "database:push": "bun run --filter @qadam/server database:push",
+    "database:seed": "bun run --filter @qadam/server database:seed",
+    "database:studio": "bun run --filter @qadam/server database:studio",
+    "quality-check": "bun run type-check && bun run lint && bun run style-check && bun run format:check"
   },
   "devDependencies": {
-    "@types/node": "^26.5.1",
+    "@types/node": "^26.6.2",
     "jiti": "2.7.0",
-    "oxlint": "^1.82.0",
+    "oxlint": "^1.83.0",
     "postcss-html": "^2.0.0",
-    "prettier": "^3.9.6",
+    "prettier": "^3.9.8",
     "stylelint": "^17.15.0",
     "stylelint-config-standard": "^40.0.0",
-    "typescript": "~6.0.3"
+    "typescript": "~6.0.3",
+    "@types/bun": "latest"
   }
 }

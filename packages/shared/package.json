@@ -2,18 +2,12 @@
   "name": "@qadam/shared",
   "private": true,
   "type": "module",
-  "exports": {
-    ".": "./source/main.ts",
-    "./authentication": "./source/authentication/index.ts",
-    "./http": "./source/http/index.ts",
-    "./organization": "./source/organization/index.ts",
-    "./vacancy": "./source/vacancy/index.ts"
-  },
+  "exports": "./source/main.ts",
   "scripts": {
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "zod": "^4.6.2"
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "typescript": "catalog:"

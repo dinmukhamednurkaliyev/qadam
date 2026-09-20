@@ -1,70 +1,49 @@
-app:
-  - changed-files:
-      - any-glob-to-any-file:
-          - 'apps/web/source/app/**'
-          - 'apps/server/source/app/**'
-          - 'apps/web/index.html'
+changed-files-labels-limit: 5
+max-files-changed: 100
 
-features:
+web:
   - changed-files:
       - any-glob-to-any-file:
-          - 'apps/web/source/features/**'
-
-components:
-  - changed-files:
-      - any-glob-to-any-file:
-          - 'apps/web/source/components/**'
-          - 'apps/web/source/**/components/**'
-
-pages:
-  - changed-files:
-      - any-glob-to-any-file:
-          - 'apps/web/source/pages/**'
-          - 'apps/web/source/**/pages/**'
-
-styles:
-  - changed-files:
-      - any-glob-to-any-file:
-          - 'apps/web/source/assets/**/*.css'
-          - 'apps/web/source/assets/**/*.scss'
-          - 'apps/web/source/**/*.css'
-          - 'apps/web/source/**/*.scss'
-
-assets:
-  - changed-files:
-      - any-glob-to-any-file:
-          - 'apps/web/source/assets/**'
-          - 'apps/web/public/**'
+          - 'apps/web/**'
 
 server:
   - changed-files:
       - any-glob-to-any-file:
           - 'apps/server/**'
 
-configuration:
+shared:
   - changed-files:
       - any-glob-to-any-file:
+          - 'packages/shared/**'
+
+workspace:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'package.json'
+          - 'bun.lock'
           - 'mise.toml'
-          - 'apps/web/vite.config.*'
-          - 'apps/web/tsconfig.json'
-          - '.oxlintrc.json'
-          - 'stylelint.config.*'
-          - 'apps/web/.editorconfig'
+          - '.gitignore'
           - '.vscode/**'
+          - 'stylelint.config.*'
+          - 'apps/*/tsconfig*.json'
+          - 'apps/*/vite.config.*'
+          - 'packages/*/tsconfig*.json'
+
+assets:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'apps/*/public/**'
 
 infrastructure:
   - changed-files:
       - any-glob-to-any-file:
           - '.github/**'
-          - 'docker/**'
-          - 'terraform/**'
-          - 'k8s/**'
           - 'Dockerfile'
           - 'Dockerfile.*'
-          - 'docker-compose.yml'
-          - 'docker-compose.yaml'
           - 'compose.yml'
           - 'compose.yaml'
+          - 'docker/**'
+          - 'infrastructure/**'
 
 dependencies:
   - changed-files:
