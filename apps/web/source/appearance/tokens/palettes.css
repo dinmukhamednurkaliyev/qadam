@@ -1,8 +1,3 @@
-/*
- * HCT tone scale: 0 is black and 100 is white. The hex values below each label
- * form a palette generated from that seed color, taken from the Qadam banner.
- * Theme-specific roles are assigned in colors.css.
- */
 :root {
   /* Primary seed: #2a28da */
   --palette-primary-0: #000;

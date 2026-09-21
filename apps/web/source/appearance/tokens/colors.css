@@ -1,10 +1,5 @@
 @import url('./palettes.css');
 
-/*
- * Components use these semantic roles to keep theme decisions centralized.
- * Pair each on-* foreground with its matching background, such as on-primary with primary.
- * Set data-theme on <html>; light is the default when no theme is selected.
- */
 :root,
 :root[data-theme='light'] {
   color-scheme: light;
@@ -25,7 +20,6 @@
   --color-on-success: var(--palette-success-100);
 }
 
-/* Lighter surfaces distinguish elevation in dark mode, where shadows are less visible. */
 :root[data-theme='dark'] {
   color-scheme: dark;
 

@@ -10,7 +10,6 @@ const supportedLocales = Object.values(locales)
  */
 export const detectBrowserLocale = (browserLanguages: readonly string[]): Locale | undefined => {
   for (const browserLanguage of browserLanguages) {
-    // Messages are language-wide: regional variants such as ru-KZ share the ru dictionary.
     const languageCode = browserLanguage.trim().split('-', 1)[0]?.toLowerCase()
     const locale = supportedLocales.find((supportedLocale) => supportedLocale === languageCode)
 

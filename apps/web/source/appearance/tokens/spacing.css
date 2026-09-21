@@ -1,8 +1,4 @@
 :root {
-  /*
-   * The suffix counts 0.25rem steps: spacing-4 is 1rem, or 16px with a 16px root font.
-   * Using rem keeps spacing proportional when the root font size changes.
-   */
   --spacing-0: 0;
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
