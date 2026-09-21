@@ -1,19 +1,21 @@
+import { locales, type Locale } from '@/localization/locales/locales'
+
 import englishCommonMessages from './english/common.json'
 import kazakhCommonMessages from './kazakh/common.json'
 import russianCommonMessages from './russian/common.json'
 
-type CommonMessages = typeof englishCommonMessages
+interface LocalizationMessages {
+  common: typeof englishCommonMessages
+}
 
 export const messages = {
-  english: {
+  [locales.english]: {
     common: englishCommonMessages,
   },
-  russian: {
+  [locales.russian]: {
     common: russianCommonMessages,
   },
-  kazakh: {
+  [locales.kazakh]: {
     common: kazakhCommonMessages,
   },
-} satisfies Record<string, { common: CommonMessages }>
-
-export type Locale = keyof typeof messages
+} satisfies Record<Locale, LocalizationMessages>

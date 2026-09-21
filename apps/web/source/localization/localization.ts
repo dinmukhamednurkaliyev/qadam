@@ -1,14 +1,16 @@
 import { createI18n } from 'vue-i18n'
 
-import { detectBrowserLocale } from './browser/browser-language-detector'
-import { messages, type Locale } from './locales/messages/resources'
+import { detectBrowserLocale } from '@/localization/browser/browser-language-detector'
+import { fallbackLocale } from '@/localization/locales/locales'
+import { messages } from '@/localization/locales/messages/resources'
 
-const fallbackLocale: Locale = 'english'
-const initialLocale = detectBrowserLocale() ?? fallbackLocale
+export const createLocalization = (browserLanguages: readonly string[] = []) => {
+  const initialLocale = detectBrowserLocale(browserLanguages) ?? fallbackLocale
 
-export const localization = createI18n({
-  legacy: false,
-  locale: initialLocale,
-  fallbackLocale,
-  messages,
-})
+  return createI18n({
+    legacy: false,
+    locale: initialLocale,
+    fallbackLocale,
+    messages,
+  })
+}

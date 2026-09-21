@@ -1,25 +1,13 @@
-import type { Locale } from '../locales/messages/resources'
+import { locales, type Locale } from '@/localization/locales/locales'
 
-const localeByLanguageCode: Readonly<Record<string, Locale>> = {
-  en: 'english',
-  kk: 'kazakh',
-  ru: 'russian',
-}
+const supportedLocales = Object.values(locales)
 
-const getLanguageCode = (language: string): string => language.split('-', 1)[0]?.toLowerCase() ?? ''
-
-export const detectBrowserLocale = (): Locale | undefined => {
-  if (typeof navigator === 'undefined') {
-    return undefined
-  }
-
-  const browserLanguages =
-    navigator.languages.length > 0 ? navigator.languages : [navigator.language]
-
+export const detectBrowserLocale = (browserLanguages: readonly string[]): Locale | undefined => {
   for (const browserLanguage of browserLanguages) {
-    const locale = localeByLanguageCode[getLanguageCode(browserLanguage)]
+    const languageCode = browserLanguage.trim().split('-', 1)[0]?.toLowerCase()
+    const locale = supportedLocales.find((supportedLocale) => supportedLocale === languageCode)
 
-    if (locale) {
+    if (locale !== undefined) {
       return locale
     }
   }
