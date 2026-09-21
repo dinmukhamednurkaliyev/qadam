@@ -1,9 +1,12 @@
-import { Hono } from 'hono'
+import { readServerConfiguration } from '@/server-configuration'
+import { createServer } from '@/server'
 
-const server = new Hono()
+const configuration = readServerConfiguration(Bun.env)
+const server = createServer({
+  reportError: (error) => console.error(error),
+})
 
-// Bun starts the HTTP server from this default export and forwards requests to Hono.
 export default {
-  port: 3000,
+  port: configuration.port,
   fetch: server.fetch,
 }
