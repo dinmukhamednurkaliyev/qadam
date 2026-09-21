@@ -1,0 +1,7 @@
+/* Theme roles control shadow color and opacity; the geometry stays consistent. */
+:root {
+  --shadow-none: none;
+  --shadow-small: 0 1px 2px var(--color-shadow);
+  --shadow-medium: 0 4px 12px var(--color-shadow);
+  --shadow-large: 0 12px 32px var(--color-shadow);
+}

@@ -1,38 +1,46 @@
 @import url('./palettes.css');
 
+/*
+ * Components use these semantic roles to keep theme decisions centralized.
+ * Pair each on-* foreground with its matching background, such as on-primary with primary.
+ * Set data-theme on <html>; light is the default when no theme is selected.
+ */
 :root,
 :root[data-theme='light'] {
   color-scheme: light;
 
-  --qadam-color-background: var(--qadam-palette-neutral-99);
-  --qadam-color-surface: var(--qadam-palette-neutral-99);
-  --qadam-color-surface-raised: var(--qadam-palette-neutral-100);
-  --qadam-color-text: var(--qadam-palette-neutral-10);
-  --qadam-color-text-muted: var(--qadam-palette-neutral-30);
-  --qadam-color-border: var(--qadam-palette-neutral-variant-80);
-  --qadam-color-primary: var(--qadam-palette-primary-40);
-  --qadam-color-primary-hover: var(--qadam-palette-primary-30);
-  --qadam-color-on-primary: var(--qadam-palette-primary-100);
-  --qadam-color-accent: var(--qadam-palette-tertiary-80);
-  --qadam-color-on-accent: var(--qadam-palette-tertiary-20);
-  --qadam-color-success: var(--qadam-palette-success-40);
-  --qadam-color-on-success: var(--qadam-palette-success-100);
+  --color-background: var(--palette-neutral-99);
+  --color-surface: var(--palette-neutral-99);
+  --color-surface-raised: var(--palette-neutral-100);
+  --color-text: var(--palette-neutral-10);
+  --color-text-muted: var(--palette-neutral-30);
+  --color-border: var(--palette-neutral-variant-80);
+  --color-shadow: color-mix(in srgb, var(--palette-neutral-0) 12%, transparent);
+  --color-primary: var(--palette-primary-40);
+  --color-primary-hover: var(--palette-primary-30);
+  --color-on-primary: var(--palette-primary-100);
+  --color-accent: var(--palette-tertiary-80);
+  --color-on-accent: var(--palette-tertiary-20);
+  --color-success: var(--palette-success-40);
+  --color-on-success: var(--palette-success-100);
 }
 
+/* Lighter surfaces distinguish elevation in dark mode, where shadows are less visible. */
 :root[data-theme='dark'] {
   color-scheme: dark;
 
-  --qadam-color-background: var(--qadam-palette-neutral-10);
-  --qadam-color-surface: var(--qadam-palette-neutral-20);
-  --qadam-color-surface-raised: var(--qadam-palette-neutral-30);
-  --qadam-color-text: var(--qadam-palette-neutral-90);
-  --qadam-color-text-muted: var(--qadam-palette-neutral-80);
-  --qadam-color-border: var(--qadam-palette-neutral-variant-30);
-  --qadam-color-primary: var(--qadam-palette-primary-80);
-  --qadam-color-primary-hover: var(--qadam-palette-primary-90);
-  --qadam-color-on-primary: var(--qadam-palette-primary-20);
-  --qadam-color-accent: var(--qadam-palette-tertiary-80);
-  --qadam-color-on-accent: var(--qadam-palette-tertiary-20);
-  --qadam-color-success: var(--qadam-palette-success-80);
-  --qadam-color-on-success: var(--qadam-palette-success-20);
+  --color-background: var(--palette-neutral-10);
+  --color-surface: var(--palette-neutral-20);
+  --color-surface-raised: var(--palette-neutral-30);
+  --color-text: var(--palette-neutral-90);
+  --color-text-muted: var(--palette-neutral-80);
+  --color-border: var(--palette-neutral-variant-30);
+  --color-shadow: color-mix(in srgb, var(--palette-neutral-0) 32%, transparent);
+  --color-primary: var(--palette-primary-80);
+  --color-primary-hover: var(--palette-primary-90);
+  --color-on-primary: var(--palette-primary-20);
+  --color-accent: var(--palette-tertiary-80);
+  --color-on-accent: var(--palette-tertiary-20);
+  --color-success: var(--palette-success-80);
+  --color-on-success: var(--palette-success-20);
 }

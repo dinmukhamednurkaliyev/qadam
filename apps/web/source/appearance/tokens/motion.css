@@ -1,0 +1,23 @@
+:root {
+  --duration-instant: 0ms;
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 320ms;
+
+  /* Enter decelerates into place; exit accelerates away; standard covers state changes. */
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --easing-enter: cubic-bezier(0, 0, 0, 1);
+  --easing-exit: cubic-bezier(0.3, 0, 1, 1);
+}
+
+/*
+ * Components must use these durations for reduced motion to take effect.
+ * Zero-duration transitions do not emit transitionend; update state independently.
+ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: var(--duration-instant);
+    --duration-normal: var(--duration-instant);
+    --duration-slow: var(--duration-instant);
+  }
+}

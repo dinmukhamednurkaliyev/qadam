@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: read
+  # Creating labels that do not yet exist requires issues: write.
   issues: write
   pull-requests: write
 
@@ -22,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
+    # This event has a write-capable token. Never check out or execute pull-request code here.
+    # The labeler reads its configuration from the trusted base branch.
     steps:
       - name: Label Pull Request
         uses: actions/labeler@bf12e9b00b37c5c0ca2b87b79b2daf7891dbda13 # v7.0.0

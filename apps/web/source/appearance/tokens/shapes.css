@@ -1,0 +1,19 @@
+:root {
+  /* CSS pixels keep border thickness independent of the root font size. */
+  --border-width-thin: 1px;
+  --border-width-thick: 2px;
+
+  /* rem radii scale with text; the large pill radius is clamped to the element's size. */
+  --radius-none: 0;
+  --radius-small: 0.25rem;
+  --radius-medium: 0.5rem;
+  --radius-large: 1rem;
+  --radius-pill: 9999px;
+
+  /* A circle requires equal width and height; otherwise 50% produces an ellipse. */
+  --radius-circle: 50%;
+
+  /* Apply with :focus-visible; the component must provide a contrasting outline color. */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+}

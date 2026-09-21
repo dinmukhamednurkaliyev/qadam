@@ -16,6 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
+  # This workflow runs pull-request code; its repository token must remain read-only.
   contents: read
 
 jobs:
@@ -31,12 +32,15 @@ jobs:
       - name: Setup mise
         uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
 
+      # Fail on manifest/lockfile drift instead of resolving different dependencies in CI.
       - name: Install Dependencies
         run: bun install --frozen-lockfile
 
+      # New advisories can affect unchanged dependencies, so the audit runs on every verification.
       - name: Run Security Check
         run: bun run security:check
 
+      # These are the same stages as local verify, separated for readable failure logs.
       - name: Validate Project
         run: bun run validate
 
