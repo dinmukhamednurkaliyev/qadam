@@ -1,0 +1,91 @@
+:root {
+  /* Primary seed: #2a28da */
+  --palette-primary-0: #000;
+  --palette-primary-10: #05006d;
+  --palette-primary-20: #0d00aa;
+  --palette-primary-30: #2420d6;
+  --palette-primary-40: #4143ec;
+  --palette-primary-50: #5e62ff;
+  --palette-primary-60: #7f84ff;
+  --palette-primary-70: #9fa3ff;
+  --palette-primary-80: #c0c1ff;
+  --palette-primary-90: #e1e0ff;
+  --palette-primary-95: #f1efff;
+  --palette-primary-99: #fffbff;
+  --palette-primary-100: #fff;
+
+  /* Secondary seed: #5f5eec */
+  --palette-secondary-0: #000;
+  --palette-secondary-10: #0a006b;
+  --palette-secondary-20: #1700a8;
+  --palette-secondary-30: #322bc0;
+  --palette-secondary-40: #4b49d8;
+  --palette-secondary-50: #6564f2;
+  --palette-secondary-60: #8283ff;
+  --palette-secondary-70: #a2a2ff;
+  --palette-secondary-80: #c1c1ff;
+  --palette-secondary-90: #e2dfff;
+  --palette-secondary-95: #f2efff;
+  --palette-secondary-99: #fffbff;
+  --palette-secondary-100: #fff;
+
+  /* Tertiary seed: #eeb64f */
+  --palette-tertiary-0: #000;
+  --palette-tertiary-10: #271900;
+  --palette-tertiary-20: #422c00;
+  --palette-tertiary-30: #5f4100;
+  --palette-tertiary-40: #7d5700;
+  --palette-tertiary-50: #9d6f02;
+  --palette-tertiary-60: #ba8824;
+  --palette-tertiary-70: #d8a23d;
+  --palette-tertiary-80: #f6bd55;
+  --palette-tertiary-90: #ffdeaa;
+  --palette-tertiary-95: #ffeed9;
+  --palette-tertiary-99: #fffbff;
+  --palette-tertiary-100: #fff;
+
+  /* Neutral seed: #080f32 */
+  --palette-neutral-0: #000;
+  --palette-neutral-10: #12193b;
+  --palette-neutral-20: #272e52;
+  --palette-neutral-30: #3e4469;
+  --palette-neutral-40: #565c83;
+  --palette-neutral-50: #6e759d;
+  --palette-neutral-60: #888eb8;
+  --palette-neutral-70: #a3a9d4;
+  --palette-neutral-80: #bec4f0;
+  --palette-neutral-90: #dee0ff;
+  --palette-neutral-95: #f0efff;
+  --palette-neutral-99: #fefbff;
+  --palette-neutral-100: #fff;
+
+  /* Neutral variant seed: #524f63 */
+  --palette-neutral-variant-0: #000;
+  --palette-neutral-variant-10: #1c192b;
+  --palette-neutral-variant-20: #312e41;
+  --palette-neutral-variant-30: #474458;
+  --palette-neutral-variant-40: #5f5c70;
+  --palette-neutral-variant-50: #78748a;
+  --palette-neutral-variant-60: #928ea4;
+  --palette-neutral-variant-70: #ada8bf;
+  --palette-neutral-variant-80: #c8c3db;
+  --palette-neutral-variant-90: #e5dff8;
+  --palette-neutral-variant-95: #f3eeff;
+  --palette-neutral-variant-99: #fffbff;
+  --palette-neutral-variant-100: #fff;
+
+  /* Success seed: #18b787 */
+  --palette-success-0: #000;
+  --palette-success-10: #002115;
+  --palette-success-20: #003827;
+  --palette-success-30: #00513a;
+  --palette-success-40: #006c4e;
+  --palette-success-50: #008862;
+  --palette-success-60: #00a578;
+  --palette-success-70: #2cc190;
+  --palette-success-80: #52ddaa;
+  --palette-success-90: #72fac5;
+  --palette-success-95: #bdffdf;
+  --palette-success-99: #f4fff7;
+  --palette-success-100: #fff;
+}

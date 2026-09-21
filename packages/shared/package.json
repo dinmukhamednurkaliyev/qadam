@@ -2,16 +2,12 @@
   "name": "@qadam/shared",
   "private": true,
   "type": "module",
-  "exports": {
-    ".": "./source/main.ts",
-    "./vacancies": "./source/vacancies/vacancy-contracts.ts",
-    "./common": "./source/common/error-response.ts"
-  },
+  "exports": "./source/main.ts",
   "scripts": {
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "zod": "^4.6.2"
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "typescript": "catalog:"

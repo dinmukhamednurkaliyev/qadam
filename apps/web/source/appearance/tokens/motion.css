@@ -1,0 +1,17 @@
+:root {
+  --duration-instant: 0ms;
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 320ms;
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --easing-enter: cubic-bezier(0, 0, 0, 1);
+  --easing-exit: cubic-bezier(0.3, 0, 1, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: var(--duration-instant);
+    --duration-normal: var(--duration-instant);
+    --duration-slow: var(--duration-instant);
+  }
+}

@@ -1,8 +1,5 @@
 name: Maintenance Request
 description: Request project maintenance
-labels:
-  - maintenance
-
 body:
   - type: textarea
     id: description

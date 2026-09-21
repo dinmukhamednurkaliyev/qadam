@@ -1,0 +1,40 @@
+@import url('./palettes.css');
+
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --color-background: var(--palette-neutral-99);
+  --color-surface: var(--palette-neutral-99);
+  --color-surface-raised: var(--palette-neutral-100);
+  --color-text: var(--palette-neutral-10);
+  --color-text-muted: var(--palette-neutral-30);
+  --color-border: var(--palette-neutral-variant-80);
+  --color-shadow: color-mix(in srgb, var(--palette-neutral-0) 12%, transparent);
+  --color-primary: var(--palette-primary-40);
+  --color-primary-hover: var(--palette-primary-30);
+  --color-on-primary: var(--palette-primary-100);
+  --color-accent: var(--palette-tertiary-80);
+  --color-on-accent: var(--palette-tertiary-20);
+  --color-success: var(--palette-success-40);
+  --color-on-success: var(--palette-success-100);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-background: var(--palette-neutral-10);
+  --color-surface: var(--palette-neutral-20);
+  --color-surface-raised: var(--palette-neutral-30);
+  --color-text: var(--palette-neutral-90);
+  --color-text-muted: var(--palette-neutral-80);
+  --color-border: var(--palette-neutral-variant-30);
+  --color-shadow: color-mix(in srgb, var(--palette-neutral-0) 32%, transparent);
+  --color-primary: var(--palette-primary-80);
+  --color-primary-hover: var(--palette-primary-90);
+  --color-on-primary: var(--palette-primary-20);
+  --color-accent: var(--palette-tertiary-80);
+  --color-on-accent: var(--palette-tertiary-20);
+  --color-success: var(--palette-success-80);
+  --color-on-success: var(--palette-success-20);
+}

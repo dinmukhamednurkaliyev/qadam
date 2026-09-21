@@ -1,0 +1,12 @@
+:root {
+  --border-width-thin: 1px;
+  --border-width-thick: 2px;
+  --radius-none: 0;
+  --radius-small: 0.25rem;
+  --radius-medium: 0.5rem;
+  --radius-large: 1rem;
+  --radius-pill: 9999px;
+  --radius-circle: 50%;
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+}

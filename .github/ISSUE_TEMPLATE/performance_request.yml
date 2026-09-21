@@ -1,8 +1,5 @@
 name: Performance Request
 description: Request a performance improvement
-labels:
-  - performance
-
 body:
   - type: textarea
     id: description
