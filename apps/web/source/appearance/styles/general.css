@@ -1,0 +1,23 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+}
+
+:where(img, picture, video, canvas, svg) {
+  display: block;
+  max-inline-size: 100%;
+}
+
+:where(button, input, textarea, select) {
+  color: inherit;
+  font: inherit;
+}
