@@ -28,12 +28,8 @@
     alt="Pinia"
   />
   <img
-    src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&amp;logo=postgresql&amp;logoColor=white"
-    alt="PostgreSQL"
-  />
-  <img
-    src="https://img.shields.io/badge/Drizzle-C5F74F?style=flat-square&amp;logo=drizzle&amp;logoColor=black"
-    alt="Drizzle"
+    src="https://img.shields.io/badge/Go-00ADD8?style=flat-square&amp;logo=go&amp;logoColor=white"
+    alt="Go"
   />
   <img
     src="https://img.shields.io/github/license/dinmukhamednurkaliyev/qadam?style=flat-square"

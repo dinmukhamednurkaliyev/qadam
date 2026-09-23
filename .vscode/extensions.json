@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "Vue.volar",
+    "golang.go",
     "EditorConfig.EditorConfig",
     "oxc.oxc-vscode",
     "esbenp.prettier-vscode"

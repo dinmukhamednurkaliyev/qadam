@@ -3,8 +3,17 @@
   "explorer.fileNesting.patterns": {
     "tsconfig.json": "tsconfig.*.json, env.d.ts",
     "vite.config.*": "jsconfig*",
+    "go.mod": "go.sum",
     "package.json": "bun.lock, package-lock.json, pnpm-lock.yaml, yarn.lock, .yarnrc*, .oxlint*, oxlint*, .oxfmt*, .prettier*, prettier*, .editorconfig"
   },
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.prettierPath": "./apps/web/node_modules/prettier",
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.insertSpaces": false,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  }
 }

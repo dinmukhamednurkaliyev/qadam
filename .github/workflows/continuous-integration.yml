@@ -19,10 +19,62 @@ permissions:
   contents: read
 
 jobs:
-  verify:
-    name: Verify
+  changes:
+    name: Detect Changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      web: ${{ steps.changes.outputs.web }}
+      server: ${{ steps.changes.outputs.server }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Detect Changed Applications
+        id: changes
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          web_changed=false
+          server_changed=false
+
+          if [[ "$EVENT_NAME" == "workflow_dispatch" || -z "$BASE_SHA" || "$BASE_SHA" =~ ^0+$ ]]; then
+            web_changed=true
+            server_changed=true
+          else
+            changed_files=$(git diff --name-only --no-renames "$BASE_SHA" "$HEAD_SHA")
+            while IFS= read -r changed_file; do
+              case "$changed_file" in
+                mise.toml|.editorconfig|.github/workflows/continuous-integration.yml)
+                  web_changed=true
+                  server_changed=true
+                  ;;
+                apps/server/*)
+                  server_changed=true
+                  ;;
+                "") ;;
+                *)
+                  web_changed=true
+                  ;;
+              esac
+            done <<< "$changed_files"
+          fi
+
+          printf 'web=%s\nserver=%s\n' "$web_changed" "$server_changed" >> "$GITHUB_OUTPUT"
+
+  web:
+    name: Verify Web
+    needs: changes
+    if: needs.changes.outputs.web == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      MISE_TASK_RUN_AUTO_INSTALL: 'false'
 
     steps:
       - name: Checkout Repository
@@ -30,15 +82,56 @@ jobs:
 
       - name: Setup mise
         uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
+        with:
+          install_args: bun
 
       - name: Install Dependencies
-        run: bun install --frozen-lockfile
+        run: mise run install
 
       - name: Run Security Check
-        run: bun run security:check
+        run: mise run security:web
 
-      - name: Validate Project
-        run: bun run validate
+      - name: Validate and Build Web
+        run: mise run verify:web
 
-      - name: Build Applications
-        run: bun run build
+  server:
+    name: Verify Server
+    needs: changes
+    if: needs.changes.outputs.server == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      MISE_TASK_RUN_AUTO_INSTALL: 'false'
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup mise
+        uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
+        with:
+          install_args: go
+
+      - name: Run Security Check
+        run: mise run security:server
+
+      - name: Validate and Build Server
+        run: mise run verify:server
+
+  verify:
+    name: Verify
+    needs: [changes, web, server]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check Results
+        env:
+          CHANGES_RESULT: ${{ needs.changes.result }}
+          WEB_RESULT: ${{ needs.web.result }}
+          SERVER_RESULT: ${{ needs.server.result }}
+        run: |
+          [[ "$CHANGES_RESULT" == "success" ]]
+          [[ "$WEB_RESULT" == "success" || "$WEB_RESULT" == "skipped" ]]
+          [[ "$SERVER_RESULT" == "success" || "$SERVER_RESULT" == "skipped" ]]

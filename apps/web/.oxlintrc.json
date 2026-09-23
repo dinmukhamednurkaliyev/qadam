@@ -1,0 +1,17 @@
+{
+  "categories": {
+    "correctness": "error"
+  },
+  "overrides": [
+    {
+      "files": ["source/**/*.{js,ts,vue}"],
+      "plugins": ["typescript", "unicorn", "oxc", "vue"],
+      "env": {
+        "browser": true,
+        "builtin": true
+      }
+    }
+  ],
+  "plugins": ["typescript", "unicorn", "oxc"],
+  "ignorePatterns": ["**/dist/**", "**/dist-ssr/**", "**/node_modules/**"]
+}

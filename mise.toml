@@ -1,3 +1,97 @@
 [tools]
-# Keep aligned with packageManager in package.json so local development and CI use the same Bun.
 bun = "1.4.2"
+go = "1.27.1"
+
+[tasks.install]
+description = "Install JavaScript dependencies from the lockfile"
+dir = "apps/web"
+run = "bun install --frozen-lockfile"
+
+[tasks.development]
+description = "Run web and server together"
+depends = ["development:web", "development:server"]
+
+[tasks."development:web"]
+dir = "apps/web"
+run = "bun run development"
+
+[tasks."development:server"]
+dir = "apps/server"
+run = "go run ./cmd/server"
+
+[tasks.build]
+depends = ["build:web", "build:server"]
+
+[tasks."build:web"]
+dir = "apps/web"
+run = "bun run build"
+
+[tasks."build:server"]
+dir = "apps/server"
+run = "go build -trimpath -o dist/server ./cmd/server"
+
+[tasks."start:server"]
+dir = "apps/server"
+run = "./dist/server"
+
+[tasks."preview:web"]
+dir = "apps/web"
+run = "bun run preview"
+
+[tasks.format]
+depends = ["format:web", "format:server"]
+
+[tasks."format:web"]
+dir = "apps/web"
+run = "bun run format"
+
+[tasks."format:server"]
+dir = "apps/server"
+run = "gofmt -w cmd internal"
+
+[tasks."format:check:server"]
+dir = "apps/server"
+run = '''
+unformatted=$(gofmt -l cmd internal)
+if [ -n "$unformatted" ]; then
+  printf '%s\n' "$unformatted"
+  exit 1
+fi
+'''
+
+[tasks.validate]
+depends = ["validate:web", "validate:server"]
+
+[tasks."validate:web"]
+dir = "apps/web"
+run = "bun run validate"
+
+[tasks."validate:server"]
+depends = ["format:check:server"]
+dir = "apps/server"
+run = ["go mod tidy -diff", "go vet ./..."]
+
+[tasks.verify]
+description = "Validate and build both applications"
+depends = ["verify:web", "verify:server"]
+
+[tasks."verify:web"]
+depends = ["validate:web"]
+dir = "apps/web"
+run = "bun run build"
+
+[tasks."verify:server"]
+depends = ["validate:server"]
+dir = "apps/server"
+run = "go build -trimpath -o dist/server ./cmd/server"
+
+[tasks.security]
+depends = ["security:web", "security:server"]
+
+[tasks."security:web"]
+dir = "apps/web"
+run = "bun run security:check"
+
+[tasks."security:server"]
+dir = "apps/server"
+run = "go run golang.org/x/vuln/cmd/govulncheck@v1.8.0 ./..."

@@ -11,23 +11,20 @@ server:
       - any-glob-to-any-file:
           - 'apps/server/**'
 
-shared:
-  - changed-files:
-      - any-glob-to-any-file:
-          - 'packages/shared/**'
-
 workspace:
   - changed-files:
       - any-glob-to-any-file:
-          - 'package.json'
-          - 'bun.lock'
           - 'mise.toml'
           - '.gitignore'
           - '.vscode/**'
-          - 'stylelint.config.*'
+          - '.editorconfig'
+          - '.prettierignore'
+          - '.prettierrc.json'
+          - 'apps/*/.oxlintrc.json'
+          - 'apps/*/stylelint.config.*'
           - 'apps/*/tsconfig*.json'
           - 'apps/*/vite.config.*'
-          - 'packages/*/tsconfig*.json'
+          - 'apps/*/go.mod'
 
 assets:
   - changed-files:
@@ -53,13 +50,14 @@ github-actions:
 dependencies:
   - changed-files:
       - any-glob-to-any-file:
-          - 'package.json'
           - 'apps/*/package.json'
-          - 'packages/*/package.json'
-          - 'bun.lock'
-          - 'package-lock.json'
-          - 'pnpm-lock.yaml'
-          - 'yarn.lock'
+          - '**/go.mod'
+          - '**/go.sum'
+          - 'apps/*/bun.lock'
+          - 'apps/*/package-lock.json'
+          - 'apps/*/pnpm-lock.yaml'
+          - 'apps/*/yarn.lock'
+          - 'mise.toml'
 
 documentation:
   - changed-files:
