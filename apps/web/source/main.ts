@@ -1,12 +1,20 @@
-import { createApp } from 'vue'
-
 import '@/appearance/appearance.css'
-import App from '@/app.vue'
+import { readAppConfiguration } from '@/app-configuration'
+import { createApp } from '@/app'
 import { createLocalization } from '@/localization/localization'
+import { createAppRouter } from '@/router/router'
 
 const browserLanguages = navigator.languages.length > 0 ? navigator.languages : [navigator.language]
-const localization = createLocalization(browserLanguages)
+
+const configuration = readAppConfiguration(browserLanguages)
+const localization = createLocalization(configuration.locale)
+const router = createAppRouter()
+
+const app = createApp({
+  localization,
+  router,
+})
 
 document.documentElement.lang = localization.global.locale.value
 
-createApp(App).use(localization).mount('#app')
+app.mount('#app')

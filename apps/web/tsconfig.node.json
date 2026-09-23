@@ -1,6 +1,6 @@
 {
   "extends": "@tsconfig/node24/tsconfig.json",
-  "include": ["vite.config.*"],
+  "include": ["vite.config.*", "stylelint.config.ts"],
   "compilerOptions": {
     "module": "preserve",
     "moduleResolution": "bundler",

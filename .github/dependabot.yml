@@ -2,7 +2,29 @@ version: 2
 
 updates:
   - package-ecosystem: bun
-    directory: /
+    directory: /apps/web
+
+    schedule:
+      interval: weekly
+      day: monday
+      time: '09:00'
+      timezone: Asia/Almaty
+
+    open-pull-requests-limit: 5
+
+    groups:
+      routine-version-updates:
+        patterns:
+          - '*'
+        update-types:
+          - minor
+          - patch
+
+    labels:
+      - dependencies
+
+  - package-ecosystem: gomod
+    directory: /apps/server
 
     schedule:
       interval: weekly

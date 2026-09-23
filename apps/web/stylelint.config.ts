@@ -5,7 +5,7 @@ export default {
 
   overrides: [
     {
-      files: ['**/*.vue'],
+      files: ['source/**/*.vue'],
       customSyntax: 'postcss-html',
     },
   ],

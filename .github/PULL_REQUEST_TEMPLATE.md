@@ -9,7 +9,8 @@ Describe the user, product, or maintenance outcome of this pull request.
 
 ## Verification
 
-- [ ] `bun run verify`
+- [ ] `mise run verify`
+- [ ] `mise run security` when dependencies or runtime versions change.
 
 ## Checklist
 
