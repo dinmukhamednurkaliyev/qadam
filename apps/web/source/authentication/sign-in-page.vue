@@ -14,7 +14,7 @@ const { translate } = useLocalization()
           {{ translate('common.authentication.signIn.emailLabel') }}
         </label>
 
-        <input id="email" name="email" type="email" />
+        <input id="email" name="email" type="email" autocomplete="username" required />
       </div>
 
       <div>
@@ -22,7 +22,13 @@ const { translate } = useLocalization()
           {{ translate('common.authentication.signIn.passwordLabel') }}
         </label>
 
-        <input id="password" name="password" type="password" />
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          required
+        />
       </div>
 
       <button type="submit">
