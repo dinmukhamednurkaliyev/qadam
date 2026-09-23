@@ -3,10 +3,12 @@ package server
 import (
 	"errors"
 	"strconv"
+	"strings"
 )
 
 type Configuration struct {
-	Port int
+	Port        int
+	DatabaseURL string
 }
 
 func ReadConfiguration(lookupEnvironment func(string) (string, bool)) (Configuration, error) {
@@ -20,5 +22,13 @@ func ReadConfiguration(lookupEnvironment func(string) (string, bool)) (Configura
 		return Configuration{}, errors.New("PORT must be a decimal integer between 1 and 65535")
 	}
 
-	return Configuration{Port: int(port)}, nil
+	databaseURL, exists := lookupEnvironment("DATABASE_URL")
+	if !exists || strings.TrimSpace(databaseURL) == "" {
+		return Configuration{}, errors.New("DATABASE_URL is required")
+	}
+
+	return Configuration{
+		Port:        int(port),
+		DatabaseURL: databaseURL,
+	}, nil
 }
