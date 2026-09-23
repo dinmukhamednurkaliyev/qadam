@@ -71,5 +71,17 @@ const { translate } = useLocalization()
 
 .input {
   inline-size: 100%;
+  min-block-size: 2.75rem;
+  padding-inline: var(--spacing-3);
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: var(--border-width-thin) solid var(--color-border);
+  border-radius: var(--radius-medium);
+}
+
+.input:focus-visible {
+  border-color: var(--color-primary);
+  outline: var(--focus-ring-width) solid var(--color-primary);
+  outline-offset: var(--focus-ring-offset);
 }
 </style>
