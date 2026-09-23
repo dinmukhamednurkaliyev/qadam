@@ -3,6 +3,7 @@
     "signIn": {
       "title": "Вход",
       "emailLabel": "Электронная почта",
+      "emailPlaceholder": "name{'@'}example.com",
       "passwordLabel": "Пароль",
       "submit": "Войти"
     }

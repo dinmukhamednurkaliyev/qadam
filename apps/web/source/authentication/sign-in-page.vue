@@ -1,48 +1,49 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
+import Button from '@/appearance/components/button.vue'
+import TextField from '@/appearance/components/text-field.vue'
 import { useLocalization } from '@/localization/use-localization'
 
 const { translate } = useLocalization()
+
+const email = ref('')
+const password = ref('')
 </script>
 
 <template>
   <main class="page">
-    <div class="content">
-      <h1>{{ translate('common.authentication.signIn.title') }}</h1>
+    <div>
+      <h1>
+        {{ translate('common.authentication.signIn.title') }}
+      </h1>
 
-      <form class="form" @submit.prevent>
-        <div class="field">
-          <label for="email">
-            {{ translate('common.authentication.signIn.emailLabel') }}
-          </label>
+      <form @submit.prevent>
+        <TextField
+          v-model="email"
+          input-id="email"
+          :label="translate('common.authentication.signIn.emailLabel')"
+          name="email"
+          type="email"
+          autocomplete="username"
+          variant="outlined"
+          required
+        />
 
-          <input
-            id="email"
-            class="input"
-            name="email"
-            type="email"
-            autocomplete="username"
-            required
-          />
-        </div>
+        <TextField
+          v-model="password"
+          input-id="password"
+          :label="translate('common.authentication.signIn.passwordLabel')"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          variant="outlined"
+          required
+        />
 
-        <div class="field">
-          <label for="password">
-            {{ translate('common.authentication.signIn.passwordLabel') }}
-          </label>
-
-          <input
-            id="password"
-            class="input"
-            name="password"
-            type="password"
-            autocomplete="current-password"
-            required
-          />
-        </div>
-
-        <button type="submit">
+        <Button type="submit" variant="primary">
           {{ translate('common.authentication.signIn.submit') }}
-        </button>
+        </Button>
       </form>
     </div>
   </main>
@@ -50,38 +51,8 @@ const { translate } = useLocalization()
 
 <style scoped>
 .page {
+  display: grid;
   min-block-size: 100dvh;
-  padding: var(--spacing-4);
-}
-
-.content {
-  inline-size: 100%;
-  max-inline-size: 28rem;
-}
-
-.form {
-  display: grid;
-  gap: var(--spacing-4);
-}
-
-.field {
-  display: grid;
-  gap: var(--spacing-2);
-}
-
-.input {
-  inline-size: 100%;
-  min-block-size: 2.75rem;
-  padding-inline: var(--spacing-3);
-  color: var(--color-text);
-  background: var(--color-surface);
-  border: var(--border-width-thin) solid var(--color-border);
-  border-radius: var(--radius-medium);
-}
-
-.input:focus-visible {
-  border-color: var(--color-primary);
-  outline: var(--focus-ring-width) solid var(--color-primary);
-  outline-offset: var(--focus-ring-offset);
+  place-items: center;
 }
 </style>
