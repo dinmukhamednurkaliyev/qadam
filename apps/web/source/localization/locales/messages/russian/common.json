@@ -1,3 +1,10 @@
 {
-  "appName": "Qadam"
+  "authentication": {
+    "signIn": {
+      "title": "Вход",
+      "emailLabel": "Электронная почта",
+      "passwordLabel": "Пароль",
+      "submit": "Войти"
+    }
+  }
 }

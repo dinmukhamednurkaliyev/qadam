@@ -13,8 +13,8 @@
     "lint:fix": "oxlint . --fix",
     "style-check": "stylelint \"source/**/*.{css,vue}\" --allow-empty-input --config stylelint.config.ts",
     "style-check:fix": "bun run style-check --fix",
-    "format": "prettier ../.. --config ../../.prettierrc.json --ignore-path ../../.gitignore --ignore-path ../../.prettierignore --write",
-    "format:check": "prettier ../.. --config ../../.prettierrc.json --ignore-path ../../.gitignore --ignore-path ../../.prettierignore --check",
+    "format": "prettier ../.. --config .prettierrc.json --ignore-path ../../.gitignore --ignore-path .prettierignore --write",
+    "format:check": "prettier ../.. --config .prettierrc.json --ignore-path ../../.gitignore --ignore-path .prettierignore --check",
     "validate": "bun run type-check && bun run lint && bun run style-check && bun run format:check",
     "security:check": "bun audit --prod"
   },
