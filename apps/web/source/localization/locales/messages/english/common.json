@@ -1,3 +1,11 @@
 {
-  "appName": "Qadam"
+  "authentication": {
+    "signIn": {
+      "title": "Sign in",
+      "emailLabel": "Email",
+      "emailPlaceholder": "name{'@'}example.com",
+      "passwordLabel": "Password",
+      "submit": "Sign in"
+    }
+  }
 }

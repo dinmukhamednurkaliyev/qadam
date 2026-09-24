@@ -12,6 +12,7 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/dinmukhamednurkaliyev/qadam/apps/server/internal/database"
 	"github.com/dinmukhamednurkaliyev/qadam/apps/server/internal/server"
 )
 
@@ -32,7 +33,19 @@ func run(logger *slog.Logger) error {
 	shutdownSignal, stopSignals := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stopSignals()
 
-	httpServer := server.New(configuration, logger)
+	databasePool, databaseError := database.Open(shutdownSignal, configuration.DatabaseURL)
+	if databaseError != nil {
+		if errors.Is(databaseError, context.Canceled) && shutdownSignal.Err() != nil {
+			return nil
+		}
+		return databaseError
+	}
+	defer databasePool.Close()
+	logger.Info("database connected")
+
+	httpServer := server.New(configuration, logger, databasePool)
+	defer httpServer.Close()
+
 	listener, listenError := net.Listen("tcp", httpServer.Addr)
 	if listenError != nil {
 		return fmt.Errorf("listen: %w", listenError)

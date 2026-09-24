@@ -18,6 +18,10 @@
   --color-on-accent: var(--palette-tertiary-20);
   --color-success: var(--palette-success-40);
   --color-on-success: var(--palette-success-100);
+  --color-error: var(--palette-error-40);
+  --color-on-error: var(--palette-error-100);
+  --color-error-container: var(--palette-error-90);
+  --color-on-error-container: var(--palette-error-10);
 }
 
 :root[data-theme='dark'] {
@@ -37,4 +41,8 @@
   --color-on-accent: var(--palette-tertiary-20);
   --color-success: var(--palette-success-80);
   --color-on-success: var(--palette-success-20);
+  --color-error: var(--palette-error-80);
+  --color-on-error: var(--palette-error-20);
+  --color-error-container: var(--palette-error-30);
+  --color-on-error-container: var(--palette-error-90);
 }

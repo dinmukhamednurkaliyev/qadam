@@ -88,4 +88,19 @@
   --palette-success-95: #bdffdf;
   --palette-success-99: #f4fff7;
   --palette-success-100: #fff;
+
+  /* Error seed: #ba1a1a */
+  --palette-error-0: #000;
+  --palette-error-10: #410002;
+  --palette-error-20: #690005;
+  --palette-error-30: #93000a;
+  --palette-error-40: #ba1a1a;
+  --palette-error-50: #de3730;
+  --palette-error-60: #ff5449;
+  --palette-error-70: #ff897d;
+  --palette-error-80: #ffb4ab;
+  --palette-error-90: #ffdad6;
+  --palette-error-95: #ffedea;
+  --palette-error-99: #fffaf9;
+  --palette-error-100: #fff;
 }

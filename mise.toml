@@ -1,6 +1,8 @@
 [tools]
 bun = "1.4.2"
 go = "1.27.1"
+"aqua:pressly/goose" = "3.28.0"
+"aqua:sqlc-dev/sqlc" = "1.31.1"
 
 [tasks.install]
 description = "Install JavaScript dependencies from the lockfile"
@@ -17,6 +19,7 @@ run = "bun run development"
 
 [tasks."development:server"]
 dir = "apps/server"
+env = { _.file = { path = "apps/server/.env", redact = true } }
 run = "go run ./cmd/server"
 
 [tasks.build]
@@ -32,11 +35,23 @@ run = "go build -trimpath -o dist/server ./cmd/server"
 
 [tasks."start:server"]
 dir = "apps/server"
+env = { _.file = { path = "apps/server/.env", redact = true } }
 run = "./dist/server"
 
 [tasks."preview:web"]
 dir = "apps/web"
 run = "bun run preview"
+
+[tasks."migration:create"]
+description = "Create a SQL migration file without connecting to PostgreSQL"
+dir = "apps/server"
+usage = 'arg "<name>" help="Migration name, for example create_users"'
+run = 'goose -env=none -dir migrations create "${usage_name:?}" sql'
+
+[tasks."migration:check"]
+description = "Validate migration file structure without connecting to PostgreSQL"
+dir = "apps/server"
+run = "goose -env=none -dir migrations validate"
 
 [tasks.format]
 depends = ["format:web", "format:server"]
@@ -67,7 +82,7 @@ dir = "apps/web"
 run = "bun run validate"
 
 [tasks."validate:server"]
-depends = ["format:check:server"]
+depends = ["format:check:server", "migration:check"]
 dir = "apps/server"
 run = ["go mod tidy -diff", "go vet ./..."]
 
