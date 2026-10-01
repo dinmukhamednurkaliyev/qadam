@@ -4,7 +4,8 @@
   },
   "overrides": [
     {
-      "files": ["source/**/*.{js,ts,vue}"],
+      "files": ["**/*.{js,ts,vue}"],
+      "excludeFiles": ["vite.config.*", "stylelint.config.ts"],
       "plugins": ["typescript", "unicorn", "oxc", "vue"],
       "env": {
         "browser": true,

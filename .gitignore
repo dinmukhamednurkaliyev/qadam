@@ -1,3 +1,7 @@
+# General
+.*
+!.*/
+!.gitignore
 # Dependencies
 node_modules/
 

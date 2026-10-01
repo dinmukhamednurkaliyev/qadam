@@ -1,5 +1,5 @@
 import '@/appearance/appearance.css'
-import { readAppConfiguration } from '@/app-configuration'
+import { readAppConfiguration } from '@/configuration'
 import { createApp } from '@/app'
 import { createLocalization } from '@/localization/localization'
 import { createAppRouter } from '@/router/router'
