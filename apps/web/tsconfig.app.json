@@ -1,11 +1,12 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "source/**/*", "source/**/*.vue"],
+  "include": ["env.d.ts", "**/*", "**/*.vue"],
+  "exclude": ["node_modules", "dist", "dist-ssr", "vite.config.*", "stylelint.config.ts"],
   "compilerOptions": {
     "noUncheckedIndexedAccess": true,
 
     "paths": {
-      "@/*": ["./source/*"]
+      "@/*": ["./*"]
     },
 
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo"
